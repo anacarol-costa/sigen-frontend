@@ -1,6 +1,6 @@
 import React from 'react';
 //import PropTypes from 'prop-types';
-import styles from '../styles/LoginPage.module.css';
+import styles from '/home/carol/Documentos/PUC Minas -  Desenvolvimento Web Full Stack /TCC/sigen-frontend/src/styles/LoginPage.module.css';
 
 class LoginPage extends React.Component {
 
