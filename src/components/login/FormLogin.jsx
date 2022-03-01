@@ -37,7 +37,7 @@ export function FormularioLogin(props) {
                 error
                 id="login-senha"
                 label="Senha"          
-                helperText="Incorrect entry."
+                helperText="Entrada incorreta."
                 variant="filled"
                 value={formulario.senha}
                 name="senha"
