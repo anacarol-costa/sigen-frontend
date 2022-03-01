@@ -44,7 +44,7 @@ export function FormularioLogin(props) {
                 onChange={(e) => setFormulario({...formulario, senha: e.target.value })}
             />
             </div>
-            <Button variant="contained" onClick={enviarLogin}>Contained</Button>
+            <Button variant="contained" onClick={enviarLogin}>Entrar</Button>
             <Outlet />
         </Box>
     )
