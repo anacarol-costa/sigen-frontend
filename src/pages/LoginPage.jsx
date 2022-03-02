@@ -2,6 +2,7 @@
 //import React, { useState } from 'react';
 import { FormularioLogin } from '../components/login/FormLogin';
 import GoogleLogin from 'react-google-login';
+import CadastrarButton from '../components/CadastrarButton';
 
 
 export default function LoginPage () {
@@ -30,6 +31,7 @@ export default function LoginPage () {
         onFailure={responseGoogle}
         cookiePolicy={'single_host_origin'}
         />
+        <CadastrarButton />
       </>
     )   
 }
