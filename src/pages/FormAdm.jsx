@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import {useForm} from 'react-hook-form';
+//import {useForm} from 'react-hook-form';
 
-export default function FormAdm (props) {
+export default function FormAdm () {
  
   return (
-    <form>
-
-    </form>
+    <>
+      <h1>Formulário de cadastro - Administrador</h1>
+    </>
   )
 }
 
-export default FormAdm

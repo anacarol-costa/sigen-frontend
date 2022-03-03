@@ -1,35 +1,36 @@
-//import { Button } from '@mui/material';
-//import React, { useState } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import { FormularioLogin } from '../components/login/FormLogin';
 import GoogleLogin from 'react-google-login';
 import CadastrarButton from '../components/CadastrarButton';
+import sessionUtil from '../util/sessionUtil';
 
 
 export default function LoginPage () {
 
-  const responseGoogle = (response)=> {
-    console.log(response);
-    console.log(response.profileObj);
-  }
- 
-  // const [formulario, setFormulario] = useState({usuario: "", senha: ""});  
- 
-  
-  // const logarComGoogle = () => {
-  //   console.log("google")
-  // }
+  const navigate = useNavigate();
+  const clientId = process.env.CLIENT_ID;
 
+  const responseOkGoogle = (response)=> {    
+    const jwtGoogle = response.tokenObj.id_token;
+    sessionUtil.setPropriedadeCookie('TKN', jwtGoogle, {path:'/'});
+    navigate("/");
+  }
+
+  const responseErroGoogle = (response) => {
+    console.log(response);
+  }
 
 
   return (
       <>
         <FormularioLogin />
         <GoogleLogin 
-        clientId='112715506728-tea755e4cu7ggrjv7hvjj4lpla6ptqvq.apps.googleusercontent.com'
-        buttonText='Entrar com conta Google'
-        onSuccess={responseGoogle}
-        onFailure={responseGoogle}
-        cookiePolicy={'single_host_origin'}
+          clientId
+          buttonText='Entrar com conta Google'
+          onSuccess={responseOkGoogle}
+          onFailure={responseErroGoogle}
+          cookiePolicy={'single_host_origin'}
         />
         <CadastrarButton />
       </>

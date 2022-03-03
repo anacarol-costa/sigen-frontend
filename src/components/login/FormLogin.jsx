@@ -5,6 +5,7 @@ import { Outlet } from 'react-router-dom';
 import React, { useState } from 'react';
 
 
+
 export function FormularioLogin(props) {
 
     const [formulario, setFormulario] = useState({usuario: "", senha: ""});  
@@ -13,13 +14,14 @@ export function FormularioLogin(props) {
     const enviarLogin = (event) => {
         console.log(formulario)
     }
-    
+  
+   
 
     return (
         <Box
         component="form"
         sx={{
-            '& .MuiTextField-root': { m: 1, width: '25ch' },
+            '& .MuiTextField-root': { m: 1, width: '25ch'},
         }}
         noValidate
         autoComplete="off"
