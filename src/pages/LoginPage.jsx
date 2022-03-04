@@ -9,7 +9,8 @@ import sessionUtil from '../util/sessionUtil';
 export default function LoginPage () {
 
   const navigate = useNavigate();
-  const clientId = process.env.CLIENT_ID;
+  const clientId = process.env.REACT_APP_CLIENT_ID;
+  //console.log("aqui", clientId);
 
   const responseOkGoogle = (response)=> {    
     const jwtGoogle = response.tokenObj.id_token;
@@ -26,7 +27,7 @@ export default function LoginPage () {
       <>
         <FormularioLogin />
         <GoogleLogin 
-          clientId
+          clientId={clientId}
           buttonText='Entrar com conta Google'
           onSuccess={responseOkGoogle}
           onFailure={responseErroGoogle}
