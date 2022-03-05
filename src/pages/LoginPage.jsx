@@ -10,7 +10,7 @@ export default function LoginPage () {
 
   const navigate = useNavigate();
   const clientId = process.env.REACT_APP_CLIENT_ID;
-  //console.log("aqui", clientId);
+  console.log("aqui", clientId);
 
   const responseOkGoogle = (response)=> {    
     const jwtGoogle = response.tokenObj.id_token;
