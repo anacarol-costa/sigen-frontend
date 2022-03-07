@@ -6,15 +6,15 @@ import CadastrarButton from '../components/CadastrarButton';
 import sessionUtil from '../util/sessionUtil';
 
 
-export default function LoginPage () {
+export default function LoginPage() {
 
   const navigate = useNavigate();
   const clientId = process.env.REACT_APP_CLIENT_ID;
   console.log("aqui", clientId);
 
-  const responseOkGoogle = (response)=> {    
+  const responseOkGoogle = (response) => {
     const jwtGoogle = response.tokenObj.id_token;
-    sessionUtil.setPropriedadeCookie('TKN', jwtGoogle, {path:'/'});
+    sessionUtil.setPropriedadeCookie('TKN', jwtGoogle, { path: '/' });
     navigate("/");
   }
 
@@ -24,18 +24,18 @@ export default function LoginPage () {
 
 
   return (
-      <>
-        <FormularioLogin />
-        <GoogleLogin 
-          clientId={clientId}
-          buttonText='Entrar com conta Google'
-          onSuccess={responseOkGoogle}
-          onFailure={responseErroGoogle}
-          cookiePolicy={'single_host_origin'}
-        />
-        <CadastrarButton />
-      </>
-    )   
+    <>
+      <FormularioLogin />
+      <GoogleLogin
+        clientId={clientId}
+        buttonText='Entrar com conta Google'
+        onSuccess={responseOkGoogle}
+        onFailure={responseErroGoogle}
+        cookiePolicy={'single_host_origin'}
+      />
+      <CadastrarButton />
+    </>
+  )
 }
 
 
