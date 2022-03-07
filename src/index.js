@@ -5,6 +5,7 @@ import LoginPage from './pages/LoginPage'
 import reportWebVitals from './reportWebVitals';
 import { render } from "react-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import FormUsuario from './pages/FormUsuario';
 
 
 
@@ -14,6 +15,7 @@ render(
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/usuario" element={<FormUsuario />} />
     </Routes>
   </BrowserRouter>,
   rootElement

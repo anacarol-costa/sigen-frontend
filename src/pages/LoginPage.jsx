@@ -3,19 +3,21 @@ import { useNavigate } from "react-router-dom";
 import { FormularioLogin } from '../components/login/FormLogin';
 import GoogleLogin from 'react-google-login';
 import CadastrarButton from '../components/CadastrarButton';
-import sessionUtil from '../util/sessionUtil';
+import sessionUtil, { SessionUtil } from '../util/sessionUtil';
 
 
 export default function LoginPage() {
 
   const navigate = useNavigate();
   const clientId = process.env.REACT_APP_CLIENT_ID;
-  console.log("aqui", clientId);
+
 
   const responseOkGoogle = (response) => {
     const jwtGoogle = response.tokenObj.id_token;
-    sessionUtil.setPropriedadeCookie('TKN', jwtGoogle, { path: '/' });
-    navigate("/");
+
+    sessionUtil.setPropriedadeCookie(SessionUtil.TKN, jwtGoogle, { path: '/' });
+
+    navigate('/');
   }
 
   const responseErroGoogle = (response) => {
