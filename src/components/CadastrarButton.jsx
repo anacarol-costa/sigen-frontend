@@ -1,20 +1,13 @@
 import { Box, Button } from '@mui/material';
-import { render } from '@testing-library/react';
-import React, { Component } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import FormUsuario from '../pages/FormUsuario';
+import { useNavigate } from 'react-router-dom';
 
 
 export function CadastrarButton(props) {
 
-  const formAdm = (event) => {
-    render(
-      <BrowserRouter>
-        <Routes>
-          <Route path='formAdm' element={<FormUsuario />} />
-        </Routes>
-      </BrowserRouter>
-    )
+  const navigate = useNavigate();
+
+  const formUsuario = () => {
+    navigate('/usuario');
   }
 
   return (
@@ -26,7 +19,8 @@ export function CadastrarButton(props) {
       noValidate
       autoComplete="off"
     >
-      <Button variant='contained' onClick={formAdm}>Cadastre-se</Button>
+      <Button variant='contained' onClick={formUsuario}>Cadastre-se</Button>
+
     </Box>
 
 
