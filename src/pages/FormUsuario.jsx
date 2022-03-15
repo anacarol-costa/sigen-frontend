@@ -1,16 +1,19 @@
 import { Button, TextField, Typography } from '@mui/material';
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
+import InputMask from "react-input-mask";
+import MaskedInput from "react-input-mask";
 
 
 export default function FormUsuario() {
 
   const [cadastro, setCadastro] = useState({ nome: "", email: "", senha: "", repetirSenha: "", telefone: "" });
   const [errorSenhasDiferentes, setErrorSenhasDiferentes] = useState('');
+  const [telefoneValido, setTelefoneValido] = useState("");
 
   const validacaoSchema = Yup.object().shape({
     nome: Yup.string()
@@ -31,8 +34,7 @@ export default function FormUsuario() {
       .oneOf([Yup.ref('senha'), null], 'senha incompatível'),
 
     telefone: Yup.string()
-      .required('campo obrigatório')
-      .min(11),
+      .required('campo obrigatório'),
   })
 
   const {
@@ -45,7 +47,7 @@ export default function FormUsuario() {
   });
 
   const enviarCadastro = async (event) => {
-    console.log(event);
+    //console.log(event);
     const newUsuario = { ...event };
     delete newUsuario.repetirSenha;
     await axios.post("https://sigen-backend.herokuapp.com/usuarios", { ...newUsuario });
@@ -138,19 +140,56 @@ export default function FormUsuario() {
       </div>
 
       <div>
-        <TextField
-          inputProps={{ textmask: '(#00) 00000-0000', inputMode: 'tel', pattern: '[1-11]' }}
-          id="telefone-usuario"
-          label="Telefone"
+        <MaskedInput
+          mask="(  )     -    "
           type="tel"
-          autoComplete="current-tel"
-          variant="standard"
-          {...register('telefone')}
-          error={errors.telefone ? true : false}
-        />
+          alwaysShowMask
+          onChange={(e) => setTelefoneValido(e.target.value)}
+          value={telefoneValido}
+        >
+          {(props) => (
+            <TextField {...props}
+              ref={register({
+                required: true,
+                pattern: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im,
+              })}
+              value={props.tel}
+              name={props.name}
+              {...register}
+              id="telefone-usuario"
+              label="Telefone"
+              autoComplete="current-tel"
+              variant="standard"
+              error={errors.telefone ? true : false}
+            />
+          )}
+        </MaskedInput>
+
+        {/* <InputMask
+          mask="((99)99999-9999)"
+          type="tel"
+          value={telefoneValido}
+          onChange={(e) => setTelefoneValido(e.target.value)}
+          // {...register('telefone')}
+          disabled={false}
+          maskChar=" "
+        >
+          {(props) => <TextField {...props}
+            ref={...register('telefone')}
+            id="telefone-usuario"
+            label="Telefone"
+            type="tel"
+            autoComplete="current-tel"
+            variant="standard"
+            error={errors.telefone ? true : false}
+          />
+          }
+        </InputMask> */}
         <Typography variant="inherit" color="#d32f2f">
           {errors.telefone?.message}
         </Typography>
+
+
       </div>
 
       <Button variant='contained' onClick={handleSubmit(enviarCadastro)}>Enviar</Button>
