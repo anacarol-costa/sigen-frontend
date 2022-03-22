@@ -18,10 +18,9 @@ code {
     monospace;
 }
 
-form {
+.container {
   position: relative;
-  background-color: #f9f9f9;
-  display: block;
+  display: flex;
   top: 45%;
   left: 45%;
   right: 45%;
