@@ -5,7 +5,6 @@ import { Outlet } from 'react-router-dom';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
-import InputMask from "react-input-mask";
 import MaskedInput from "react-input-mask";
 
 
@@ -61,14 +60,24 @@ export default function FormUsuario() {
     }
   }
 
+
+
   return (
     <form
       component="form"
       sx={{
+        mx: 'auto',
+        width: {
+          xs: 100, // theme.breakpoints.up('xs')
+          sm: 200, // theme.breakpoints.up('sm')
+          md: 300, // theme.breakpoints.up('md')
+          lg: 400, // theme.breakpoints.up('lg')
+          xl: 500, // theme.breakpoints.up('xl')
+        },
+        border: '3px solid',
         display: 'flex',
-        flexDirection: 'row-reverse',
-        p: 1,
-        m: 1,
+        p: 2,
+        m: 2,
         '& > :not(style)': {
           m: 2, width: '28ch'
         },
@@ -140,59 +149,46 @@ export default function FormUsuario() {
       </div>
 
       <div>
-        <MaskedInput
-          mask="(  )     -    "
+        <TextField
+          id="telefone"
+          label="Telefone"
           type="tel"
-          alwaysShowMask
-          onChange={(e) => setTelefoneValido(e.target.value)}
-          value={telefoneValido}
-        >
-          {(props) => (
-            <TextField {...props}
-              ref={register({
-                required: true,
-                pattern: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im,
-              })}
-              value={props.tel}
-              name={props.name}
-              {...register}
-              id="telefone-usuario"
-              label="Telefone"
-              autoComplete="current-tel"
-              variant="standard"
-              error={errors.telefone ? true : false}
-            />
-          )}
-        </MaskedInput>
-
-        {/* <InputMask
-          mask="((99)99999-9999)"
-          type="tel"
-          value={telefoneValido}
-          onChange={(e) => setTelefoneValido(e.target.value)}
-          // {...register('telefone')}
-          disabled={false}
-          maskChar=" "
-        >
-          {(props) => <TextField {...props}
-            ref={...register('telefone')}
-            id="telefone-usuario"
-            label="Telefone"
-            type="tel"
-            autoComplete="current-tel"
-            variant="standard"
-            error={errors.telefone ? true : false}
-          />
-          }
-        </InputMask> */}
+          helperText={telefoneValido}
+          autoComplete="current-tel"
+          variant="standard"
+          {...register('telefone')}
+          error={errors.telefone ? true : false}
+        />
         <Typography variant="inherit" color="#d32f2f">
           {errors.telefone?.message}
         </Typography>
-
-
       </div>
 
-      <Button variant='contained' onClick={handleSubmit(enviarCadastro)}>Enviar</Button>
+      <Button
+        sx={{
+          display: 'flex',
+          position: 'absolute',
+          top: 280,
+          left: 'auto',
+          rigth: 'auto',
+          margin: 'auto',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          mx: 'auto',
+          flexDirection: 'row-reverse',
+          width: 200,
+          p: 1,
+          m: 1,
+          borderRadius: 2,
+          textAlign: 'center',
+          fontSize: '0.875rem',
+          fontWeight: '700',
+        }}
+        variant='contained'
+        onClick={handleSubmit(enviarCadastro)}
+      >
+        Enviar
+      </Button>
       <Outlet />
     </ form >
 
