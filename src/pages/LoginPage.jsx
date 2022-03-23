@@ -34,6 +34,7 @@ export default function LoginPage() {
         alignItems:"center",
         justifyContent:"center",
         width: '100vw',
+        pt: 15
     }}>
         <Box>
             <FormularioLogin />

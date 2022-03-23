@@ -9,18 +9,21 @@ export default {
     cookies.set(chave, valor, opcoes);
   },
 
-  getPropriedadeCookie(chave) {
-    return cookies.get(chave);
+  getToken() {
+    return getPropriedadeCookie(SessionUtil.TKN);
   },
 
   getTokenCookieDecode() {
-    const TKN = this.getPropriedadeCookie(SessionUtil.TKN)
+    const TKN = getPropriedadeCookie(SessionUtil.TKN)
 
     return jwt_decode(TKN);
   }
 
 }
 
+function getPropriedadeCookie(chave) {
+  return cookies.get(chave);
+}
 
 export const SessionUtil = {
   TKN: 'TKN'
