@@ -1,4 +1,4 @@
-import React  from 'react';
+import React from 'react';
 import { useNavigate } from "react-router-dom";
 import { FormularioLogin } from '../components/login/FormLogin';
 import GoogleLogin from 'react-google-login';
@@ -25,35 +25,36 @@ export default function LoginPage() {
     console.log(response);
   }
 
+
   return (
     <Box sx={{
-        display: 'inline-grid',
-        rowGap: 1,
-        direction:"column",
-        alignItems:"center",
-        justifyContent:"center",
-        width: '100vw',
-        pt: 15
+      display: 'inline-grid',
+      rowGap: 1,
+      direction: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      width: '100vw',
+      pt: 15
     }}>
-        <Box>
-            <FormularioLogin />
-        </Box>
-        <Box>
-            <CadastrarButton />
-        </Box>
-        <Box sx={{
-            display: 'inline-grid',
-            justifyContent:"center",
-            width: '100%',
-        }}>
-            <GoogleLogin
-            clientId={clientId}
-            buttonText='Entrar com conta Google'
-            onSuccess={responseOkGoogle}
-            onFailure={responseErroGoogle}
-            cookiePolicy={'single_host_origin'}
-            />
-        </Box>
+      <Box>
+        <FormularioLogin />
+      </Box>
+      <Box>
+        <CadastrarButton />
+      </Box>
+      <Box sx={{
+        display: 'inline-grid',
+        justifyContent: "center",
+        width: '100%',
+      }}>
+        <GoogleLogin
+          clientId={clientId}
+          buttonText='Entrar com conta Google'
+          onSuccess={responseOkGoogle}
+          onFailure={responseErroGoogle}
+          cookiePolicy={'single_host_origin'}
+        />
+      </Box>
     </Box>
   )
 }
