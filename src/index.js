@@ -13,8 +13,8 @@ const rootElement = document.getElementById("root");
 render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/login" element={<LoginPage />} />
+      <Route path="/home" element={<App />} />
+      <Route path="/" element={<LoginPage />} />
       <Route path="/usuario" element={<FormUsuarioPage />} />
     </Routes>
   </BrowserRouter>,

@@ -13,7 +13,7 @@ export default function App() {
     useEffect(() => {
         const tokenJwt = sessionUtil.getToken();
         if(!tokenJwt) {
-            navigate('/login')
+            navigate('/')
         } else {
             tokenUsuario = sessionUtil.getTokenCookieDecode();
         }
@@ -22,7 +22,7 @@ export default function App() {
   return (
     <div className="App" >
       <Header usuario={tokenUsuario} />
-      <Link to="/login" > Login </Link>
+      <Link to="/" > Login </Link>
     </div>
   );
 }

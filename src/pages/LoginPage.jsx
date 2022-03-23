@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React  from 'react';
 import { useNavigate } from "react-router-dom";
 import { FormularioLogin } from '../components/login/FormLogin';
 import GoogleLogin from 'react-google-login';
@@ -18,13 +18,12 @@ export default function LoginPage() {
 
     sessionUtil.setPropriedadeCookie(SessionUtil.TKN, jwtGoogle, { path: '/' });
 
-    navigate('/');
+    navigate('/home');
   }
 
   const responseErroGoogle = (response) => {
     console.log(response);
   }
-
 
   return (
     <Box sx={{
