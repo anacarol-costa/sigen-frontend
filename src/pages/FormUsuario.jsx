@@ -1,4 +1,4 @@
-import { Box, Button, Container, CssBaseline, Grid, Stack, TextField, Typography } from '@mui/material';
+import { Box, Button, Container, CssBaseline, Grid, Stack, TextField, Typography, Div } from '@mui/material';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Outlet } from 'react-router-dom';
@@ -64,156 +64,132 @@ export default function FormUsuario() {
 
 
   return (
-    <React.Fragment>
-      <CssBaseline />
-      <Container maxWidth="sm">
-        <Box sx={{
-          flexGrow: 1,
-          mx: 'auto',
-          width: {
-            xs: 100, // theme.breakpoints.up('xs')
-            sm: 200, // theme.breakpoints.up('sm')
-            md: 300, // theme.breakpoints.up('md')
-            lg: 400, // theme.breakpoints.up('lg')
-            xl: 500, // theme.breakpoints.up('xl')
-          },
-          height: 100,
-          position: 'absolute',
-          display: 'flex',
-          p: 2,
-          m: 2,
-        }}>
-          <form
-            component="form"
-            noValidate
-            autoComplete="off"
+    <Grid
+
+
+      >
+      <Box>
+        <form
+          component="form"
+          noValidate
+          autoComplete="off"
+        >
+          <Grid
+            container
+            spacing={0}
+            direction="column"
+            alignItems="center"
+            justifyContent="center"
+            style={{ minHeight: '70vh' }}
+            gap={2}
           >
-            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-              <Grid textField xs={20}>
+              <Box>
                 <TextField
-                  required
-                  id="nome-usuario"
-                  label="Nome"
-                  type="string"
-                  autoComplete="current-string"
-                  variant="standard"
-                  {...register('nome')}
-                  error={errors.nome ? true : false}
+                    sx={{ width: '30vw' }}
+                    required
+                    id="nome-usuario"
+                    label="Nome"
+                    type="string"
+                    autoComplete="current-string"
+                    variant="standard"
+                    {...register('nome')}
+                    error={errors.nome ? true : false}
                 />
                 <Typography variant="inherit" color="#d32f2f">
                   {errors.nome?.message}
                 </Typography>
-
+              </Box>
+              <Box>
                 <TextField
-                  id="email-usuario"
-                  label="E-mail"
-                  type="string"
-                  autoComplete="current-string"
-                  variant="standard"
-                  {...register('email')}
-                  error={errors.email ? true : false}
+                    sx={{ width: '30vw' }}
+                    id="email-usuario"
+                    label="E-mail"
+                    type="string"
+                    autoComplete="current-string"
+                    variant="standard"
+                    {...register('email')}
+                    error={errors.email ? true : false}
                 />
                 <Typography variant="inherit" color="#d32f2f">
                   {errors.email?.message}
                 </Typography>
+              </Box>
 
+              <Box>
                 <TextField
-                  id="senha-usuario"
-                  label="Senha"
-                  type="password"
-                  autoComplete="current-password"
-                  variant="standard"
-                  {...register('senha')}
-                  error={errors.senha ? true : false}
+                    sx={{ width: '30vw' }}
+                    id="senha-usuario"
+                    label="Senha"
+                    type="password"
+                    autoComplete="current-password"
+                    variant="standard"
+                    {...register('senha')}
+                    error={errors.senha ? true : false}
                 />
                 <Typography variant="inherit" color="#d32f2f">
                   {errors.senha?.message}
                 </Typography>
+              </Box>
 
+              <Box>
                 <TextField
-                  id="senha-usuario"
-                  label="Repetir senha"
-                  type="password"
-                  helperText={errorSenhasDiferentes}
-                  autoComplete="current-password"
-                  variant="standard"
-                  onBlur={verificarSenhas}
-                  {...register('repetirSenha')}
-                  error={errors.repetirSenha ? true : false}
+                    sx={{ width: '30vw' }}
+                    id="senha-usuario"
+                    label="Repetir senha"
+                    type="password"
+                    helperText={errorSenhasDiferentes}
+                    autoComplete="current-password"
+                    variant="standard"
+                    onBlur={verificarSenhas}
+                    {...register('repetirSenha')}
+                    error={errors.repetirSenha ? true : false}
                 />
                 <Typography variant="inherit" color="#d32f2f">
                   {errors.repetirSenha?.message}
                 </Typography>
 
+              </Box>
+
+              <Box>
                 <TextField
-                  id="telefone"
-                  label="Telefone"
-                  type="tel"
-                  helperText={telefoneValido}
-                  autoComplete="current-tel"
-                  variant="standard"
-                  {...register('telefone')}
-                  error={errors.telefone ? true : false}
+                    sx={{ width: '30vw' }}
+                    id="telefone"
+                    label="Telefone"
+                    type="tel"
+                    helperText={telefoneValido}
+                    autoComplete="current-tel"
+                    variant="standard"
+                    {...register('telefone')}
+                    error={errors.telefone ? true : false}
                 />
                 <Typography variant="inherit" color="#d32f2f">
                   {errors.telefone?.message}
                 </Typography>
+              </Box>
 
-                <Stack direction="row" spacing={2}>
-                  <Button
-                    size='medium'
-                    variant="outlined"
-                    startIcon={<DeleteIcon />}
-                    sx={{
-                      display: 'inline',
-                      position: 'relative',
-                      top: 50,
-                      mx: 'auto',
-                      flexDirection: 'row-reverse',
-                      width: 200,
-                      p: 1,
-                      m: 1,
-                      borderRadius: 2,
-                      textAlign: 'center',
-                      fontSize: '0.875rem',
-                      fontWeight: '700',
-                    }}
-                  //variant='contained'
-                  //onClick={handleSubmit(enviarCadastro)}
-                  >
-                    Cancelar
-                  </Button>
-                  <Button
-                    size='medium'
-                    variant="contained"
-                    endIcon={<SendIcon />}
-                    sx={{
-                      display: 'inline',
-                      position: 'relative',
-                      top: 50,
-                      mx: 'auto',
-                      flexDirection: 'row-reverse',
-                      width: 200,
-                      p: 1,
-                      m: 1,
-                      borderRadius: 2,
-                      textAlign: 'center',
-                      fontSize: '0.875rem',
-                      fontWeight: '700',
-                    }}
-                    //variant='contained'
-                    onClick={handleSubmit(enviarCadastro)}
-                  >
-                    Enviar
-                  </Button>
-                </Stack>
-              </Grid>
+
+              <Stack direction="row" spacing={1} sx={{ pt: 5 }}>
+                <Button
+                  size='medium'
+                  variant="outlined"
+                  startIcon={<DeleteIcon />}
+                >
+                  Cancelar
+                </Button>
+                <Button
+                  size='medium'
+                  variant="contained"
+                  endIcon={<SendIcon />}
+                  onClick={handleSubmit(enviarCadastro)}
+                >
+                  Enviar
+                </Button>
+              </Stack>
             </Grid>
-            <Outlet />
-          </ form >
-        </Box>
-      </Container>
-    </React.Fragment >
+          <Outlet />
+        </ form >
+      </Box>
+    </Grid>
   );
 }
 
