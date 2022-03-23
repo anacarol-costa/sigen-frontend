@@ -10,43 +10,49 @@ export function FormularioLogin(props) {
 
     const [formulario, setFormulario] = useState({ usuario: "", senha: "" });
 
-
-    const enviarLogin = (event) => {
+    const enviarLogin = () => {
         console.log(formulario)
     }
 
-
-
     return (
         <Box
-            component="form"
             sx={{
-                '& .MuiTextField-root': { m: 1, width: '25ch' },
+                display: 'inline-grid',
+                rowGap: 3,
+                direction:"column",
+                alignItems:"center",
+                justifyContent:"center",
+                width: '100vw',
             }}
-            noValidate
-            autoComplete="off"
         >
-            <div>
+            <Box>
                 <TextField
-                    error
+                    sx={{ width: '30vw' }}
                     id="login-usuario"
                     label="Usuário"
-                    variant="filled"
+                    variant="standard"
                     value={formulario.usuario}
                     onChange={(e) => setFormulario({ ...formulario, usuario: e.target.value })}
                 />
+            </Box>
+            <Box>
                 <TextField
-                    error
+                    sx={{ width: '30vw' }}
                     id="login-senha"
                     label="Senha"
-                    helperText="Entrada incorreta."
-                    variant="filled"
+                    variant="standard"
                     value={formulario.senha}
                     name="senha"
                     onChange={(e) => setFormulario({ ...formulario, senha: e.target.value })}
                 />
-            </div>
-            <Button variant="contained" onClick={enviarLogin}>Entrar</Button>
+            </Box>
+            <Box sx={{
+                display: 'inline-grid',
+                justifyContent:"center",
+                width: '100%',
+            }}>
+                <Button variant="contained" onClick={enviarLogin}>Entrar</Button>
+            </Box>
             <Outlet />
         </Box>
     )

@@ -4,6 +4,7 @@ import { FormularioLogin } from '../components/login/FormLogin';
 import GoogleLogin from 'react-google-login';
 import CadastrarButton from '../components/CadastrarButton';
 import sessionUtil, { SessionUtil } from '../util/sessionUtil';
+import {Box} from "@mui/material";
 
 
 export default function LoginPage() {
@@ -26,17 +27,34 @@ export default function LoginPage() {
 
 
   return (
-    <>
-      <FormularioLogin />
-      <GoogleLogin
-        clientId={clientId}
-        buttonText='Entrar com conta Google'
-        onSuccess={responseOkGoogle}
-        onFailure={responseErroGoogle}
-        cookiePolicy={'single_host_origin'}
-      />
-      <CadastrarButton />
-    </>
+    <Box sx={{
+        display: 'inline-grid',
+        rowGap: 1,
+        direction:"column",
+        alignItems:"center",
+        justifyContent:"center",
+        width: '100vw',
+    }}>
+        <Box>
+            <FormularioLogin />
+        </Box>
+        <Box>
+            <CadastrarButton />
+        </Box>
+        <Box sx={{
+            display: 'inline-grid',
+            justifyContent:"center",
+            width: '100%',
+        }}>
+            <GoogleLogin
+            clientId={clientId}
+            buttonText='Entrar com conta Google'
+            onSuccess={responseOkGoogle}
+            onFailure={responseErroGoogle}
+            cookiePolicy={'single_host_origin'}
+            />
+        </Box>
+    </Box>
   )
 }
 

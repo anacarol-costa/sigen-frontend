@@ -11,16 +11,12 @@ export function CadastrarButton(props) {
   }
 
   return (
-    <Box
-      component="form"
-      sx={{
-        '& .MuiTextField-root': { m: 1, width: '25ch' },
-      }}
-      noValidate
-      autoComplete="off"
-    >
+    <Box sx={{
+      display: 'inline-grid',
+      justifyContent:"center",
+      width: '100%',
+    }}>
       <Button variant='contained' onClick={formUsuario}>Cadastre-se</Button>
-
     </Box>
 
 
