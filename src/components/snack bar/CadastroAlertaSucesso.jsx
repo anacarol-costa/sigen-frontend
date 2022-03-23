@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import MuiAlert from '@mui/material/Alert';
 import { Snackbar, Stack } from '@mui/material';
 
