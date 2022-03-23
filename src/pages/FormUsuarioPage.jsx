@@ -1,7 +1,7 @@
 import {Box, Button, Container, CssBaseline, Grid, Stack, TextField, Typography, Div} from '@mui/material';
 import React, {useState} from 'react';
 import {useForm} from 'react-hook-form';
-import {Outlet} from 'react-router-dom';
+import {Outlet, useNavigate} from 'react-router-dom';
 import * as Yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup';
 import axios from 'axios';
@@ -10,7 +10,7 @@ import SendIcon from '@mui/icons-material/Send';
 
 
 export default function FormUsuarioPage() {
-
+    const navigate = useNavigate();
     const [cadastro, setCadastro] = useState({nome: "", email: "", senha: "", repetirSenha: "", telefone: ""});
     const [errorSenhasDiferentes, setErrorSenhasDiferentes] = useState('');
     const [telefoneValido, setTelefoneValido] = useState("");
@@ -39,7 +39,6 @@ export default function FormUsuarioPage() {
 
     const {
         register,
-        //control,
         handleSubmit,
         formState: {errors}
     } = useForm({
@@ -47,10 +46,10 @@ export default function FormUsuarioPage() {
     });
 
     const enviarCadastro = async (event) => {
-        //console.log(event);
         const newUsuario = {...event};
         delete newUsuario.repetirSenha;
         await axios.post("https://sigen-backend.herokuapp.com/usuarios", {...newUsuario});
+        navigate('/login')
     }
 
     const verificarSenhas = () => {

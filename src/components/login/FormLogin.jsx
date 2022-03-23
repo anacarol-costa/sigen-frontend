@@ -1,17 +1,46 @@
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
-import { Button } from '@mui/material';
-import { Outlet } from 'react-router-dom';
+import {Button, Typography} from '@mui/material';
+import {Outlet, useNavigate} from 'react-router-dom';
 import React, { useState } from 'react';
+import * as Yup from "yup";
+import {useForm} from "react-hook-form";
+import {yupResolver} from "@hookform/resolvers/yup";
+import axios from "axios";
+import sessionUtil, {SessionUtil} from "../../util/sessionUtil";
 
 
 
-export function FormularioLogin(props) {
+export function FormularioLogin() {
+    const navigate = useNavigate();
+    const [formulario] = useState({ email: "", senha: "" });
 
-    const [formulario, setFormulario] = useState({ usuario: "", senha: "" });
+    const validacaoSchema = Yup.object().shape({
+        email: Yup.string()
+            .required('email obrigatório')
+            .email('email inválido'),
 
-    const enviarLogin = () => {
-        console.log(formulario)
+        senha: Yup.string()
+            .required('campo obrigatório')
+            .max(40, 'senha excedeu o limite máximo de 40 caracteres'),
+
+    })
+
+    const {
+        register,
+        handleSubmit,
+        formState: {errors}
+    } = useForm({
+        resolver: yupResolver(validacaoSchema)
+    });
+
+
+    const enviarLogin = async (login) => {
+        const { data } = await axios.post("https://sigen-backend.herokuapp.com/auth/login", login);
+
+        sessionUtil.setPropriedadeCookie(SessionUtil.TKN, data.access_token, { path: '/' });
+
+        navigate('/')
     }
 
     return (
@@ -27,31 +56,45 @@ export function FormularioLogin(props) {
         >
             <Box>
                 <TextField
+                    required
                     sx={{ width: '30vw' }}
-                    id="login-usuario"
-                    label="Usuário"
+                    id="login-email"
+                    label="E-mail"
                     variant="standard"
                     value={formulario.usuario}
-                    onChange={(e) => setFormulario({ ...formulario, usuario: e.target.value })}
+                    {...register('email')}
+                    error={errors.email ? true : false}
                 />
+                <Typography variant="inherit" color="#d32f2f">
+                    {errors.email?.message}
+                </Typography>
             </Box>
             <Box>
                 <TextField
-                    sx={{ width: '30vw' }}
+                    required
+                    sx={{width: '30vw'}}
                     id="login-senha"
                     label="Senha"
+                    type="password"
                     variant="standard"
-                    value={formulario.senha}
-                    name="senha"
-                    onChange={(e) => setFormulario({ ...formulario, senha: e.target.value })}
+                    {...register('senha')}
+                    error={errors.senha ? true : false}
                 />
+                <Typography variant="inherit" color="#d32f2f">
+                    {errors.senha?.message}
+                </Typography>
             </Box>
             <Box sx={{
                 display: 'inline-grid',
                 justifyContent:"center",
                 width: '100%',
             }}>
-                <Button variant="contained" onClick={enviarLogin}>Entrar</Button>
+                <Button
+                    variant="contained"
+                    onClick={handleSubmit(enviarLogin)}
+                >
+                    Entrar
+                </Button>
             </Box>
             <Outlet />
         </Box>
