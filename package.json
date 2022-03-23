@@ -30,8 +30,7 @@
     "yup": "0.32.9"
   },
   "scripts": {
-    "start": "node src/server.js",
-    "start-dev": "react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
