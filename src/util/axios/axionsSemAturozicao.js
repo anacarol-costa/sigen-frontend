@@ -4,13 +4,14 @@ import {LOADING_REDUCER} from "../../store/loading-reducer";
 
 
 const axionsSemAturozicao = axios.create({
-    baseURL: 'https://sigen-backend.herokuapp.com/',
+    baseURL: getBaseUrl(),
     timeout: 15 * 1000,
 });
 
 function getBaseUrl() {
-
-    return process.env.URL_BACKEND;
+    const url = process.env.REACT_APP_URL_BACKEND_LOCAL || process.env.REACT_APP_URL_BACKEND;
+    console.log('URL BACK', url);
+    return url;
 }
 
 axionsSemAturozicao.interceptors.request.use(
