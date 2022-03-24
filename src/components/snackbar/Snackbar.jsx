@@ -7,7 +7,7 @@ const Alerta = React.forwardRef(function Alerta(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-export default function CadastroAlertaSucesso() {
+export default function Snackbar(props) {
 
   const [open, setOpen] = React.useState(false);
 
@@ -44,16 +44,16 @@ export default function CadastroAlertaSucesso() {
       >
         <Alerta
           onClose={handleClose}
-          severity="success"
+          severity={props.color}
           sx={{ width: "100%" }}
         >
-          Esta é uma mensagem de sucesso!
+            { props.botao }
         </Alerta>
       </Snackbar>
       <Alerta
         severity="success"
       >
-        Cadastro realizado com sucesso
+          { props }
       </Alerta>
     </Stack>
   );

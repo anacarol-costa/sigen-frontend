@@ -1,4 +1,4 @@
-import {Box, Button, Container, CssBaseline, Grid, Stack, TextField, Typography, Div} from '@mui/material';
+import {Box, Button, Grid, Stack, TextField, Typography} from '@mui/material';
 import React, {useState} from 'react';
 import {useForm} from 'react-hook-form';
 import {Outlet, useNavigate} from 'react-router-dom';
@@ -11,9 +11,9 @@ import SendIcon from '@mui/icons-material/Send';
 
 export default function FormUsuarioPage() {
     const navigate = useNavigate();
-    const [cadastro, setCadastro] = useState({nome: "", email: "", senha: "", repetirSenha: "", telefone: ""});
+    const [cadastro] = useState({nome: "", email: "", senha: "", repetirSenha: "", telefone: ""});
     const [errorSenhasDiferentes, setErrorSenhasDiferentes] = useState('');
-    const [telefoneValido, setTelefoneValido] = useState("");
+    const [telefoneValido] = useState("");
 
     const validacaoSchema = Yup.object().shape({
         nome: Yup.string()
@@ -49,7 +49,7 @@ export default function FormUsuarioPage() {
         const newUsuario = {...event};
         delete newUsuario.repetirSenha;
         await axios.post("https://sigen-backend.herokuapp.com/usuarios", {...newUsuario});
-        navigate('/login')
+        navigate('/')
     }
 
     const verificarSenhas = () => {

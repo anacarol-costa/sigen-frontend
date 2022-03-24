@@ -1,28 +1,18 @@
 import './App.css';
-import {
-    Link, useNavigate
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Header from './components/shared/Header';
 import sessionUtil from './util/sessionUtil';
-import {useEffect} from "react";
+import Snackbar from "./components/snackbar/Snackbar";
 
 export default function App() {
-    const navigate = useNavigate();
-    let tokenUsuario = {};
 
-    useEffect(() => {
-        const tokenJwt = sessionUtil.getToken();
-        if(!tokenJwt) {
-            navigate('/login')
-        } else {
-            tokenUsuario = sessionUtil.getTokenCookieDecode();
-        }
-    })
+  const tokenUsuario = sessionUtil.getTokenCookieDecode();
 
   return (
     <div className="App" >
       <Header usuario={tokenUsuario} />
-      <Link to="/login" > Login </Link>
+        <Snackbar />
+      <Link to="/" > Login </Link>
     </div>
   );
 }

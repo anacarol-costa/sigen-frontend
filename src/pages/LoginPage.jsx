@@ -1,9 +1,10 @@
+import React from 'react';
 import { useNavigate } from "react-router-dom";
 import { FormularioLogin } from '../components/login/FormLogin';
 import GoogleLogin from 'react-google-login';
 import CadastrarButton from '../components/CadastrarButton';
 import sessionUtil, { SessionUtil } from '../util/sessionUtil';
-import { Box } from "@mui/material";
+import {Box} from "@mui/material";
 
 
 export default function LoginPage() {
@@ -13,11 +14,16 @@ export default function LoginPage() {
 
 
   const responseOkGoogle = (response) => {
-    const jwtGoogle = response.tokenObj.id_token;
+    try {
+        const jwtGoogle = response.tokenObj.id_token;
 
-    sessionUtil.setPropriedadeCookie(SessionUtil.TKN, jwtGoogle, { path: '/' });
+        sessionUtil.setPropriedadeCookie(SessionUtil.TKN, jwtGoogle, { path: '/' });
 
-    navigate('/');
+        navigate('/home');
+    } catch (error) {
+        console.error(error);
+    }
+
   }
 
   const responseErroGoogle = (response) => {
