@@ -7,8 +7,9 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import axios from 'axios';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SendIcon from '@mui/icons-material/Send';
-import {mostrarMensagemErro, mostrarMensagemSucesso} from "../store/snackbar/snackbar-reducer";
+import {mostrarMensagemErro, mostrarMensagemSucesso} from "../store/snackbar-reducer";
 import {useDispatch} from "react-redux";
+import axionsSemAturozicao from "../util/axios/axionsSemAturozicao";
 
 
 export default function FormUsuarioPage() {
@@ -52,7 +53,7 @@ export default function FormUsuarioPage() {
         try {
             const newUsuario = {...event};
             delete newUsuario.repetirSenha;
-            await axios.post("https://sigen-backend.herokuapp.com/usuarios", {...newUsuario});
+            await axionsSemAturozicao.post("https://sigen-backend.herokuapp.com/usuarios", {...newUsuario});
             dispatch(mostrarMensagemSucesso('Usuário cadastrado com sucesso.'));
             navigate('/')
         } catch (error) {
@@ -61,7 +62,7 @@ export default function FormUsuarioPage() {
         }
     }
 
-    const cancelar = async (event) => {
+    const cancelar = async () => {
         navigate('/')
     }
 

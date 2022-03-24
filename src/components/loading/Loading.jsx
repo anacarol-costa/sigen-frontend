@@ -1,25 +1,25 @@
 import React from 'react';
-import ReactLoading from 'react-loading';
-import { Article, list, Prop, Section, Title } from './Generic';
+import {useSelector} from "react-redux";
+import {Backdrop, CircularProgress} from "@mui/material";
 
-export default function Loading({ type, color }) {
-  return (
-    <Section>
-      <Title>Carregando</Title>
-      {
-        list.map(l => (
-          <Article
-            key={l.prop}>
-            <ReactLoading
-              type='{l.prop}'
-              color='#fff'
-            />
-            <Prop>
-              {l.name}
-            </Prop>
-          </Article>
-        ))
-      }
-    </Section>
-  )
+export default function Loading() {
+    const { requicoesPendentes } = useSelector(state => state.loading);
+
+    const exibirLoading = () => {
+        return requicoesPendentes > 0;
+    }
+
+    const esconderLoading = () => {
+        return requicoesPendentes === 0;
+    }
+
+    return (
+        <Backdrop
+            sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            open={requicoesPendentes > 0}
+            onClick={requicoesPendentes === 0}
+        >
+            <CircularProgress color="inherit" />
+        </Backdrop>
+    )
 }

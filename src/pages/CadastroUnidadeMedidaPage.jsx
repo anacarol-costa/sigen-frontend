@@ -8,7 +8,7 @@ import { Box, Button, TextField, Typography } from '@mui/material';
 
 export default function CadastroUnidadeMedidaPage() {
   const navigate = useNavigate();
-  const [unidade, setUnidade] = useState({ descricao: "", abreviacao: "" })
+  const [unidade] = useState({ descricao: "", abreviacao: "" })
 
   const validacaoUnidade = Yup.object().shape({
     descricao: Yup.number()

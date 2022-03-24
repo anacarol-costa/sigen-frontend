@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Snackbar, SnackbarContent, Stack} from '@mui/material';
 import {useDispatch, useSelector} from "react-redux";
-import {esconderMensagem} from "../../store/snackbar/snackbar-reducer";
+import {esconderMensagem} from "../../store/snackbar-reducer";
 
 export default function SnackbarMensagem() {
   const {visivel, mensagem, textoBotao, color} = useSelector(state => state.snackbar);

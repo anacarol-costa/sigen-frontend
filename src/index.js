@@ -9,6 +9,7 @@ import FormUsuarioPage from './pages/FormUsuarioPage';
 import {Provider} from "react-redux";
 import store from "./store/store";
 import SnackbarMensagem from "./components/snackbar/SnackbarMensagem";
+import Loading from "./components/loading/Loading";
 
 
 const rootElement = document.getElementById("root");
@@ -16,6 +17,7 @@ render(
   <BrowserRouter>
     <Provider store={store}>
         <SnackbarMensagem />
+        <Loading />
         <Routes>
           <Route path="/home" element={<App />} />
           <Route path="/" element={<LoginPage />} />
