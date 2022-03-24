@@ -53,7 +53,7 @@ export default function CadastroUnidadeMedidaPage() {
           sx={{ width: '30vw' }}
           id="descricao-unidade-medida"
           label="Descrição"
-          type="number"
+          type="string"
           variant="standard"
           value={unidade.descricao}
           {...register('descricao')}
