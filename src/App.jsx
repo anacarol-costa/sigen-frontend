@@ -1,7 +1,5 @@
 import './App.css';
-import {
-    Link, useNavigate
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Header from './components/shared/Header';
 import sessionUtil from './util/sessionUtil';
 
