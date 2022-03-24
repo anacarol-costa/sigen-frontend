@@ -14,11 +14,16 @@ export default function LoginPage() {
 
 
   const responseOkGoogle = (response) => {
-    const jwtGoogle = response.tokenObj.id_token;
+    try {
+        const jwtGoogle = response.tokenObj.id_token;
 
-    sessionUtil.setPropriedadeCookie(SessionUtil.TKN, jwtGoogle, { path: '/' });
+        sessionUtil.setPropriedadeCookie(SessionUtil.TKN, jwtGoogle, { path: '/' });
 
-    navigate('/home');
+        navigate('/home');
+    } catch (error) {
+        console.error(error);
+    }
+
   }
 
   const responseErroGoogle = (response) => {
