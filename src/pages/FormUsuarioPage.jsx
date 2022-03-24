@@ -7,6 +7,8 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import axios from 'axios';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SendIcon from '@mui/icons-material/Send';
+import {mostrarMensagemErro, mostrarMensagemSucesso} from "../store/snackbar/snackbar-reducer";
+import {useDispatch} from "react-redux";
 
 
 export default function FormUsuarioPage() {
@@ -14,6 +16,7 @@ export default function FormUsuarioPage() {
     const [cadastro] = useState({nome: "", email: "", senha: "", repetirSenha: "", telefone: ""});
     const [errorSenhasDiferentes, setErrorSenhasDiferentes] = useState('');
     const [telefoneValido] = useState("");
+    const dispatch = useDispatch();
 
     const validacaoSchema = Yup.object().shape({
         nome: Yup.string()
@@ -45,10 +48,20 @@ export default function FormUsuarioPage() {
         resolver: yupResolver(validacaoSchema)
     });
 
-    const enviarCadastro = async (event) => {
-        const newUsuario = {...event};
-        delete newUsuario.repetirSenha;
-        await axios.post("https://sigen-backend.herokuapp.com/usuarios", {...newUsuario});
+    const cadastrarUsuario = async (event) => {
+        try {
+            const newUsuario = {...event};
+            delete newUsuario.repetirSenha;
+            await axios.post("https://sigen-backend.herokuapp.com/usuarios", {...newUsuario});
+            dispatch(mostrarMensagemSucesso({mensagem: 'Usuário cadastrado com sucesso.'}));
+            navigate('/')
+        } catch (error) {
+            console.error(error);
+            dispatch(mostrarMensagemErro({mensagem: 'Erro ao cadastrar usuário.'}));
+        }
+    }
+
+    const cancelar = async (event) => {
         navigate('/')
     }
 
@@ -168,6 +181,7 @@ export default function FormUsuarioPage() {
                                 size='medium'
                                 variant="outlined"
                                 startIcon={<DeleteIcon/>}
+                                onClick={cancelar}
                             >
                                 Cancelar
                             </Button>
@@ -175,7 +189,7 @@ export default function FormUsuarioPage() {
                                 size='medium'
                                 variant="contained"
                                 endIcon={<SendIcon/>}
-                                onClick={handleSubmit(enviarCadastro)}
+                                onClick={handleSubmit(cadastrarUsuario)}
                             >
                                 Enviar
                             </Button>

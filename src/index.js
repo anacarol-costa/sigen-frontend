@@ -6,17 +6,22 @@ import reportWebVitals from './reportWebVitals';
 import { render } from "react-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import FormUsuarioPage from './pages/FormUsuarioPage';
-
+import {Provider} from "react-redux";
+import store from "./store/store";
+import SnackbarMensagem from "./components/snackbar/SnackbarMensagem";
 
 
 const rootElement = document.getElementById("root");
 render(
   <BrowserRouter>
-    <Routes>
-      <Route path="/home" element={<App />} />
-      <Route path="/" element={<LoginPage />} />
-      <Route path="/usuario" element={<FormUsuarioPage />} />
-    </Routes>
+    <Provider store={store}>
+        <SnackbarMensagem />
+        <Routes>
+          <Route path="/home" element={<App />} />
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/usuario" element={<FormUsuarioPage />} />
+        </Routes>
+    </Provider>
   </BrowserRouter>,
   rootElement
 );
