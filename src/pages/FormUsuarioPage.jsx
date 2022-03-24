@@ -53,11 +53,11 @@ export default function FormUsuarioPage() {
             const newUsuario = {...event};
             delete newUsuario.repetirSenha;
             await axios.post("https://sigen-backend.herokuapp.com/usuarios", {...newUsuario});
-            dispatch(mostrarMensagemSucesso({mensagem: 'Usuário cadastrado com sucesso.'}));
+            dispatch(mostrarMensagemSucesso('Usuário cadastrado com sucesso.'));
             navigate('/')
         } catch (error) {
             console.error(error);
-            dispatch(mostrarMensagemErro({mensagem: 'Erro ao cadastrar usuário.'}));
+            dispatch(mostrarMensagemErro('Erro ao cadastrar usuário.'));
         }
     }
 

@@ -15,12 +15,12 @@ export const snackbarSlice = createSlice({
         mostrarMensagemSucesso: (state, action ) => {
             state.visivel = true;
             state.color = '#388e3c';
-            state.mensagem = action.payload.mensagem;
+            state.mensagem = action.payload;
         },
         mostrarMensagemErro: (state, action ) => {
             state.visivel = true;
             state.color = '#d32f2f';
-            state.mensagem = action.payload.mensagem;
+            state.mensagem = action.payload;
         },
         esconderMensagem: (state) => {
             state.visivel = false;
