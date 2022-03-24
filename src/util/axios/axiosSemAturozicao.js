@@ -3,7 +3,7 @@ import store from "../../store/store";
 import {LOADING_REDUCER} from "../../store/loading-reducer";
 
 
-const axionsSemAturozicao = axios.create({
+const axiosSemAturozicao = axios.create({
     baseURL: getBaseUrl(),
     timeout: 15 * 1000,
 });
@@ -14,12 +14,12 @@ function getBaseUrl() {
     return url;
 }
 
-axionsSemAturozicao.interceptors.request.use(
+axiosSemAturozicao.interceptors.request.use(
     (request) => executarRequest(request),
     (error) => falha(error)
 );
 
-axionsSemAturozicao.interceptors.response.use(
+axiosSemAturozicao.interceptors.response.use(
     (request) => finalizar(request),
     (error) => falha(error)
 
@@ -42,4 +42,4 @@ function finalizar(response) {
 }
 
 
-export default axionsSemAturozicao;
+export default axiosSemAturozicao;
