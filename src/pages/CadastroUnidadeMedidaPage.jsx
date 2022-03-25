@@ -1,19 +1,23 @@
 import React, { useState } from 'react'
 import * as Yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Outlet, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-import sessionUtil, { SessionUtil } from "../../util/sessionUtil";
+import sessionUtil, { SessionUtil } from '../util/sessionUtil';
 import { Box, Button, TextField, Typography } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { mostrarMensagemErro, mostrarMensagemSucesso } from '../store/snackbar-reducer';
+import axiosSemAturozicao from '../util/axios/axiosSemAutorizacao';
 
 export default function CadastroUnidadeMedidaPage() {
   const navigate = useNavigate();
-  const [unidade] = useState({ descricao: "", abreviacao: "" })
+  const [unidade] = useState({ descricao: "", abreviacao: "" });
+  const dispatch = useDispatch();
 
   const validacaoUnidade = Yup.object().shape({
-    descricao: Yup.number()
-      .required('campo obrigatório')
-      .descricao('descricao inválida'),
+    descricao: Yup.string()
+      .required('campo obrigatório'),      
 
     abreviacao: Yup.string()
       .required('campo obrigatório')
@@ -24,16 +28,21 @@ export default function CadastroUnidadeMedidaPage() {
     handleSubmit,
     formState: { errors }
   } = useForm({
-    resolver: Yup.Resolver(validacaoUnidade)
+    resolver: yupResolver(validacaoUnidade)
   })
 
   const cadastrarUnidadeMedida = async (unidadeMedida) => {
-    const { data } = await axios.post("https://sigen-backend.herokuapp.com/api/#/Unidade%20Medida/UnidadeMedidaController_create", unidadeMedida)
+    try {
+      await axiosSemAturozicao.post("/unidades-medida", unidadeMedida)
+      dispatch(mostrarMensagemSucesso('Unidade de medida cadastrada com sucesso.'))
+      navigate('/home');
+    } catch (error) {
+      console.error(error);
+      dispatch(mostrarMensagemErro('Erro ao tentar cadastrar unidade de medida.'))
+    }
 
-    sessionUtil.setPropriedadeCookie(SessionUtil.TKN, data.access_token, { path: '/home' })
-
-    navigate('/home')
   }
+
 
 
   return (
@@ -54,8 +63,7 @@ export default function CadastroUnidadeMedidaPage() {
           id="descricao-unidade-medida"
           label="Descrição"
           type="string"
-          variant="standard"
-          value={unidade.descricao}
+          variant="standard"          
           {...register('descricao')}
           error={errors.descricao ? true : false}
         />
@@ -88,12 +96,11 @@ export default function CadastroUnidadeMedidaPage() {
           variant="contained"
           onClick={handleSubmit(cadastrarUnidadeMedida)}
         >
-          Entrar
+          Enviar
         </Button>
       </Box>
       <Outlet />
     </Box>
   )
-
 }
 

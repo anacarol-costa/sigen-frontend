@@ -7,7 +7,7 @@ import * as Yup from "yup";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import sessionUtil, {SessionUtil} from "../../util/sessionUtil";
-import axiosSemAturozicao from "../../util/axios/axiosSemAturozicao";
+import axiosSemAutorizacao from "../../util/axios/axiosSemAutorizacao";
 import {useDispatch} from "react-redux";
 import {mostrarMensagemErro} from "../../store/snackbar-reducer";
 
@@ -40,7 +40,7 @@ export function FormularioLogin() {
 
     const enviarLogin = async (login) => {
         try {
-            const { data } = await axiosSemAturozicao.post("/auth/login", login);
+            const { data } = await axiosSemAutorizacao.post("/auth/login", login);
             sessionUtil.setPropriedadeCookie(SessionUtil.TKN, data.access_token, { path: '/' });
             navigate('/home')
         } catch (error) {

@@ -8,7 +8,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import SendIcon from '@mui/icons-material/Send';
 import {mostrarMensagemErro, mostrarMensagemSucesso} from "../store/snackbar-reducer";
 import {useDispatch} from "react-redux";
-import axiosSemAturozicao from "../util/axios/axiosSemAturozicao";
+import axiosSemAutorizacao from "../util/axios/axiosSemAutorizacao";
 
 
 export default function FormUsuarioPage() {
@@ -52,7 +52,7 @@ export default function FormUsuarioPage() {
         try {
             const newUsuario = {...event};
             delete newUsuario.repetirSenha;
-            await axiosSemAturozicao.post("/usuarios", {...newUsuario});
+            await axiosSemAutorizacao.post("/usuarios", {...newUsuario});
             dispatch(mostrarMensagemSucesso('Usuário cadastrado com sucesso.'));
             navigate('/')
         } catch (error) {

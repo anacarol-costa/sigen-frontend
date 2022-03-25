@@ -10,6 +10,7 @@ import {Provider} from "react-redux";
 import store from "./store/store";
 import SnackbarMensagem from "./components/snackbar/SnackbarMensagem";
 import Loading from "./components/loading/Loading";
+import CadastroUnidadeMedidaPage from "./pages/CadastroUnidadeMedidaPage";
 
 
 const rootElement = document.getElementById("root");
@@ -22,6 +23,7 @@ render(
           <Route path="/home" element={<App />} />
           <Route path="/" element={<LoginPage />} />
           <Route path="/usuario" element={<FormUsuarioPage />} />
+          <Route path="/unidade-medida" element={<CadastroUnidadeMedidaPage />} />
         </Routes>
     </Provider>
   </BrowserRouter>,
