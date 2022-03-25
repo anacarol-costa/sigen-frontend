@@ -5,7 +5,7 @@ import LoginPage from './pages/LoginPage'
 import reportWebVitals from './reportWebVitals';
 import { render } from "react-dom";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import UsuarioPage from './pages/FormUsuarioPage';
+import UsuarioPage from './pages/UsuarioPage';
 import {Provider} from "react-redux";
 import store from "./store/store";
 import SnackbarMensagem from "./components/snackbar/SnackbarMensagem";
@@ -23,8 +23,8 @@ render(
         <App />
         <Box sx={{ pt: 15}} >
             <Routes>
-                <Route path="/home" element={<HomePage />} />
                 <Route path="/" element={<LoginPage />} />
+                <Route path="/home" element={<HomePage />} />
                 <Route path="/usuario" element={<UsuarioPage />} />
                 <Route path="/unidade-medida" element={<CadastroUnidadeMedidaPage />} />
                 <Route path="/produto" element={<ProdutoPage />} />
