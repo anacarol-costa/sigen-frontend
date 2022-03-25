@@ -13,6 +13,7 @@ import CadastroUnidadeMedidaPage from "./pages/CadastroUnidadeMedidaPage";
 import HomePage from "./pages/HomePage";
 import {Box} from "@mui/material";
 import ProdutoPage from "./pages/ProdutoPage";
+import AdministradorPage from "./pages/AdministradorPage";
 
 
 const rootElement = document.getElementById("root");
@@ -21,13 +22,14 @@ render(
     <Provider store={store}>
         <SnackbarMensagem />
         <App />
-        <Box sx={{ pt: 15}} >
+        <Box sx={{ pt: 5}} >
             <Routes>
                 <Route path="/" element={<LoginPage />} />
                 <Route path="/home" element={<HomePage />} />
                 <Route path="/usuario" element={<UsuarioPage />} />
                 <Route path="/unidade-medida" element={<CadastroUnidadeMedidaPage />} />
                 <Route path="/produto" element={<ProdutoPage />} />
+                <Route path="/administrador" element={<AdministradorPage />} />
             </Routes>
         </Box>
     </Provider>
