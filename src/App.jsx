@@ -1,7 +1,6 @@
 import './App.css';
-import { Link } from "react-router-dom";
-import Header from './components/shared/Header';
 import sessionUtil from './util/sessionUtil';
+import Menu from "./components/shared/menu/Menu";
 
 
 export default function App() {
@@ -10,8 +9,7 @@ export default function App() {
 
   return (
     <div className="App" >
-      <Header usuario={tokenUsuario} />
-      <Link to="/" > Login </Link>
+      <Menu usuario={tokenUsuario} />
     </div>
   );
 }

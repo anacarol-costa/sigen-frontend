@@ -12,18 +12,6 @@ export default function SnackbarMensagem() {
   }
 
   return (
-    <Stack
-      spacing={2}
-      sx={{
-        display: 'inline-grid',
-        rowGap: 1,
-        direction: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        width: '100vw',
-        pt: 30
-      }}
-    >
       <Snackbar
         open={visivel}
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
@@ -39,7 +27,6 @@ export default function SnackbarMensagem() {
           }
       />
       </Snackbar>
-    </Stack>
   );
 
 }

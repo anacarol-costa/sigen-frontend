@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Imagem from './Imagem';
+import Imagem from '../Imagem';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
@@ -17,7 +17,7 @@ import MenuItem from '@mui/material/MenuItem';
 const pages = ['Home', 'Carrossel', 'Cardápio', 'Cadastrar produto', 'Agenda', 'Gerenciar usuários'];
 const settings = ['Conta', 'Sair'];
 
-const MenuAdmin = (usuario) => {
+const MenuAdmin = ({ usuario }) => {
     // const navigate = useNavigate();
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -109,7 +109,7 @@ const MenuAdmin = (usuario) => {
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Imagem img={usuario.picture} />
+                                <Imagem img={usuario} />
                             </IconButton>
                         </Tooltip>
                         <Menu
