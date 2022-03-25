@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Imagem from '../Imagem';
+import Imagem from './Imagem';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
@@ -122,7 +122,7 @@ const MenuAdmin = ({ usuario }) => {
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Imagem img={usuario} />
+                                <Imagem img={usuario.picture} nome={usuario.nome} />
                             </IconButton>
                         </Tooltip>
                         <Menu

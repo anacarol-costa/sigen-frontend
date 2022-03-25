@@ -17,7 +17,7 @@ export default {
     const TKN = getPropriedadeCookie(SessionUtil.TKN)
 
     return jwt_decode(TKN);
-  }
+  },
 
 }
 
