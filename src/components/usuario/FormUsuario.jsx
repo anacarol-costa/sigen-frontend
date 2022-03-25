@@ -1,6 +1,4 @@
 import {Box, Button, Grid, Stack, TextField, Typography} from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
-import SendIcon from "@mui/icons-material/Send";
 import React, {useState} from "react";
 import * as Yup from "yup";
 import {useForm} from "react-hook-form";
@@ -47,7 +45,6 @@ export default function FormUsuario(props) {
                 <Button
                     size='medium'
                     variant="outlined"
-                    startIcon={<DeleteIcon/>}
                     onClick={props.cancelar}
                 >
                     Cancelar
@@ -68,7 +65,6 @@ export default function FormUsuario(props) {
                 >
                     <Grid
                         container
-                        spacing={0}
                         direction="column"
                         alignItems="center"
                         justifyContent="center"
@@ -93,6 +89,7 @@ export default function FormUsuario(props) {
                         </Box>
                         <Box>
                             <TextField
+                                required
                                 sx={{width: '30vw'}}
                                 id="email-usuario"
                                 label="E-mail"
@@ -109,6 +106,7 @@ export default function FormUsuario(props) {
 
                         <Box>
                             <TextField
+                                required
                                 sx={{width: '30vw'}}
                                 id="senha-usuario"
                                 label="Senha"
@@ -125,6 +123,7 @@ export default function FormUsuario(props) {
 
                         <Box>
                             <TextField
+                                required
                                 sx={{width: '30vw'}}
                                 id="senha-usuario"
                                 label="Repetir senha"
@@ -143,6 +142,7 @@ export default function FormUsuario(props) {
 
                         <Box>
                             <TextField
+                                required
                                 sx={{width: '30vw'}}
                                 id="telefone"
                                 label="Telefone"
@@ -165,10 +165,9 @@ export default function FormUsuario(props) {
                             <Button
                                 size='medium'
                                 variant="contained"
-                                endIcon={<SendIcon/>}
                                 onClick={handleSubmit(props.cadastrar)}
                             >
-                                Enviar
+                                Registrar
                             </Button>
                         </Stack>
                     </Grid>

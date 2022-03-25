@@ -1,7 +1,6 @@
 import React from 'react';
 import './index.css';
 import App from './App';
-import LoginPage from './pages/LoginPage'
 import reportWebVitals from './reportWebVitals';
 import {Box} from "@mui/material";
 import { render } from "react-dom";
@@ -9,7 +8,7 @@ import {BrowserRouter, Route, Routes } from "react-router-dom";
 import {Provider} from "react-redux";
 import store from "./store/store";
 import SnackbarMensagem from "./components/shared/snackbar/SnackbarMensagem";
-import CadastroUnidadeMedidaPage from "./pages/CadastroUnidadeMedidaPage";
+import UnidadeMedidaPage from "./pages/UnidadeMedidaPage";
 import UsuarioPage from './pages/UsuarioPage';
 import ProdutoPage from "./pages/ProdutoPage";
 import AdministradorPage from "./pages/AdministradorPage";
@@ -17,6 +16,7 @@ import RotaPrivada from "./components/shared/autorizacao/RotaPrivada";
 import HomePage from "./pages/HomePage";
 import NotFoundPage from "./pages/NotFoundPage";
 import Loading from "./components/shared/loading/Loading";
+import Acessopage from "./pages/AcessoPage";
 
 
 const rootElement = document.getElementById("root");
@@ -28,7 +28,7 @@ render(
         <SnackbarMensagem />
         <Box>
             <Routes>
-                <Route path="/" element={<LoginPage />} />
+                <Route path="/" element={<Acessopage />} />
                 <Route path="/usuario" element={<UsuarioPage />} />
                 <Route path="private" element={
                     <RotaPrivada>
@@ -37,7 +37,7 @@ render(
                     }
                 >
                     <Route path="home" element={<HomePage />} />
-                    <Route path="unidade-medida" element={ <CadastroUnidadeMedidaPage /> } />
+                    <Route path="unidade-medida" element={ <UnidadeMedidaPage /> } />
                     <Route path="produto" element={<ProdutoPage />} />
                     <Route path="administrador" element={<AdministradorPage />} />
                 </Route>
