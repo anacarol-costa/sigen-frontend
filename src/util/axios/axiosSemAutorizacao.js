@@ -2,7 +2,6 @@ import axios from 'axios';
 import store from "../../store/store";
 import {LOADING_REDUCER} from "../../store/loading-reducer";
 
-
 const axiosSemAturozicao = axios.create({
     baseURL: getBaseUrl(),
     timeout: 15 * 1000,
