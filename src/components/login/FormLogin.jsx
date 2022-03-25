@@ -1,7 +1,7 @@
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import {Button, Typography} from '@mui/material';
-import {Outlet, useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import React, { useState } from 'react';
 import * as Yup from "yup";
 import {useForm} from "react-hook-form";
@@ -103,7 +103,6 @@ export function FormularioLogin() {
                     Entrar
                 </Button>
             </Box>
-            <Outlet />
         </Box>
     )
 

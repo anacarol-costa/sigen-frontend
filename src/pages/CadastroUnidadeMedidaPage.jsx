@@ -1,10 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Outlet, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
-import sessionUtil, { SessionUtil } from '../util/sessionUtil';
 import { Box, Button, TextField, Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { mostrarMensagemErro, mostrarMensagemSucesso } from '../store/snackbar-reducer';
@@ -12,12 +10,11 @@ import axiosSemAturozicao from '../util/axios/axiosSemAutorizacao';
 
 export default function CadastroUnidadeMedidaPage() {
   const navigate = useNavigate();
-  const [unidade] = useState({ descricao: "", abreviacao: "" });
   const dispatch = useDispatch();
 
   const validacaoUnidade = Yup.object().shape({
     descricao: Yup.string()
-      .required('campo obrigatório'),      
+      .required('campo obrigatório'),
 
     abreviacao: Yup.string()
       .required('campo obrigatório')
@@ -43,8 +40,6 @@ export default function CadastroUnidadeMedidaPage() {
 
   }
 
-
-
   return (
     <Box
       sx={{
@@ -63,7 +58,7 @@ export default function CadastroUnidadeMedidaPage() {
           id="descricao-unidade-medida"
           label="Descrição"
           type="string"
-          variant="standard"          
+          variant="standard"
           {...register('descricao')}
           error={errors.descricao ? true : false}
         />
@@ -99,7 +94,6 @@ export default function CadastroUnidadeMedidaPage() {
           Enviar
         </Button>
       </Box>
-      <Outlet />
     </Box>
   )
 }

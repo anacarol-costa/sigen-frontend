@@ -21,15 +21,15 @@ render(
   <BrowserRouter>
     <Provider store={store}>
         <SnackbarMensagem />
-        <App />
         <Box sx={{ pt: 5}} >
             <Routes>
                 <Route path="/" element={<LoginPage />} />
-                <Route path="/home" element={<HomePage />} />
                 <Route path="/usuario" element={<UsuarioPage />} />
-                <Route path="/unidade-medida" element={<CadastroUnidadeMedidaPage />} />
-                <Route path="/produto" element={<ProdutoPage />} />
-                <Route path="/administrador" element={<AdministradorPage />} />
+                <Route path="private" element={ <App />}>
+                    <Route path="unidade-medida" element={<CadastroUnidadeMedidaPage />} />
+                    <Route path="produto" element={<ProdutoPage />} />
+                    <Route path="administrador" element={<AdministradorPage />} />
+                </Route>
             </Routes>
         </Box>
     </Provider>
