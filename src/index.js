@@ -16,6 +16,7 @@ import AdministradorPage from "./pages/AdministradorPage";
 import RotaPrivada from "./components/shared/autorizacao/RotaPrivada";
 import HomePage from "./pages/HomePage";
 import NotFoundPage from "./pages/NotFoundPage";
+import Loading from "./components/shared/loading/Loading";
 
 
 const rootElement = document.getElementById("root");
@@ -23,22 +24,24 @@ const rootElement = document.getElementById("root");
 render(
   <BrowserRouter>
     <Provider store={store}>
+        <Loading />
         <SnackbarMensagem />
-        <Box sx={{ pt: 5}} >
+        <Box>
             <Routes>
                 <Route path="/" element={<LoginPage />} />
                 <Route path="/usuario" element={<UsuarioPage />} />
-                <Route path="*" element={<NotFoundPage />} />
                 <Route path="private" element={
                     <RotaPrivada>
                         <App />
                     </RotaPrivada>
-                } >
+                    }
+                >
                     <Route path="home" element={<HomePage />} />
                     <Route path="unidade-medida" element={ <CadastroUnidadeMedidaPage /> } />
                     <Route path="produto" element={<ProdutoPage />} />
                     <Route path="administrador" element={<AdministradorPage />} />
                 </Route>
+                <Route path="*" element={<NotFoundPage />} />
             </Routes>
         </Box>
     </Provider>

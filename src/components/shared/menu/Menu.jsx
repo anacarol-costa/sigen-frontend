@@ -109,7 +109,7 @@ const MenuAdmin = ({ usuario }) => {
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Imagem img={usuario} />
+                                <Imagem img={usuario.picture} nome={usuario.nome} />
                             </IconButton>
                         </Tooltip>
                         <Menu

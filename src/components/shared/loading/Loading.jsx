@@ -5,14 +5,6 @@ import {Backdrop, CircularProgress} from "@mui/material";
 export default function Loading() {
     const { requicoesPendentes } = useSelector(state => state.loading);
 
-    const exibirLoading = () => {
-        return requicoesPendentes > 0;
-    }
-
-    const esconderLoading = () => {
-        return requicoesPendentes === 0;
-    }
-
     return (
         <Backdrop
             sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
