@@ -12,6 +12,7 @@ import SnackbarMensagem from "./components/snackbar/SnackbarMensagem";
 import CadastroUnidadeMedidaPage from "./pages/CadastroUnidadeMedidaPage";
 import HomePage from "./pages/HomePage";
 import {Box} from "@mui/material";
+import ProdutoPage from "./pages/ProdutoPage";
 
 
 const rootElement = document.getElementById("root");
@@ -26,6 +27,7 @@ render(
                 <Route path="/" element={<LoginPage />} />
                 <Route path="/usuario" element={<FormUsuarioPage />} />
                 <Route path="/unidade-medida" element={<CadastroUnidadeMedidaPage />} />
+                <Route path="/produto" element={<ProdutoPage />} />
             </Routes>
         </Box>
     </Provider>
