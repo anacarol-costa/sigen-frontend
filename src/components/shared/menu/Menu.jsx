@@ -11,14 +11,23 @@ import Imagem from '../Imagem';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
-const pages = ['Home', 'Carrossel', 'Cardápio', 'Cadastrar produto', 'Agenda', 'Gerenciar usuários'];
+const pages = [
+    { nome: 'Home', path: 'home' },
+    { nome: 'Carrossel', path: 'fake' },
+    { nome: 'Cardápio', path: 'fake' },
+    { nome: 'Cadastrar produto', path: 'produto' },
+    { nome: 'Agenda', path: 'fake' },
+    { nome: 'Gerenciar usuários', path: 'fake' }
+];
+
+
 const settings = ['Conta', 'Sair'];
 
 const MenuAdmin = ({ usuario }) => {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -36,6 +45,10 @@ const MenuAdmin = ({ usuario }) => {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+
+    const handleMudarPagina = (path) => {
+        navigate(path);
+    }
 
     return (
         <AppBar position="static">
@@ -80,8 +93,8 @@ const MenuAdmin = ({ usuario }) => {
                             }}
                         >
                             {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
+                                <MenuItem key={page.nome} onClick={() => { handleMudarPagina(page.path) }}>
+                                    <Typography textAlign="center">{page.nome}</Typography>
                                 </MenuItem>
                             ))}
                         </Menu>
@@ -97,11 +110,11 @@ const MenuAdmin = ({ usuario }) => {
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
                             <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
+                                key={page.nome}
+                                onClick={() => { handleMudarPagina(page.path) }}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
-                                {page}
+                                {page.nome}
                             </Button>
                         ))}
                     </Box>
