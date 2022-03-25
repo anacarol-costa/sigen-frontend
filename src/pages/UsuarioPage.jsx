@@ -31,8 +31,11 @@ export default function UsuarioPage() {
 
     return (
        <Box>
-           <h1>Usuario</h1>
-           <FormUsuario cadastrar={cadastrarUsuario} mostraBotaoCancelar={true} cancelar={cancelar} />
+           <FormUsuario
+               cadastrar={cadastrarUsuario}
+               mostraBotaoCancelar={false}
+               cancelar={cancelar}
+           />
        </Box>
     );
 }

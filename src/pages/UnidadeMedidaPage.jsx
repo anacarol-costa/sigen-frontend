@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import { mostrarMensagemErro, mostrarMensagemSucesso } from '../store/snackbar-reducer';
 import axiosSemAturozicao from '../util/axios/axiosSemAutorizacao';
 
-export default function CadastroUnidadeMedidaPage() {
+export default function UnidadeMedidaPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

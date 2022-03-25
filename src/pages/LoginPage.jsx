@@ -4,7 +4,7 @@ import { FormularioLogin } from '../components/login/FormLogin';
 import GoogleLogin from 'react-google-login';
 import CadastrarButton from '../components/CadastrarButton';
 import sessionUtil, { SessionUtil } from '../util/sessionUtil';
-import {Box} from "@mui/material";
+import {Box, Grid} from "@mui/material";
 
 
 export default function LoginPage() {
@@ -32,7 +32,7 @@ export default function LoginPage() {
 
 
   return (
-    <Box sx={{
+    <Grid sx={{
       display: 'inline-grid',
       rowGap: 1,
       direction: "column",
@@ -43,9 +43,6 @@ export default function LoginPage() {
     }}>
       <Box>
         <FormularioLogin />
-      </Box>
-      <Box>
-        <CadastrarButton />
       </Box>
       <Box sx={{
         display: 'inline-grid',
@@ -60,7 +57,7 @@ export default function LoginPage() {
           cookiePolicy={'single_host_origin'}
         />
       </Box>
-    </Box>
+    </Grid>
   )
 }
 
