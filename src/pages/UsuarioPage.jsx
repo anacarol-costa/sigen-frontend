@@ -11,7 +11,7 @@ import {useDispatch} from "react-redux";
 import axiosSemAutorizacao from "../util/axios/axiosSemAutorizacao";
 
 
-export default function FormUsuarioPage() {
+export default function UsuarioPage() {
     const navigate = useNavigate();
     const [cadastro] = useState({nome: "", email: "", senha: "", repetirSenha: "", telefone: ""});
     const [errorSenhasDiferentes, setErrorSenhasDiferentes] = useState('');
