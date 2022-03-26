@@ -12,6 +12,8 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { useNavigate } from 'react-router-dom';
+import sessionUtil from "../../../util/sessionUtil";
+import {Divider} from "@mui/material";
 
 
 const pages = [
@@ -30,6 +32,7 @@ const MenuAdmin = ({ usuario }) => {
     const navigate = useNavigate();
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const nomeUsuario = sessionUtil.getNomeUsuario();
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -45,6 +48,12 @@ const MenuAdmin = ({ usuario }) => {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+
+    const logout = () => {
+        console.log('logout');
+        sessionUtil.removerTknCookie();
+        navigate('/');
+    }
 
     const handleMudarPagina = (path) => {
         navigate(path);
@@ -141,11 +150,13 @@ const MenuAdmin = ({ usuario }) => {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
-                            {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">{setting}</Typography>
-                                </MenuItem>
-                            ))}
+                        <MenuItem onClick={handleCloseUserMenu}>
+                            <Typography textAlign="center">Olá, { nomeUsuario }</Typography>
+                        </MenuItem>
+                        <Divider />
+                        <MenuItem onClick={logout}>
+                            <Typography textAlign="center">Sair</Typography>
+                        </MenuItem>
                         </Menu>
                     </Box>
                 </Toolbar>
