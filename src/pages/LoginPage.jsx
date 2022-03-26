@@ -19,7 +19,7 @@ export default function LoginPage() {
 
         sessionUtil.setPropriedadeCookie(SessionUtil.TKN, jwtGoogle, { path: '/' });
 
-        navigate('/home');
+        navigate('/private/home');
     } catch (error) {
         console.error(error);
     }
