@@ -17,6 +17,7 @@ import HomePage from "./pages/HomePage";
 import NotFoundPage from "./pages/NotFoundPage";
 import Loading from "./components/shared/loading/Loading";
 import Acessopage from "./pages/AcessoPage";
+import RotaAdministracao from "./components/shared/autorizacao/RotaAdministracao";
 
 
 const rootElement = document.getElementById("root");
@@ -37,9 +38,15 @@ render(
                     }
                 >
                     <Route path="home" element={<HomePage />} />
+                    <Route path="administracao" element={
+                        <RotaAdministracao>
+                            <></>
+                        </RotaAdministracao>
+                    }>
+                        <Route path="produto" element={<ProdutoPage />} />
+                        <Route path="administrador" element={<AdministradorPage />} />
+                    </Route>
                     <Route path="unidade-medida" element={ <UnidadeMedidaPage /> } />
-                    <Route path="produto" element={<ProdutoPage />} />
-                    <Route path="administrador" element={<AdministradorPage />} />
                 </Route>
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>

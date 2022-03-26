@@ -6,8 +6,7 @@ import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import LoginPage from "./LoginPage";
 import UsuarioPage from "./UsuarioPage";
-import {Divider, Typography} from "@mui/material";
-import AppBar from "@mui/material/AppBar";
+import {Divider } from "@mui/material";
 
 
 export default function Acessopage() {

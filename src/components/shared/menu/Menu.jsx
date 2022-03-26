@@ -18,7 +18,7 @@ const pages = [
     { nome: 'Home', path: 'home' },
     { nome: 'Carrossel', path: 'fake' },
     { nome: 'Cardápio', path: 'fake' },
-    { nome: 'Cadastrar produto', path: 'produto' },
+    { nome: 'Cadastrar produto', path: 'administracao/produto' },
     { nome: 'Agenda', path: 'fake' },
     { nome: 'Gerenciar usuários', path: 'fake' }
 ];

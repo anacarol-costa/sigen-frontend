@@ -28,3 +28,8 @@ function getPropriedadeCookie(chave) {
 export const SessionUtil = {
   TKN: 'TKN'
 }
+
+export const Permissao = {
+  ADMINISTRADOR: 'ADMINISTRADOR',
+  COMUM: 'COMUM',
+}
