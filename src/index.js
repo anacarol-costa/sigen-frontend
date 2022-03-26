@@ -18,6 +18,7 @@ import Loading from "./components/shared/loading/Loading";
 import Acessopage from "./pages/AcessoPage";
 import RotaAdministracao from "./components/shared/autorizacao/RotaAdministracao";
 import ListaUsuario from "./pages/usuario/ListaUsuario";
+import UsuarioPage from "./pages/usuario/UsuarioPage";
 
 
 const rootElement = document.getElementById("root");
@@ -37,6 +38,7 @@ render(
                         <Route path="produto" element={<ProdutoPage />} />
                         <Route path="administrador" element={<AdministradorPage />} />
                         <Route path="usuarios" element={<ListaUsuario />} />
+                        <Route path="novo-usuario" element={<UsuarioPage />} />
                     </Route>
 
                 </Route>

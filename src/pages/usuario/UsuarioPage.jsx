@@ -18,7 +18,6 @@ export default function UsuarioPage() {
             delete newUsuario.repetirSenha;
             await axiosSemAutorizacao.post("/usuarios", {...newUsuario});
             dispatch(mostrarMensagemSucesso('Usuário cadastrado com sucesso.'));
-            navigate('/')
         } catch (error) {
             console.error(error);
             dispatch(mostrarMensagemErro('Erro ao cadastrar usuário.'));
