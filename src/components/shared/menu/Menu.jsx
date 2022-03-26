@@ -20,7 +20,7 @@ const pages = [
     { nome: 'Cardápio', path: 'fake' },
     { nome: 'Cadastrar produto', path: 'administracao/produto' },
     { nome: 'Agenda', path: 'fake' },
-    { nome: 'Gerenciar usuários', path: 'fake' }
+    { nome: 'Gerenciar usuários', path: 'administracao/usuarios' }
 ];
 
 

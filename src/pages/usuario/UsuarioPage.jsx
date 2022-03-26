@@ -1,10 +1,10 @@
 import {Box} from '@mui/material';
 import React from 'react';
 import {useNavigate} from 'react-router-dom';
-import {mostrarMensagemErro, mostrarMensagemSucesso} from "../store/snackbar-reducer";
+import {mostrarMensagemErro, mostrarMensagemSucesso} from "../../store/snackbar-reducer";
 import {useDispatch} from "react-redux";
-import axiosSemAutorizacao from "../util/axios/axiosSemAutorizacao";
-import FormUsuario from "../components/usuario/FormUsuario";
+import axiosSemAutorizacao from "../../util/axios/axiosSemAutorizacao";
+import FormUsuario from "../../components/usuario/FormUsuario";
 
 
 export default function UsuarioPage() {
