@@ -1,6 +1,6 @@
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
-import { Button, Grid, Paper, styled, Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import * as Yup from "yup";
@@ -54,62 +54,57 @@ export function FormularioLogin() {
         <Box
             sx={{
                 display: 'inline-grid',
-                rowGap: 3,
+                rowGap: 1,
                 direction: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                width: '100vw',                
+                width: '100vw',
+                paddingTop: 3,
+                '& > :not(style)': { m: 1, width: '35ch' },
             }}
         >
-            <Grid container item spacing={1/2}>
-                <TextField
-                item xs={6}
-                    required
-                    sx={{ width: '30vw' }}
-                    id="login-email"
-                    label="E-mail"
-                    variant="standard"
-                    value={formulario.usuario}
-                    {...register('email')}
-                    error={errors.email ? true : false}
+            <TextField
+                required
+                sx={{ width: '30vw' }}
+                id="login-email"
+                label="E-mail"
+                variant="standard"
+                value={formulario.usuario}
+                {...register('email')}
+                error={errors.email ? true : false}
 
-                />
-                <Typography variant="inherit" color="#d32f2f">
-                    {errors.email?.message}
-                </Typography>
-            </Grid>
-            <Grid container item spacing={1/2}>
-                <TextField
-                    required
-                    sx={{ width: '30vw' }}
-                    id="login-senha"
-                    label="Senha"
-                    type="password"
-                    variant="standard"
-                    {...register('senha')}
-                    error={errors.senha ? true : false}
-                />
-                <Typography variant="inherit" color="#d32f2f">
-                    {errors.senha?.message}
-                </Typography>
-            </Grid>
+            />
+            <Typography variant="inherit" color="#d32f2f">
+                {errors.email?.message}
+            </Typography>
 
-            <Box>
-                <Grid
-                    container item spacing={1/2}
+            <TextField
+                required
+                sx={{ width: '30vw' }}
+                id="login-senha"
+                label="Senha"
+                type="password"
+                variant="standard"
+                {...register('senha')}
+                error={errors.senha ? true : false}
+            />
+            <Typography variant="inherit" color="#d32f2f">
+                {errors.senha?.message}
+            </Typography>
 
-                    sx={{
-                        display: 'inline-grid',
-                        justifyContent: "center",
-                        width: '100%',
-                    }}>
-                    <Button                        
-                        variant="contained"
-                        onClick={handleSubmit(enviarLogin)}                        
-                    >
-                        Entrar
-                    </Button>
-                </Grid>
+            <Box
+                sx={{
+                    display: 'inline-grid',
+                    justifyContent: "center",
+                    width: '100%',
+                }}>
+                <Button
+                    variant="contained"
+                    onClick={handleSubmit(enviarLogin)}
+                >
+                    Entrar
+                </Button>
+
             </Box>
         </Box>
     )

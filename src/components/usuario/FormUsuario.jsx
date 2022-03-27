@@ -1,18 +1,20 @@
-import {Box, Button, Grid, Stack, TextField, Typography} from "@mui/material";
-import React, {useState} from "react";
+import { Box, Button, Grid, Stack, TextField, Typography } from "@mui/material";
+import React, { useState } from "react";
 import * as Yup from "yup";
-import {useForm} from "react-hook-form";
-import {yupResolver} from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigate } from "react-router-dom";
 
 export default function FormUsuario(props) {
 
     const [errorSenhasDiferentes] = useState('');
     const [telefoneValido] = useState("");
+    const navigate = useNavigate();
 
     const validacaoSchema = Yup.object().shape({
         nome: Yup.string()
             .required('campo obrigatório')
-            .max(20, 'campo excedeu o limite máximo de 20 caracteres'),
+            .max(128, 'campo excedeu o limite máximo de 128 caracteres'),
 
         email: Yup.string()
             .required('email obrigatório')
@@ -34,146 +36,130 @@ export default function FormUsuario(props) {
     const {
         register,
         handleSubmit,
-        formState: {errors}
+        formState: { errors }
     } = useForm({
         resolver: yupResolver(validacaoSchema)
     });
 
     const botaoCancelar = () => {
-        if(props.mostraBotaoCancelar) {
-            return (
-                <Button
-                    size='medium'
-                    variant="outlined"
-                    onClick={props.cancelar}
-                >
-                    Cancelar
-                </Button>
-            )
-        } else {
-            return (<></>);
-        }
+        return navigate('/login')
     }
 
     return (
-        <Grid>
-            <Box>
-                <form
-                    component="form"
-                    noValidate
-                    autoComplete="off"
+        <Box
+            sx={{
+                display: 'inline-grid',
+                rowGap: 1,
+                direction: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                width: '100vw',
+                paddingTop: 3,
+                '& > :not(style)': { m: 1, width: '35ch' },
+            }}
+        >
+
+            <TextField
+                sx={{ width: '30vw' }}
+                required
+                id="nome-usuario"
+                label="Nome"
+                type="string"
+                autoComplete="current-string"
+                variant="standard"
+                {...register('nome')}
+                error={errors.nome ? true : false}
+            />
+            <Typography variant="inherit" color="#d32f2f">
+                {errors.nome?.message}
+            </Typography>
+
+            <TextField
+                required
+                sx={{ width: '30vw' }}
+                id="email-usuario"
+                label="E-mail"
+                type="string"
+                autoComplete="current-string"
+                variant="standard"
+                {...register('email')}
+                error={errors.email ? true : false}
+            />
+            <Typography variant="inherit" color="#d32f2f">
+                {errors.email?.message}
+            </Typography>
+
+
+            <TextField
+                required
+                sx={{ width: '30vw' }}
+                id="senha-usuario"
+                label="Senha"
+                type="password"
+                autoComplete="current-password"
+                variant="standard"
+                {...register('senha')}
+                error={errors.senha ? true : false}
+            />
+            <Typography variant="inherit" color="#d32f2f">
+                {errors.senha?.message}
+            </Typography>
+
+            <TextField
+                required
+                sx={{ width: '30vw' }}
+                id="senha-usuario"
+                label="Repetir senha"
+                type="password"
+                helperText={errorSenhasDiferentes}
+                autoComplete="current-password"
+                variant="standard"
+                {...register('repetirSenha')}
+                error={errors.repetirSenha ? true : false}
+            />
+            <Typography variant="inherit" color="#d32f2f">
+                {errors.repetirSenha?.message}
+            </Typography>
+
+            <TextField
+                required
+                sx={{ width: '30vw' }}
+                id="telefone"
+                label="Telefone"
+                type="tel"
+                helperText={telefoneValido}
+                autoComplete="current-tel"
+                variant="standard"
+                {...register('telefone')}
+                error={errors.telefone ? true : false}
+            />
+            <Typography variant="inherit" color="#d32f2f">
+                {errors.telefone?.message}
+            </Typography>
+
+            <Stack
+                spacing={2}
+                sx={{
+                    display: 'inline-grid',
+                    justifyContent: "center",
+                    width: '100%',
+                }}
+            >
+                <Button
+                    size='medium'
+                    variant="contained"
+                    onClick={handleSubmit(props.cadastrar)}
                 >
-                    <Grid
-                        container
-                        direction="column"
-                        alignItems="center"
-                        justifyContent="center"
-                        style={{minHeight: '70vh'}}
-                        gap={2}
-                    >
-                        <Box>
-                            <TextField
-                                sx={{width: '30vw'}}
-                                required
-                                id="nome-usuario"
-                                label="Nome"
-                                type="string"
-                                autoComplete="current-string"
-                                variant="standard"
-                                {...register('nome')}
-                                error={errors.nome ? true : false}
-                            />
-                            <Typography variant="inherit" color="#d32f2f">
-                                {errors.nome?.message}
-                            </Typography>
-                        </Box>
-                        <Box>
-                            <TextField
-                                required
-                                sx={{width: '30vw'}}
-                                id="email-usuario"
-                                label="E-mail"
-                                type="string"
-                                autoComplete="current-string"
-                                variant="standard"
-                                {...register('email')}
-                                error={errors.email ? true : false}
-                            />
-                            <Typography variant="inherit" color="#d32f2f">
-                                {errors.email?.message}
-                            </Typography>
-                        </Box>
-
-                        <Box>
-                            <TextField
-                                required
-                                sx={{width: '30vw'}}
-                                id="senha-usuario"
-                                label="Senha"
-                                type="password"
-                                autoComplete="current-password"
-                                variant="standard"
-                                {...register('senha')}
-                                error={errors.senha ? true : false}
-                            />
-                            <Typography variant="inherit" color="#d32f2f">
-                                {errors.senha?.message}
-                            </Typography>
-                        </Box>
-
-                        <Box>
-                            <TextField
-                                required
-                                sx={{width: '30vw'}}
-                                id="senha-usuario"
-                                label="Repetir senha"
-                                type="password"
-                                helperText={errorSenhasDiferentes}
-                                autoComplete="current-password"
-                                variant="standard"
-                                {...register('repetirSenha')}
-                                error={errors.repetirSenha ? true : false}
-                            />
-                            <Typography variant="inherit" color="#d32f2f">
-                                {errors.repetirSenha?.message}
-                            </Typography>
-
-                        </Box>
-
-                        <Box>
-                            <TextField
-                                required
-                                sx={{width: '30vw'}}
-                                id="telefone"
-                                label="Telefone"
-                                type="tel"
-                                helperText={telefoneValido}
-                                autoComplete="current-tel"
-                                variant="standard"
-                                {...register('telefone')}
-                                error={errors.telefone ? true : false}
-                            />
-                            <Typography variant="inherit" color="#d32f2f">
-                                {errors.telefone?.message}
-                            </Typography>
-                        </Box>
-
-
-                        <Stack direction="row" spacing={1} sx={{pt: 5}}>
-                            {botaoCancelar()}
-
-                            <Button
-                                size='medium'
-                                variant="contained"
-                                onClick={handleSubmit(props.cadastrar)}
-                            >
-                                Registrar
-                            </Button>
-                        </Stack>
-                    </Grid>
-                </ form>
-            </Box>
-        </Grid>
+                    Registrar
+                </Button>
+                {/* <Button size='medium'
+                    variant="contained"
+                    color="secondary"
+                    onClick={botaoCancelar()}
+                >
+                    Cancelar
+                </Button> */}
+            </Stack>
+        </Box>
     )
-
 }

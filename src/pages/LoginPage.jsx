@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate } from "react-router-dom";
 import { FormularioLogin } from '../components/login/FormLogin';
 import GoogleLogin from 'react-google-login';
-import CadastrarButton from '../components/CadastrarButton';
 import sessionUtil, { SessionUtil } from '../util/sessionUtil';
 import {Box, Grid} from "@mui/material";
 
