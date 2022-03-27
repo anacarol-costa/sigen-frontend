@@ -1,15 +1,15 @@
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
-import {Button, Typography} from '@mui/material';
-import {useNavigate} from 'react-router-dom';
+import { Button, Grid, Paper, styled, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import * as Yup from "yup";
-import {useForm} from "react-hook-form";
-import {yupResolver} from "@hookform/resolvers/yup";
-import sessionUtil, {SessionUtil} from "../../util/sessionUtil";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import sessionUtil, { SessionUtil } from "../../util/sessionUtil";
 import axiosSemAutorizacao from "../../util/axios/axiosSemAutorizacao";
-import {useDispatch} from "react-redux";
-import {mostrarMensagemErro} from "../../store/snackbar-reducer";
+import { useDispatch } from "react-redux";
+import { mostrarMensagemErro } from "../../store/snackbar-reducer";
 
 
 
@@ -32,7 +32,7 @@ export function FormularioLogin() {
     const {
         register,
         handleSubmit,
-        formState: {errors}
+        formState: { errors }
     } = useForm({
         resolver: yupResolver(validacaoSchema)
     });
@@ -55,14 +55,15 @@ export function FormularioLogin() {
             sx={{
                 display: 'inline-grid',
                 rowGap: 3,
-                direction:"column",
-                alignItems:"center",
-                justifyContent:"center",
-                width: '100vw',
+                direction: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                width: '100vw',                
             }}
         >
-            <Box>
+            <Grid container item spacing={1/2}>
                 <TextField
+                item xs={6}
                     required
                     sx={{ width: '30vw' }}
                     id="login-email"
@@ -71,15 +72,16 @@ export function FormularioLogin() {
                     value={formulario.usuario}
                     {...register('email')}
                     error={errors.email ? true : false}
+
                 />
                 <Typography variant="inherit" color="#d32f2f">
                     {errors.email?.message}
                 </Typography>
-            </Box>
-            <Box>
+            </Grid>
+            <Grid container item spacing={1/2}>
                 <TextField
                     required
-                    sx={{width: '30vw'}}
+                    sx={{ width: '30vw' }}
                     id="login-senha"
                     label="Senha"
                     type="password"
@@ -90,18 +92,24 @@ export function FormularioLogin() {
                 <Typography variant="inherit" color="#d32f2f">
                     {errors.senha?.message}
                 </Typography>
-            </Box>
-            <Box sx={{
-                display: 'inline-grid',
-                justifyContent:"center",
-                width: '100%',
-            }}>
-                <Button
-                    variant="contained"
-                    onClick={handleSubmit(enviarLogin)}
-                >
-                    Entrar
-                </Button>
+            </Grid>
+
+            <Box>
+                <Grid
+                    container item spacing={1/2}
+
+                    sx={{
+                        display: 'inline-grid',
+                        justifyContent: "center",
+                        width: '100%',
+                    }}>
+                    <Button                        
+                        variant="contained"
+                        onClick={handleSubmit(enviarLogin)}                        
+                    >
+                        Entrar
+                    </Button>
+                </Grid>
             </Box>
         </Box>
     )

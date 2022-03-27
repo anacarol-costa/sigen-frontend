@@ -32,7 +32,9 @@ export default function LoginPage() {
 
 
   return (
-    <Grid sx={{
+    <Grid 
+    container spacing={2}
+    sx={{
       display: 'inline-grid',
       rowGap: 1,
       direction: "column",
