@@ -19,6 +19,14 @@ export default {
     return jwt_decode(TKN);
   },
 
+  getNomeUsuario() {
+    const {nome} = this.getTokenCookieDecode()
+    return nome;
+  },
+
+  removerTknCookie() {
+    cookies.remove(SessionUtil.TKN,  { path: '/' });
+  }
 }
 
 function getPropriedadeCookie(chave) {

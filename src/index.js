@@ -4,12 +4,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {Box} from "@mui/material";
 import { render } from "react-dom";
-import {BrowserRouter, Route, Routes } from "react-router-dom";
+import {BrowserRouter, Outlet, Route, Routes} from "react-router-dom";
 import {Provider} from "react-redux";
 import store from "./store/store";
 import SnackbarMensagem from "./components/shared/snackbar/SnackbarMensagem";
 import UnidadeMedidaPage from "./pages/UnidadeMedidaPage";
-import UsuarioPage from './pages/UsuarioPage';
 import ProdutoPage from "./pages/ProdutoPage";
 import AdministradorPage from "./pages/AdministradorPage";
 import RotaPrivada from "./components/shared/autorizacao/RotaPrivada";
@@ -18,6 +17,8 @@ import NotFoundPage from "./pages/NotFoundPage";
 import Loading from "./components/shared/loading/Loading";
 import Acessopage from "./pages/AcessoPage";
 import RotaAdministracao from "./components/shared/autorizacao/RotaAdministracao";
+import ListaUsuario from "./pages/usuario/ListaUsuario";
+import UsuarioPage from "./pages/usuario/UsuarioPage";
 
 
 const rootElement = document.getElementById("root");
@@ -30,23 +31,16 @@ render(
         <Box>
             <Routes>
                 <Route path="/" element={<Acessopage />} />
-                <Route path="/usuario" element={<UsuarioPage />} />
-                <Route path="private" element={
-                    <RotaPrivada>
-                        <App />
-                    </RotaPrivada>
-                    }
-                >
+                <Route path="private" element={<RotaPrivada><App /> </RotaPrivada> }>
                     <Route path="home" element={<HomePage />} />
-                    <Route path="administracao" element={
-                        <RotaAdministracao>
-                            <></>
-                        </RotaAdministracao>
-                    }>
+                    <Route path="unidade-medida" element={ <UnidadeMedidaPage /> } />
+                    <Route path="administracao" element={<RotaAdministracao><div><Outlet /></div></RotaAdministracao>}>
                         <Route path="produto" element={<ProdutoPage />} />
                         <Route path="administrador" element={<AdministradorPage />} />
+                        <Route path="usuarios" element={<ListaUsuario />} />
+                        <Route path="novo-usuario" element={<UsuarioPage />} />
                     </Route>
-                    <Route path="unidade-medida" element={ <UnidadeMedidaPage /> } />
+
                 </Route>
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>

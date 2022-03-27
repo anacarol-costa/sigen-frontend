@@ -5,7 +5,7 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import LoginPage from "./LoginPage";
-import UsuarioPage from "./UsuarioPage";
+import UsuarioPage from "./usuario/UsuarioPage";
 import {Divider } from "@mui/material";
 
 
