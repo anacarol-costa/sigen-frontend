@@ -9,13 +9,13 @@ export const snackbarSlice = createSlice({
         visivel: false,
         mensagem: '',
         textoBotao: 'Ok',
-        color: ''
+        color: '',        
     },
     reducers: {
         mostrarMensagemSucesso: (state, action ) => {
             state.visivel = true;
             state.color = '#388e3c';
-            state.mensagem = action.payload;
+            state.mensagem = action.payload;         
         },
         mostrarMensagemErro: (state, action ) => {
             state.visivel = true;

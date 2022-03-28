@@ -42,7 +42,19 @@ export default function FormUsuario(props) {
     });
 
     const botaoCancelar = () => {
-        return navigate('/login')
+        if (props.mostraBotaoCancelar) {
+            return (
+                <Button
+                    size='medium'
+                    variant="outlined"
+                    onClick={props.cancelar}
+                >
+                    Cancelar
+                </Button>
+            )
+        } else {
+            return (<></>);
+        }
     }
 
     return (
@@ -152,13 +164,7 @@ export default function FormUsuario(props) {
                 >
                     Registrar
                 </Button>
-                {/* <Button size='medium'
-                    variant="contained"
-                    color="secondary"
-                    onClick={botaoCancelar()}
-                >
-                    Cancelar
-                </Button> */}
+                {botaoCancelar()}
             </Stack>
         </Box>
     )
