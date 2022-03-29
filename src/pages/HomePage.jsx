@@ -1,12 +1,17 @@
-import {Box} from "@mui/material";
+import { Box } from "@mui/material";
+import RodaPe from "../components/footer/RodaPe";
+import { BemVindoLogin } from "../components/login/BemVindoLogin";
 
 export default function HomePage() {
 
 
     return (
         <Box>
-            <h1>Home Page</h1>
+            <BemVindoLogin />
+            <RodaPe />
         </Box>
+
+
     )
 
 }
