@@ -3,13 +3,11 @@ import React, { useState } from "react";
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useNavigate } from "react-router-dom";
 
 export default function FormUsuario(props) {
 
     const [errorSenhasDiferentes] = useState('');
     const [telefoneValido] = useState("");
-    const navigate = useNavigate();
 
     const validacaoSchema = Yup.object().shape({
         nome: Yup.string()
@@ -150,11 +148,12 @@ export default function FormUsuario(props) {
             </Typography>
 
             <Stack
-                spacing={2}
                 sx={{
-                    display: 'inline-grid',
+                    display: 'flex',
+                    flexDirection: 'row',
                     justifyContent: "center",
                     width: '100%',
+                    gap: 2
                 }}
             >
                 <Button

@@ -12,9 +12,13 @@ import { useState } from 'react';
 export default function Acessopage() {
     const [value, setValue] = useState('1');
 
+    const cancelar = () => {
+        window.location.reload();
+    }
+
     const handleChange = (event, newValue) => {
-        const value = newValue || "2";
-        setValue(value);
+        const tabValue = newValue || "2";
+        setValue(tabValue);
     };
 
     return (
@@ -28,7 +32,7 @@ export default function Acessopage() {
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                     <TabList onChange={handleChange} centered>
                         <Tab label="Login" value="1" />
-                        <Tab label="Registro" value="2" />                        
+                        <Tab label="Registro" value="2" />
                     </TabList>
                 </Box>
                 <TabPanel value="1">
@@ -39,7 +43,7 @@ export default function Acessopage() {
                 <TabPanel value="2">
                     <h1>Criar Conta</h1>
                     <Divider variant="inset" />
-                    <UsuarioPage cancelarHandle={ handleChange }/>
+                    <UsuarioPage cancelarHandle={cancelar}/>
                 </TabPanel>
             </TabContext>
         </Box>
