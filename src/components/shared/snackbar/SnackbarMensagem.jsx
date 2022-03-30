@@ -15,6 +15,7 @@ export default function SnackbarMensagem() {
       <Snackbar
         open={visivel}
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        sx={{ maxWidth: { xs: '85%'}, padding: { xs: '2%' }}}
         autoHideDuration={6000}
       >
       <SnackbarContent
