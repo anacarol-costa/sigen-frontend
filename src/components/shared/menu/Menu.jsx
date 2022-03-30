@@ -16,7 +16,7 @@ import sessionUtil from "../../../util/sessionUtil";
 import {Divider} from "@mui/material";
 
 
-const pages = [
+const menuAdmin = [
     { nome: 'Home', path: 'home' },
     { nome: 'Carrossel', path: 'fake' },
     { nome: 'Cardápio', path: 'fake' },
@@ -25,14 +25,24 @@ const pages = [
     { nome: 'Gerenciar usuários', path: 'administracao/usuarios' }
 ];
 
+const menuUsuario = [
+    {nome: 'Home', path: 'home'},
+    {nome: 'Cardápio', path: 'cardapio'},
+    {nome: 'Encomenda', path: 'encomenda'},
+    {nome: 'Contato', path: 'contato'},    
+    {nome: 'Instagram', path: 'home'},
+    
+]
+
 
 const settings = ['Conta', 'Sair'];
 
-const MenuAdmin = ({ usuario }) => {
+const MenuComponente = ({ usuario }) => {
     const navigate = useNavigate();
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const nomeUsuario = sessionUtil.getNomeUsuario();
+    const paginas = sessionUtil.isAdmin() ? menuAdmin : menuUsuario;
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -101,7 +111,7 @@ const MenuAdmin = ({ usuario }) => {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
-                            {pages.map((page) => (
+                            {paginas.map((page) => (
                                 <MenuItem key={page.nome} onClick={() => { handleMudarPagina(page.path) }}>
                                     <Typography textAlign="center">{page.nome}</Typography>
                                 </MenuItem>
@@ -117,7 +127,7 @@ const MenuAdmin = ({ usuario }) => {
                         SIGEN
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {pages.map((page) => (
+                        {paginas.map((page) => (
                             <Button
                                 key={page.nome}
                                 onClick={() => { handleMudarPagina(page.path) }}
@@ -164,4 +174,4 @@ const MenuAdmin = ({ usuario }) => {
         </AppBar>
     );
 };
-export default MenuAdmin;
+export default MenuComponente;
