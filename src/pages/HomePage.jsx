@@ -7,11 +7,9 @@ export default function HomePage() {
 
     return (
         <Box>
-            <BemVindoLogin />
+            <h1>Usuario Comum</h1>
             <RodaPe />
         </Box>
-
-
     )
 
 }

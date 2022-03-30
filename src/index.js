@@ -1,16 +1,16 @@
-import React from 'react';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import {Box} from "@mui/material";
+import React from "react";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { Box } from "@mui/material";
 import { render } from "react-dom";
-import {BrowserRouter, Outlet, Route, Routes} from "react-router-dom";
-import {Provider} from "react-redux";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
+import { Provider } from "react-redux";
 import store from "./store/store";
 import SnackbarMensagem from "./components/shared/snackbar/SnackbarMensagem";
 import UnidadeMedidaPage from "./pages/UnidadeMedidaPage";
 import ProdutoPage from "./pages/ProdutoPage";
-import AdministradorPage from "./pages/AdministradorPage";
+import AdministradorPage from "./pages/administrador/GerenciarAdministradorPage";
 import RotaPrivada from "./components/shared/autorizacao/RotaPrivada";
 import HomePage from "./pages/HomePage";
 import NotFoundPage from "./pages/NotFoundPage";
@@ -19,32 +19,49 @@ import Acessopage from "./pages/AcessoPage";
 import RotaAdministracao from "./components/shared/autorizacao/RotaAdministracao";
 import ListaUsuario from "./pages/usuario/ListaUsuario";
 import UsuarioPage from "./pages/usuario/UsuarioPage";
-
+import AreaRestrita from "./pages/administrador/AreaRestrita";
 
 const rootElement = document.getElementById("root");
 
 render(
   <BrowserRouter>
     <Provider store={store}>
-        <Loading />
-        <SnackbarMensagem />
-        <Box>
-            <Routes>
-                <Route path="/" element={<Acessopage />} />
-                <Route path="private" element={<RotaPrivada><App /> </RotaPrivada> }>
-                    <Route path="home" element={<HomePage />} />
-                    <Route path="unidade-medida" element={ <UnidadeMedidaPage /> } />
-                    <Route path="administracao" element={<RotaAdministracao><div><Outlet /></div></RotaAdministracao>}>
-                        <Route path="produto" element={<ProdutoPage />} />
-                        <Route path="administrador" element={<AdministradorPage />} />
-                        <Route path="usuarios" element={<ListaUsuario />} />
-                        <Route path="novo-usuario" element={<UsuarioPage />} />
-                    </Route>
+      <Loading />
+      <SnackbarMensagem />
+      <Box>
+        <Routes>
+          <Route path="/" element={<Acessopage />} />
+          <Route
+            path="private"
+            element={
+              <RotaPrivada>
+                <App />{" "}
+              </RotaPrivada>
+            }
+          >
+            <Route path="home" element={<HomePage />} />
 
-                </Route>
-                <Route path="*" element={<NotFoundPage />} />
-            </Routes>
-        </Box>
+            <Route
+              path="administracao"
+              element={
+                <RotaAdministracao>
+                  <div>
+                    <Outlet />
+                  </div>
+                </RotaAdministracao>
+              }
+            >
+              <Route path="home" element={<AreaRestrita />} />
+              <Route path="produto" element={<ProdutoPage />} />
+              <Route path="administrador" element={<AdministradorPage />} />
+              <Route path="usuarios" element={<ListaUsuario />} />
+              <Route path="novo-usuario" element={<UsuarioPage />} />
+              <Route path="unidade-medida" element={<UnidadeMedidaPage />} />
+            </Route>
+          </Route>
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Box>
     </Provider>
   </BrowserRouter>,
   rootElement
