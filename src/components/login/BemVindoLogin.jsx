@@ -1,4 +1,4 @@
-import { Image } from "@mui/icons-material";
+import imagem from "../../img/imagemHome.jpg";
 import { Box } from "@mui/material";
 
 
@@ -10,8 +10,8 @@ export function BemVindoLogin(usuario) {
             <h2>Seja bem vindo</h2>
             <br />
             <p>Tem como foco a gestão de encomendas, cardápio e promoções que ficarão disponíveis online para os consumidores finais.</p>
-            <Image
-                src='https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c'
+            <img
+                src={imagem}
                 alt='café'
             />
 
