@@ -17,7 +17,7 @@ export default function ListaUsuario() {
         { field: 'nome', headerName: 'Nome', width: 130 },
         { field: 'telefone', headerName: 'Telefone', width: 130 },
         { field: 'email', headerName: 'E-mail', width: 200 },
-
+               
         {
             field: 'actions',
             type: 'actions',

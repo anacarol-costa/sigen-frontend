@@ -1,4 +1,4 @@
-import { Box, Stack } from '@mui/material';
+import { Box } from '@mui/material';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { mostrarMensagemErro, mostrarMensagemSucesso } from "../../store/snackbar-reducer";
