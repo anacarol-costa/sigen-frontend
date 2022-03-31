@@ -1,19 +1,43 @@
-import { Grid, TableFooter } from "@mui/material";
+import { styled } from '@mui/material/styles';
+import Divider from '@mui/material/Divider';
+import { Link, Typography } from '@mui/material';
+
+const Root = styled('div')(({ theme }) => ({
+    width: '100%',
+    ...theme.typography.body2,
+    '& > :not(style) + :not(style)': {
+        marginTop: theme.spacing(1),
+    },
+}));
 
 export default function RodaPe() {
 
+    const linkedinCarol = (
+        <Link href='https://www.linkedin.com/in/ana-carolina-costa-91a74842/' underline="always">
+            {'Ana Carolina da Costa Rodrigues'}
+        </Link>
+
+    )
+    
+    const desenvolvedora = (
+        <div>
+            {`Desenvolvedora`}
+        </div>
+    )
+
+
     return (
-        <TableFooter
+        <Root
             sx={{
-                display: 'inline-grid',
-                paddingTop: 7,
+                paddingTop: '5%',
             }}
         >
-            <Grid>
-                <p>Desenvolvido por <a href="https://www.linkedin.com/in/ana-carolina-costa-91a74842/"> Ana Carolina da Costa Rodrigues </a></p>
-            </Grid>
-        </TableFooter>
+            <Typography variant="caption" display="block" gutterBottom>
+                <Divider light variant='middle' />
+                <Typography variant="caption">{desenvolvedora}</Typography>
+                {linkedinCarol}
+            </Typography>
 
-
+        </Root>
     )
 }

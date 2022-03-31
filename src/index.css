@@ -4,9 +4,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; 
-  background: rgb(228,175,255);
-  background: linear-gradient(90deg, rgba(228,175,255,0.958420868347339) 18%, rgba(242,148,148,0.87718837535014) 64%, rgba(251,188,99,0.8603816526610644) 100%);
-} 
+  background-color: #E6ECF2
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

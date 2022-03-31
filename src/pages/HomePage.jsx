@@ -1,4 +1,5 @@
 import { Box, Grid } from "@mui/material";
+import RodaPe from "../components/footer/RodaPe";
 import imagemDois from "../img/ImagemDois.jpg"
 
 export default function HomePage() {
@@ -11,7 +12,6 @@ export default function HomePage() {
                 width: "100%"
             }}
         >
-
             <Grid container
                 direction="column"
                 justifyContent="center"
@@ -39,7 +39,7 @@ export default function HomePage() {
             >
                 <h2>Passo a passo como encomendar:</h2>
                 <ol>
-                    <li>Primeiramente, caso haja alguma dúvida sobre os produtos, acesse cardápio. Lá contem fotos, preços e quantidade. Ainda havendo dúvidas, entre em contato conosco ou acesse nosso perfil no instagram;</li>
+                    <li>Primeiramente, caso haja alguma dúvida sobre os produtos, acesse cardápio. Lá contém fotos, preços e quantidade. Ainda havendo dúvidas, entre em contato conosco ou acesse nosso perfil no instagram;</li>
                     <li>Clique em encomenda no menu superior;</li>
                     <li>Ao carregar a página encomenda, você deve escolher qual categoria de produto quer escolher. Exemplo, para encomendar um bolo para festa, clique em Festa;</li>
                     <li>Depois de escolher a categoria, aparecerá os produtos e suas opções;</li>
@@ -50,6 +50,7 @@ export default function HomePage() {
                     <li>Pronto! agora é só aguardar a data para retirar ou que seja entregue seu pedido.</li>
                 </ol>
             </Grid>
+            <RodaPe />
         </Box>
 
     )

@@ -17,7 +17,7 @@ import {Divider} from "@mui/material";
 
 
 const menuAdmin = [
-    { nome: 'Home', path: 'home' },
+    { nome: 'Home', path: 'administracao/home' },
     { nome: 'Carrossel', path: 'fake' },
     { nome: 'Cardápio', path: 'fake' },
     { nome: 'Cadastrar produto', path: 'administracao/produto' },
