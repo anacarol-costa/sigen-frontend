@@ -19,9 +19,9 @@ export default function LoginPage() {
       sessionUtil.setPropriedadeCookie(SessionUtil.TKN, jwtGoogle, { path: '/' });
 
       if (!sessionUtil.isAdmin()) {
-        navigate('/');
+        navigate('/private/home');
       } else {
-        navigate('/administracao/home')
+        navigate('/private/administracao/home')
       }
 
     } catch (error) {

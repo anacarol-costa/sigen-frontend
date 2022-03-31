@@ -1,15 +1,16 @@
 import { Box } from "@mui/material";
-import RodaPe from "../components/footer/RodaPe";
-import { BemVindoLogin } from "../components/login/BemVindoLogin";
+import { MeuCarousel } from "../components/login/MeuCarousel";
 
 export default function HomePage() {
 
 
     return (
         <Box>
-            <h1>Usuario Comum</h1>
-            <RodaPe />
+            <h1>Usuário comum</h1>
+            {/* <MeuCarousel /> */}
         </Box>
-    )
 
+    )
 }
+
+
