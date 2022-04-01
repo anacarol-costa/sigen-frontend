@@ -42,7 +42,12 @@ export function FormularioLogin() {
         try {
             const { data } = await axiosSemAutorizacao.post("/auth/login", login);
             sessionUtil.setPropriedadeCookie(SessionUtil.TKN, data.access_token, { path: '/' });
-            navigate('private/home')
+            const admin = sessionUtil.isAdmin();
+            if (admin) {
+                navigate('/private/administracao/home');
+              } else {
+                navigate('/private/home');
+              }
         } catch (error) {
             console.error(error);
             dispatch(mostrarMensagemErro('Error ao tentar realizar login.'))

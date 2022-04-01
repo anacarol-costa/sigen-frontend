@@ -26,6 +26,10 @@ export default {
 
   removerTknCookie() {
     cookies.remove(SessionUtil.TKN,  { path: '/' });
+  },
+
+  isAdmin() {
+    return this.getTokenCookieDecode().permissao === Permissao.ADMINISTRADOR;
   }
 }
 

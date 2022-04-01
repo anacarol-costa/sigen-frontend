@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { FormularioLogin } from '../components/login/FormLogin';
 import GoogleLogin from 'react-google-login';
 import sessionUtil, { SessionUtil } from '../util/sessionUtil';
-import {Box, Grid} from "@mui/material";
+import { Box, Grid } from "@mui/material";
 
 
 export default function LoginPage() {
@@ -14,13 +14,18 @@ export default function LoginPage() {
 
   const responseOkGoogle = (response) => {
     try {
-        const jwtGoogle = response.tokenObj.id_token;
+      const jwtGoogle = response.tokenObj.id_token;
 
-        sessionUtil.setPropriedadeCookie(SessionUtil.TKN, jwtGoogle, { path: '/' });
+      sessionUtil.setPropriedadeCookie(SessionUtil.TKN, jwtGoogle, { path: '/' });
 
+      if (!sessionUtil.isAdmin()) {
         navigate('/private/home');
+      } else {
+        navigate('/private/administracao/home')
+      }
+
     } catch (error) {
-        console.error(error);
+      console.error(error);
     }
 
   }
@@ -31,17 +36,17 @@ export default function LoginPage() {
 
 
   return (
-    <Grid 
-    container spacing={2}
-    sx={{
-      display: 'inline-grid',
-      rowGap: 1,
-      direction: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      width: '100vw',
-      pt: 1
-    }}>
+    <Grid
+      container spacing={2}
+      sx={{
+        display: 'inline-grid',
+        rowGap: 1,
+        direction: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        width: '100vw',
+        pt: 1
+      }}>
       <Box>
         <FormularioLogin />
       </Box>

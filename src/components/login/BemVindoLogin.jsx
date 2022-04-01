@@ -1,21 +1,31 @@
-import { Image } from "@mui/icons-material";
-import { Box } from "@mui/material";
+import imagemHomeAdmin from "../../img/imagemHomeAdmin.jpg";
+import { Box, Grid } from "@mui/material";
+import Definicoes from "./Definicoes";
 
 
 export function BemVindoLogin(usuario) {
     return (
         <Box>
-            <h1>SIGEN - Sistema de Gerenciamento de Encomendas e Cardápio</h1>
-            <br />
-            <h2>Seja bem vindo</h2>
-            <br />
-            <p>Tem como foco a gestão de encomendas, cardápio e promoções que ficarão disponíveis online para os consumidores finais.</p>
-            <Image
-                src='https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c'
-                alt='café'
-            />
-
+            <Grid>
+                <h1>SIGEN - Sistema de Gerenciamento de Encomendas e Cardápio</h1>
+            </Grid>
+            <Grid container
+                direction="column"
+                justifyContent="center"
+                alignItems="center"
+                sx={{
+                    paddingTop:'2%',
+                }}
+            >
+                <Grid img xs={'50%'}>
+                    <img
+                        src={imagemHomeAdmin}
+                        alt='exibindo calendário digital'
+                        style={{ height: "100%", width: "100%" }}
+                    />
+                </Grid>
+            </Grid>
+            <Definicoes />
         </Box>
-
     )
 }
