@@ -7,6 +7,7 @@ import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { mostrarMensagemSucesso } from '../../store/snackbar-reducer';
 import { useDispatch } from 'react-redux';
+import axiosComAutorizacao from '../../util/axios/axiosComAutorizacao';
 
 
 export default function ListaUsuario() {
@@ -35,7 +36,7 @@ export default function ListaUsuario() {
 
     const delatarUsuario = async (id) => {
         console.log('deletar usuario');
-        await axiosSemAutorizacao.delete(`/usuarios/${id}`);
+        await axiosComAutorizacao.delete(`/usuarios/${id}`);
         await consultarUsuario();
         dispatch(mostrarMensagemSucesso('Usuário excluído com sucesso.'));
         navigate('/private/administracao/usuarios');

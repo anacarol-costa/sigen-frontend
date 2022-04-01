@@ -161,7 +161,7 @@ const MenuComponente = ({ usuario }) => {
                             onClose={handleCloseUserMenu}
                         >
                         <MenuItem onClick={handleCloseUserMenu}>
-                            <Typography textAlign="center">Olá, { nomeUsuario }</Typography>
+                            <Typography style={{ height: "100%", width: "100%" }} textAlign="center">Olá, { nomeUsuario }</Typography>
                         </MenuItem>
                         <Divider />
                         <MenuItem onClick={logout}>
