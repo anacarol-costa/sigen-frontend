@@ -69,7 +69,7 @@ export default function Definicoes() {
                 >
                     <ThemeProvider
                         theme={theme}>
-                        <Typography variant="h3">Sobre a SIGEN</Typography>
+                        <Typography variant="h3">Sobre o SIGEN</Typography>
                         {sobre}
                     </ThemeProvider>
                 </ Root>
