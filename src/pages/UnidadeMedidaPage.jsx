@@ -7,6 +7,7 @@ import { Box, Button, TextField, Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { mostrarMensagemErro, mostrarMensagemSucesso } from '../store/snackbar-reducer';
 import axiosSemAturozicao from '../util/axios/axiosSemAutorizacao';
+import categoria from '../components/cadastro_produto/categoria';
 
 export default function UnidadeMedidaPage() {
   const navigate = useNavigate();
@@ -41,58 +42,61 @@ export default function UnidadeMedidaPage() {
   }
 
   return (
-    <Box
-      sx={{
-        display: 'inline-grid',
-        rowGap: 3,
-        direction: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        width: '100vw',
-      }}
-    >
-      <Box>
-        <TextField
-          required
-          sx={{ width: '30vw' }}
-          id="descricao-unidade-medida"
-          label="Descrição"
-          type="string"
-          variant="standard"
-          {...register('descricao')}
-          error={errors.descricao ? true : false}
-        />
-        <Typography variant="inherit" color="#d32f2f">
-          {errors.descricao?.message}
-        </Typography>
-      </Box>
-      <Box>
-        <TextField
-          required
-          sx={{ width: '30vw' }}
-          id="abreviacao-unidade"
-          label="Abreviação"
-          type="string"
-          variant="standard"
-          {...register('abreviacao')}
-          error={errors.abreviacao ? true : false}
-        />
-        <Typography variant="inherit" color="#d32f2f">
-          {errors.abreviacao?.message}
-        </Typography>
-      </Box>
+    <Box>
+      {/* <categoria /> */}
       <Box
         sx={{
           display: 'inline-grid',
+          rowGap: 3,
+          direction: "column",
+          alignItems: "center",
           justifyContent: "center",
-          width: '100%',
-        }}>
-        <Button
-          variant="contained"
-          onClick={handleSubmit(cadastrarUnidadeMedida)}
-        >
-          Enviar
-        </Button>
+          width: '100vw',
+        }}
+      >
+        <Box>
+          <TextField
+            required
+            sx={{ width: '30vw' }}
+            id="descricao-unidade-medida"
+            label="Descrição"
+            type="string"
+            variant="standard"
+            {...register('descricao')}
+            error={errors.descricao ? true : false}
+          />
+          <Typography variant="inherit" color="#d32f2f">
+            {errors.descricao?.message}
+          </Typography>
+        </Box>
+        <Box>
+          <TextField
+            required
+            sx={{ width: '30vw' }}
+            id="abreviacao-unidade"
+            label="Abreviação"
+            type="string"
+            variant="standard"
+            {...register('abreviacao')}
+            error={errors.abreviacao ? true : false}
+          />
+          <Typography variant="inherit" color="#d32f2f">
+            {errors.abreviacao?.message}
+          </Typography>
+        </Box>
+        <Box
+          sx={{
+            display: 'inline-grid',
+            justifyContent: "center",
+            width: '100%',
+          }}>
+          <Button
+            variant="contained"
+            onClick={handleSubmit(cadastrarUnidadeMedida)}
+          >
+            Enviar
+          </Button>
+        </Box>
       </Box>
     </Box>
   )
