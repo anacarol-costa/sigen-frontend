@@ -58,7 +58,7 @@ export function FormularioLogin() {
     return (
         <Box
             sx={{
-                display: 'row',
+                display: 'inline-grid',
                 rowGap: 1,
                 direction: "column",
                 alignItems: "center",
