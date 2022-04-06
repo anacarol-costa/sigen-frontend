@@ -7,7 +7,8 @@ import { Box, Button, TextField, Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { mostrarMensagemErro, mostrarMensagemSucesso } from '../store/snackbar-reducer';
 import axiosSemAturozicao from '../util/axios/axiosSemAutorizacao';
-import categoria from '../components/cadastro_produto/categoria';
+import CategoriaSelect from '../components/produto/CategoriaSelect';
+
 
 export default function UnidadeMedidaPage() {
   const navigate = useNavigate();
@@ -43,7 +44,7 @@ export default function UnidadeMedidaPage() {
 
   return (
     <Box>
-      {/* <categoria /> */}
+      <CategoriaSelect />      
       <Box
         sx={{
           display: 'inline-grid',
@@ -53,7 +54,7 @@ export default function UnidadeMedidaPage() {
           justifyContent: "center",
           width: '100vw',
         }}
-      >
+      >       
         <Box>
           <TextField
             required
@@ -97,7 +98,7 @@ export default function UnidadeMedidaPage() {
             Enviar
           </Button>
         </Box>
-      </Box>
+      </Box>      
     </Box>
   )
 }
