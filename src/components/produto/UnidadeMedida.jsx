@@ -60,7 +60,7 @@ export default function UnidadeMedidaPage() {
             id="descricao-unidade-medida"
             label="Descrição"
             type="string"
-            variant="standard"
+            variant="filled"
             {...register('descricao')}
             error={errors.descricao ? true : false}
           />
@@ -75,7 +75,7 @@ export default function UnidadeMedidaPage() {
             id="abreviacao-unidade"
             label="Abreviação"
             type="string"
-            variant="standard"
+            variant="filled"
             {...register('abreviacao')}
             error={errors.abreviacao ? true : false}
           />

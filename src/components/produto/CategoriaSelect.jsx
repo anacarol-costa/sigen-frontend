@@ -72,7 +72,7 @@ export default function CategoriaSelect() {
         }}
       >
         <InputLabel
-          id="demo-simple-select-label"          
+          id="demo-simple-select-label"
         >
           Categoria
         </InputLabel>
@@ -85,11 +85,11 @@ export default function CategoriaSelect() {
           id="categoria-simple-select"
           label="Categoria"
           type="object"
-          variant="standard"
+          variant="filled"
           {...register('categoria')}
           error={errors.categoria ? true : false}
         >
-          <MenuItem onClick={handleClickOpen}>Criar categoria</MenuItem>
+          <MenuItem onClick={handleClickOpen}>Criar categoria</MenuItem>          
           {categorias.map(categoria =>
           (<MenuItem
             key={categoria.id} value={categoria.id}>
