@@ -1,11 +1,14 @@
 import Box from "@mui/material/Box";
+import CategoriaSelect from "../components/produto/CategoriaSelect";
+import UnidadeMedida from "../components/produto/UnidadeMedida";
 
 export default function ProdutoPage() {
 
 
     return (
         <Box>
-            <h1>Produto</h1>
+            <CategoriaSelect />
+            <UnidadeMedida />
         </Box>
     )
 

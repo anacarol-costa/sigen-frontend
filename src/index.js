@@ -8,7 +8,6 @@ import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import SnackbarMensagem from "./components/shared/snackbar/SnackbarMensagem";
-import UnidadeMedidaPage from "./pages/UnidadeMedidaPage";
 import ProdutoPage from "./pages/ProdutoPage";
 import AdministradorPage from "./pages/administrador/GerenciarAdministradorPage";
 import RotaPrivada from "./components/shared/autorizacao/RotaPrivada";
@@ -55,8 +54,7 @@ render(
               <Route path="produto" element={<ProdutoPage />} />
               <Route path="administrador" element={<AdministradorPage />} />
               <Route path="usuarios" element={<ListaUsuario />} />
-              <Route path="novo-usuario" element={<UsuarioPage />} />
-              <Route path="unidade-medida" element={<UnidadeMedidaPage />} />
+              <Route path="novo-usuario" element={<UsuarioPage />} />              
             </Route>
           </Route>
           <Route path="*" element={<NotFoundPage />} />

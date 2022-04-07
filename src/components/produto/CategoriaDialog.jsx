@@ -9,7 +9,6 @@ import { useDispatch } from "react-redux";
 import { mostrarMensagemErro, mostrarMensagemSucesso } from "../../store/snackbar-reducer";
 
 export default function CategoriaDialog(props) {
-  const [formularioCategoria] = useState({ nome: "" });
   const theme = useTheme();
   const dispatch = useDispatch();
 
@@ -18,11 +17,12 @@ export default function CategoriaDialog(props) {
       .required('campo obrigatório')
   })
 
-  const cadastrarCategoria = async () => {
+  const cadastrarCategoria = async (categoria) => {
     try {
-      await axiosComAutorizacao.post("/categorias", formularioCategoria)
+      await axiosComAutorizacao.post("/categorias", categoria)
       dispatch(mostrarMensagemSucesso('Categoria cadastrada com sucesso.'))
-      console.log(formularioCategoria);
+      props.fecharDialog();
+      await props.atualizarCategoria();            
     } catch (error) {
       console.log(error);
       dispatch(mostrarMensagemErro('Erro ao tentar cadastrar categoria'))
@@ -53,8 +53,7 @@ export default function CategoriaDialog(props) {
             variant="standard"
             id="nome-categoria"
             label="Categoria"
-            type="text"
-            value={formularioCategoria.categoria}
+            type="text"            
             {...register('nome')}
             error={errors.nome ? true : false}
           />
@@ -65,7 +64,7 @@ export default function CategoriaDialog(props) {
       </DialogContent>
       <DialogActions>
         <Button autoFocus onClick={props.fecharDialog}>
-          cancelar
+          Cancelar
         </Button>
         <Button onClick={handleSubmit(cadastrarCategoria)} autoFocus>
           Salvar

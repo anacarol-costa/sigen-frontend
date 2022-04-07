@@ -6,7 +6,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import axiosComAutorizacao from "../../util/axios/axiosComAutorizacao";
-import { mostrarMensagemErro, mostrarMensagemSucesso } from "../../store/snackbar-reducer";
 import CategoriaDialog from "./CategoriaDialog";
 
 export default function CategoriaSelect() {
@@ -59,7 +58,7 @@ export default function CategoriaSelect() {
       paddingTop: "2%",
     }}
     >
-      <CategoriaDialog mostrarDialog={open} fecharDialog={handleClose} />
+      <CategoriaDialog mostrarDialog={open} fecharDialog={handleClose} atualizarCategoria={recuperarCategoria} />
 
       <FormControl
         sx={{

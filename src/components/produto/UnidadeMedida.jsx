@@ -5,10 +5,8 @@ import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
 import { Box, Button, TextField, Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { mostrarMensagemErro, mostrarMensagemSucesso } from '../store/snackbar-reducer';
-import axiosSemAturozicao from '../util/axios/axiosSemAutorizacao';
-import CategoriaSelect from '../components/produto/CategoriaSelect';
-
+import { mostrarMensagemErro, mostrarMensagemSucesso } from '../../store/snackbar-reducer';
+import axiosSemAturozicao from '../../util/axios/axiosSemAutorizacao';
 
 export default function UnidadeMedidaPage() {
   const navigate = useNavigate();
@@ -43,8 +41,7 @@ export default function UnidadeMedidaPage() {
   }
 
   return (
-    <Box>
-      <CategoriaSelect />      
+    <Box>          
       <Box
         sx={{
           display: 'inline-grid',
