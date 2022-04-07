@@ -50,6 +50,7 @@ export default function UnidadeMedidaPage() {
           alignItems: "center",
           justifyContent: "center",
           width: '100vw',
+          paddingTop: '2%'
         }}
       >       
         <Box>

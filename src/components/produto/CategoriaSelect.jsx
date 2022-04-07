@@ -56,6 +56,12 @@ export default function CategoriaSelect() {
   return (
     <Box sx={{
       paddingTop: "2%",
+      display: 'inline-grid',
+      rowGap: 3,
+      direction: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      width: '100vw'
     }}
     >
       <CategoriaDialog mostrarDialog={open} fecharDialog={handleClose} atualizarCategoria={recuperarCategoria} />
@@ -66,22 +72,29 @@ export default function CategoriaSelect() {
         }}
       >
         <InputLabel
-          id="demo-simple-select-label"
+          id="demo-simple-select-label"          
         >
           Categoria
         </InputLabel>
         <Select
+          required
+          sx={{
+            width: '30vw'
+          }}
           labelId="categoria-select-label"
           id="categoria-simple-select"
-          value={categoria}
           label="Categoria"
           type="object"
+          variant="standard"
           {...register('categoria')}
           error={errors.categoria ? true : false}
         >
           <MenuItem onClick={handleClickOpen}>Criar categoria</MenuItem>
           {categorias.map(categoria =>
-            (<MenuItem value={categoria.id}>{categoria.nome}</MenuItem>)
+          (<MenuItem
+            key={categoria.id} value={categoria.id}>
+            {categoria.nome}
+          </MenuItem>)
           )}
         </Select>
       </FormControl>
