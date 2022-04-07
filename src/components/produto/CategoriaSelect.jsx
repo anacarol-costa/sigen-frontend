@@ -1,4 +1,4 @@
-import { Box,FormControl, InputLabel, MenuItem, Select, TextField, Typography, useMediaQuery } from "@mui/material";
+import { Box, FormControl, InputLabel, MenuItem, Select, TextField, Typography, useMediaQuery } from "@mui/material";
 import { React, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
@@ -10,11 +10,11 @@ import { mostrarMensagemErro, mostrarMensagemSucesso } from "../../store/snackba
 import CategoriaDialog from "./CategoriaDialog";
 
 export default function CategoriaSelect() {
- 
+
   const [open, setOpen] = useState(false);
   const categoria = useState({ categoria: '' });
   const [categorias, setCategorias] = useState([]);
-  
+
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
