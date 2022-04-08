@@ -47,10 +47,11 @@ export default function UnidadeMedidaPage() {
           display: 'inline-grid',
           rowGap: 3,
           direction: "column",
-          alignItems: "center",
-          justifyContent: "center",
+          alignItems: "left",
+          justifyContent: "left",
           width: '100vw',
-          paddingTop: '2%'
+          paddingTop: '2%',
+          paddingLeft:'2%'
         }}
       >       
         <Box>

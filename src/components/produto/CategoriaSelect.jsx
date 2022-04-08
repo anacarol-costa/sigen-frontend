@@ -59,8 +59,9 @@ export default function CategoriaSelect() {
       display: 'inline-grid',
       rowGap: 3,
       direction: "column",
-      alignItems: "center",
-      justifyContent: "center",
+      alignItems: "left",
+      justifyContent: "left",
+      paddingLeft:'2%',
       width: '100vw'
     }}
     >
