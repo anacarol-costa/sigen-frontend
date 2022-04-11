@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
-import { Box, Button, TextField, Typography } from '@mui/material';
+import { Box, Button, Grid, Paper, TextField, Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { mostrarMensagemErro, mostrarMensagemSucesso } from '../../store/snackbar-reducer';
 import axiosSemAturozicao from '../../util/axios/axiosSemAutorizacao';
@@ -41,63 +41,54 @@ export default function UnidadeMedidaPage() {
   }
 
   return (
-    <Box>          
-      <Box
+    <Box
+      sx={{
+        display: 'inline-grid',
+        paddingTop: "5%",
+        rowGap: 3,
+        direction: "column",
+        alignItems: "left",
+        justifyContent: "left",
+        width: '100vw',
+        paddingLeft: '2%'
+      }}
+    >
+      <Typography
+        variant='subtitle1'
         sx={{
-          display: 'inline-grid',
-          rowGap: 3,
-          direction: "column",
-          alignItems: "left",
-          justifyContent: "left",
-          width: '100vw',
-          paddingTop: '2%',
-          paddingLeft:'2%'
+          textAlign: "left",
         }}
-      >       
-        <Box>
-          <TextField
-            required
-            sx={{ width: '30vw' }}
-            id="descricao-unidade-medida"
-            label="Descrição"
-            type="string"
-            variant="filled"
-            {...register('descricao')}
-            error={errors.descricao ? true : false}
-          />
-          <Typography variant="inherit" color="#d32f2f">
-            {errors.descricao?.message}
-          </Typography>
-        </Box>
-        <Box>
-          <TextField
-            required
-            sx={{ width: '30vw' }}
-            id="abreviacao-unidade"
-            label="Abreviação"
-            type="string"
-            variant="filled"
-            {...register('abreviacao')}
-            error={errors.abreviacao ? true : false}
-          />
-          <Typography variant="inherit" color="#d32f2f">
-            {errors.abreviacao?.message}
-          </Typography>
-        </Box>
-        <Box
-          sx={{
-            display: 'inline-grid',
-            justifyContent: "center",
-            width: '100%',
-          }}>
-          <Button
-            variant="contained"
-            onClick={handleSubmit(cadastrarUnidadeMedida)}
-          >
-            Enviar
-          </Button>
-        </Box>
-      </Box>      
+      >Unidade de Medida:</Typography>
+      <Box>
+        <TextField
+          required
+          sx={{ width: '30vw' }}
+          id="descricao-unidade-medida"
+          label="Descrição"
+          type="string"
+          variant="filled"
+          {...register('descricao')}
+          error={errors.descricao ? true : false}
+        />
+        <Typography variant="inherit" color="#d32f2f">
+          {errors.descricao?.message}
+        </Typography>
+      </Box>
+      <Box>
+        <TextField
+          required
+          sx={{ width: '30vw' }}
+          id="abreviacao-unidade"
+          label="Abreviação"
+          type="string"
+          variant="filled"
+          {...register('abreviacao')}
+          error={errors.abreviacao ? true : false}
+        />
+        <Typography variant="inherit" color="#d32f2f">
+          {errors.abreviacao?.message}
+        </Typography>
+      </Box>
     </Box>
   )
 }
