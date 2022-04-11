@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Box, Button } from '@mui/material';
 
 export default function ButtonProduto() {
 
@@ -9,10 +10,11 @@ export default function ButtonProduto() {
                 display: 'inline-grid',
                 justifyContent: "center",
                 width: '100%',
+                paddingTop: '3%'
             }}>
             <Button
                 variant="contained"
-                onClick={handleSubmit(cadastrarUnidadeMedida)}
+                // onClick={handleSubmit(cadastrarUnidadeMedida)}
             >
                 Enviar
             </Button>

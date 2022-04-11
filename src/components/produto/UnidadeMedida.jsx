@@ -44,25 +44,21 @@ export default function UnidadeMedidaPage() {
     <Box
       sx={{
         display: 'inline-grid',
-        paddingTop: "5%",
+        paddingTop: "3%",
         rowGap: 3,
         direction: "column",
-        alignItems: "left",
-        justifyContent: "left",
-        width: '100vw',
-        paddingLeft: '2%'
+        width: '100%',        
       }}
     >
       <Typography
         variant='subtitle1'
-        sx={{
-          textAlign: "left",
-        }}
       >Unidade de Medida:</Typography>
       <Box>
         <TextField
           required
-          sx={{ width: '30vw' }}
+          sx={{
+            width: '60%'
+          }}
           id="descricao-unidade-medida"
           label="Descrição"
           type="string"
@@ -77,7 +73,7 @@ export default function UnidadeMedidaPage() {
       <Box>
         <TextField
           required
-          sx={{ width: '30vw' }}
+          sx={{ width: '60%' }}
           id="abreviacao-unidade"
           label="Abreviação"
           type="string"
