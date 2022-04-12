@@ -14,8 +14,9 @@ export default function ProdutoPage() {
             sx={{
                 display: 'inline-grid',
                 direction: "column",
-                width: '60%',
-                bgcolor: 'purple'
+                width: '45%',
+                bgcolor: 'white',
+                paddingTop: '2%'
             }}
         >
             <h1>Cadastrar Produto</h1>

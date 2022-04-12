@@ -3,7 +3,7 @@ import { Box, FilledInput, FormControl, InputAdornment, InputLabel, TextField } 
 
 
 export default function NomeProduto(props) {
-    
+
 
     return (
         <Box
@@ -11,24 +11,26 @@ export default function NomeProduto(props) {
                 display: 'inline-grid',
                 paddingTop: "5%",
                 rowGap: 3,
-                direction: "column",                              
-                width: '80%',
-                alignItems: "center",
-                justifyContent: "center", 
+                // direction: "column",                              
+                width: '100%',
+                bgcolor: 'purple',
+                // alignItems: "left",
+                justifyContent: "left", 
+                // justifyItems: 'left'
             }}
         >
             <div>
                 <TextField
                     required
                     sx={{
-                        width: '140%'
+                        width: '100%'
                     }}
                     id="nome-produto"
                     label="Nome"
-                    variant="filled"                   
-                />                
+                    variant="filled"
+                />
             </div>
-           
+
         </Box>
     )
 };

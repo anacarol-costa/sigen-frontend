@@ -1,6 +1,5 @@
 import { useTheme } from "@emotion/react";
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField, Typography } from "@mui/material";
-import { useState } from "react";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -72,5 +71,4 @@ export default function CategoriaDialog(props) {
       </DialogActions>
     </Dialog>
   )
-
 }

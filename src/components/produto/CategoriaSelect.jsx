@@ -56,12 +56,15 @@ export default function CategoriaSelect() {
   return (
     <Box
       sx={{
-        paddingTop: "3%",
         display: 'inline-grid',
+        paddingTop: "3%",
         rowGap: 3,
-        direction: "column",        
-        paddingLeft: '2%',
-        width: '100%'
+        // direction: "column",        
+        // paddingLeft: '2%',
+        width: '100%',
+        bgcolor: 'green',
+        justifyContent: "left", 
+         
       }}
     >
       <CategoriaDialog mostrarDialog={open} fecharDialog={handleClose} atualizarCategoria={recuperarCategoria} />
@@ -79,8 +82,8 @@ export default function CategoriaSelect() {
         <Select
           required
           sx={{
-            m:1,
-            width: '60%'
+            m: 1,
+            width: '60%',            
           }}
           labelId="categoria-select-label"
           id="categoria-simple-select"

@@ -15,15 +15,17 @@ export default function ValorProduto() {
                 display: 'inline-grid',
                 paddingTop: "3%",
                 rowGap: 3,
-                direction: "column",                
-                width: '100%',                
+                // direction: "column",                
+                width: '100%',
+                bgcolor: 'pink',
+                justifyContent: "left",                 
             }}
         >
             <div>
                 <FormControl
                     sx={{
                         m: 1,                        
-                        width: '40%',                        
+                        width: '60%',                        
                     }}                   
                     size="small">
                     <InputLabel htmlFor="filled-adornment-valor">Valor</InputLabel>
