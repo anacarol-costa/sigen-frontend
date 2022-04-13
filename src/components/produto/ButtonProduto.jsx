@@ -10,7 +10,7 @@ export default function ButtonProduto() {
                 display: 'inline-grid',
                 justifyContent: "center",
                 width: '100%',
-                paddingTop: '3%'
+                paddingTop: '7%'
             }}>
             <Button
                 variant="contained"

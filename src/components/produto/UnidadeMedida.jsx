@@ -10,7 +10,7 @@ import axiosSemAturozicao from '../../util/axios/axiosSemAutorizacao';
 import axiosComAutorizacao from '../../util/axios/axiosComAutorizacao';
 import MedidaAbreviacaoDialog from './MedidaAbreviacaoDialog';
 
-export default function UnidadeMedidaPage() {
+export default function UnidadeMedida() {
   const [open, setOpen] = useState(false);
   const abreviacaoMedida = useState({ abreviacao: '' });
   const [abreviacaoMedidas, setAbreviacaoMedidas] = useState([]);
@@ -60,7 +60,7 @@ export default function UnidadeMedidaPage() {
   const recuperarAbreviacaoMedidas = async () => {
     try {
       const { data } = await axiosComAutorizacao.get("/unidades-medida");
-      setAbreviacaoMedidas(data);
+      setAbreviacaoMedidas(data);       
     } catch (error) {
       console.log(error);
     }
