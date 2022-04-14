@@ -58,20 +58,15 @@ export default function CategoriaSelect() {
       sx={{
         display: 'inline-grid',
         paddingTop: "3%",
-        rowGap: 3,
-        // direction: "column",        
-        // paddingLeft: '2%',
-        width: '100%',
-        bgcolor: 'green',
-        justifyContent: "left", 
-         
+        rowGap: 3,       
+        width:'40%'                  
       }}
     >
       <CategoriaDialog mostrarDialog={open} fecharDialog={handleClose} atualizarCategoria={recuperarCategoria} />
 
       <FormControl
         sx={{
-          width: '30vw'
+          width: '100%'
         }}
       >
         <InputLabel
@@ -83,7 +78,7 @@ export default function CategoriaSelect() {
           required
           sx={{
             m: 1,
-            width: '60%',            
+            width: '60%',
           }}
           labelId="categoria-select-label"
           id="categoria-simple-select"

@@ -60,7 +60,7 @@ export default function UnidadeMedida() {
   const recuperarAbreviacaoMedidas = async () => {
     try {
       const { data } = await axiosComAutorizacao.get("/unidades-medida");
-      setAbreviacaoMedidas(data);       
+      setAbreviacaoMedidas(data);
     } catch (error) {
       console.log(error);
     }
@@ -69,12 +69,9 @@ export default function UnidadeMedida() {
   return (
     <Box
       sx={{
-        
+
         paddingTop: "3%",
         rowGap: 3,
-        // direction: "column",
-        width: '100%',
-        bgcolor: 'yellow',
       }}
     >
       <Typography
@@ -84,7 +81,7 @@ export default function UnidadeMedida() {
         <TextField
           required
           sx={{
-            width: '60%'
+            width: '30%'
           }}
           id="descricao-unidade-medida"
           label="Descrição"

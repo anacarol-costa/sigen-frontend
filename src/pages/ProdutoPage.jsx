@@ -12,21 +12,16 @@ export default function ProdutoPage() {
 
     return (
         <Box
-            sx={{
-                // display: 'inline-grid',
-                direction: "column",
-                // width: '45%',
+            sx={{                
+                direction: "column",                
                 bgcolor: 'white',
                 paddingTop: '2%'
             }}
         >
             <h1>Cadastrar Produto</h1>
             <Grid
-                sx={{
-                    // display: 'inline-grid',
-                    // direction: "column",
-                    width: '100%',
-                    justifyContent: 'center'
+                sx={{                   
+                    width: '100%',                    
                 }}
             >
                 <NomeProduto />

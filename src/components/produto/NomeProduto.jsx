@@ -8,22 +8,16 @@ export default function NomeProduto(props) {
     return (
         <Box
             sx={{
-                display: 'inline-grid',
+                display: 'inline-flex',
                 paddingTop: "5%",
-                rowGap: 3,
-                // direction: "column",                              
-                width: '100%',
-                bgcolor: 'purple',
-                // alignItems: "left",
-                justifyContent: "left", 
-                // justifyItems: 'left'
+                rowGap: 3,  
             }}
         >
             <div>
                 <TextField
                     required
                     sx={{
-                        width: '100%'
+                        width: '140%'
                     }}
                     id="nome-produto"
                     label="Nome"
