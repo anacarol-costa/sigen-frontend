@@ -1,6 +1,5 @@
 import { Box, TextField, Typography } from '@mui/material';
 import React from 'react';
-import TransicaoItensProduto from './TransicaoItensProduto';
 
 export default function ItensProduto(props) {
 
@@ -10,6 +9,7 @@ export default function ItensProduto(props) {
                 display: 'inline-grid',
                 paddingTop: "3%",
                 rowGap: 3,
+                paddingBottom: "3%",
             }}
         >
             <Typography>
@@ -45,9 +45,7 @@ export default function ItensProduto(props) {
                 label="Opção"
                 type="text"
             />
-            <Box>
-                <TransicaoItensProduto />
-            </Box>
+           
         </Box>
     );
 }

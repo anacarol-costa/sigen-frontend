@@ -11,12 +11,9 @@ import ItensProduto from './ItensProduto';
 import { Button } from '@mui/material';
 
 const itemProduto = [
-    <div><ItensProduto /></div>,
-    <div><ItensProduto /></div>,
-    <div><ItensProduto /></div>,
-    <div><ItensProduto /></div>,
-    <div><ItensProduto /></div>,
-    <div><ItensProduto /></div>,
+    <div><ItensProduto /></div>,     
+    <div><ItensProduto /></div>,     
+    <div><ItensProduto /></div>,     
 ]
 
 function renderItem({ item, handleRemoveItensProduto }) {
@@ -53,19 +50,22 @@ export default function TransicaoItensProduto() {
     };
 
     const addItensProduto = (
-        <Button
+        <Button                
             variant="contained"
             disabled={adicionaItensProduto.length >= itemProduto.length}
             onClick={handleAddItensProduto}
         >
-            Adicionar Itens Produto
+            Acrescentar mais itens produto
         </Button>
     );
 
     return (
         <div>
             {addItensProduto}
-            <Box sx={{ mt: 1 }}>
+            <Box 
+            sx={{
+                 mt: 1,                 
+                  }}>
                 <List>
                     <TransitionGroup>
                         {adicionaItensProduto.map((item) => (

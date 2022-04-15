@@ -4,6 +4,7 @@ import ButtonProduto from "../components/produto/ButtonProduto";
 import CategoriaSelect from "../components/produto/CategoriaSelect";
 import ItensProduto from "../components/produto/ItensProduto";
 import NomeProduto from "../components/produto/NomeProduto";
+import TransicaoItensProduto from "../components/produto/TransicaoItensProduto";
 import UnidadeMedida from "../components/produto/UnidadeMedida";
 import ValorProduto from "../components/produto/ValorProduto";
 
@@ -28,7 +29,8 @@ export default function ProdutoPage() {
                 <ValorProduto />
                 <CategoriaSelect />
                 <UnidadeMedida />
-                <ItensProduto />
+                <ItensProduto />                 
+                <TransicaoItensProduto />            
             </Grid>
             <Box>
                 <ButtonProduto />
