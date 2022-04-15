@@ -1,7 +1,6 @@
 import { Box, TextField, Typography } from '@mui/material';
 import React from 'react';
-import FabAddItemProduto from './FabAddItemProduto';
-
+import TransicaoItensProduto from './TransicaoItensProduto';
 
 export default function ItensProduto(props) {
 
@@ -36,8 +35,18 @@ export default function ItensProduto(props) {
                 label="Opção"
                 type="text"
             />
+            <TextField
+                sx={{
+                    width: '90%'
+                }}
+                required
+                variant="filled"
+                id="opcao-do-produto"
+                label="Opção"
+                type="text"
+            />
             <Box>
-                <FabAddItemProduto />
+                <TransicaoItensProduto />
             </Box>
         </Box>
     );
