@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
@@ -11,9 +11,9 @@ import ItensProduto from './ItensProduto';
 import { Button } from '@mui/material';
 
 const itemProduto = [
-    <div><ItensProduto /></div>,     
-    <div><ItensProduto /></div>,     
-    <div><ItensProduto /></div>,     
+    <Box><ItensProduto /></Box>,
+    <Box><ItensProduto /></Box>,
+    <Box><ItensProduto /></Box>,
 ]
 
 function renderItem({ item, handleRemoveItensProduto }) {
@@ -21,9 +21,10 @@ function renderItem({ item, handleRemoveItensProduto }) {
         <ListItem
             secondaryAction={
                 <IconButton
-                    edge="end"
+                    color="secondary"
+                    edge="start"
                     aria-label="delete"
-                    title="Delete"
+                    title="Deletar"
                     onClick={() => handleRemoveItensProduto(item)}
                 >
                     <DeleteIcon />
@@ -50,7 +51,7 @@ export default function TransicaoItensProduto() {
     };
 
     const addItensProduto = (
-        <Button                
+        <Button
             variant="contained"
             disabled={adicionaItensProduto.length >= itemProduto.length}
             onClick={handleAddItensProduto}
@@ -62,10 +63,16 @@ export default function TransicaoItensProduto() {
     return (
         <div>
             {addItensProduto}
-            <Box 
-            sx={{
-                 mt: 1,                 
-                  }}>
+            <Box
+                sx={{
+                    display: "flex",
+                    flexDirection: { xs: 'column', md: 'row' },
+                    overflow: 'auto',
+                    borderRadius: '12px',
+                    boxShadow: 1,                    
+                    paddingTop: '2%'                  
+                }}
+            >
                 <List>
                     <TransitionGroup>
                         {adicionaItensProduto.map((item) => (
@@ -76,6 +83,6 @@ export default function TransicaoItensProduto() {
                     </TransitionGroup>
                 </List>
             </Box>
-        </div>
+        </div >
     );
 }

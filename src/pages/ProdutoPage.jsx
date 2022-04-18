@@ -13,24 +13,19 @@ export default function ProdutoPage() {
 
     return (
         <Box
-            sx={{                
-                direction: "column",                
-                bgcolor: 'white',
+            sx={{
+                width: [100, 200, 300, 400, 500],               
                 paddingTop: '2%'
             }}
         >
             <h1>Cadastrar Produto</h1>
-            <Grid
-                sx={{                   
-                    width: '100%',                    
-                }}
-            >
+            <Grid>
                 <NomeProduto />
                 <ValorProduto />
                 <CategoriaSelect />
                 <UnidadeMedida />
-                <ItensProduto />                 
-                <TransicaoItensProduto />            
+                <ItensProduto />
+                <TransicaoItensProduto />
             </Grid>
             <Box>
                 <ButtonProduto />
