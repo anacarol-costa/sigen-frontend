@@ -20,6 +20,7 @@ import ListaUsuario from "./pages/usuario/ListaUsuario";
 import UsuarioPage from "./pages/usuario/UsuarioPage";
 import AreaRestrita from "./pages/administrador/AreaRestrita";
 import CardapioUploadPage from "./pages/CardapioUploadPage";
+import CarrosselUploadPage from "./pages/CarrosselUploadPage";
 
 const rootElement = document.getElementById("root");
 
@@ -56,7 +57,8 @@ render(
               <Route path="administrador" element={<AdministradorPage />} />
               <Route path="usuarios" element={<ListaUsuario />} />
               <Route path="novo-usuario" element={<UsuarioPage />} />    
-              <Route path="cardapio" element={<CardapioUploadPage />} />         
+              <Route path="cardapio" element={<CardapioUploadPage />} />  
+              <Route path="carrossel" element={<CarrosselUploadPage />} />       
             </Route>
           </Route>
           <Route path="*" element={<NotFoundPage />} />
