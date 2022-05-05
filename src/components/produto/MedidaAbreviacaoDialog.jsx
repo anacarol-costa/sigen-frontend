@@ -12,12 +12,14 @@ export default function MedidaAbreviacaoDialog(props) {
 
     const validacaoAbreviacaoMedida = Yup.object().shape({
         abreviacao: Yup.string()
-            .required('campo obrigatório')
+            .required('campo obrigatório'),
+        descricao: Yup.string()
+            .required('campo obrigatório'),
     })
 
     const cadastrarMedidaAbreviacao = async (abreviacao) => {
         try {
-            await axiosComAutorizacao.post("/unidades-medida", abreviacao);            
+            await axiosComAutorizacao.post("/unidades-medida", abreviacao);
             dispatch(mostrarMensagemSucesso('Abreviação de unidade de medida cadastrada com sucesso.'));
             props.fecharDialog();
             await props.atualizarAbreviacaoMedida();
@@ -42,15 +44,27 @@ export default function MedidaAbreviacaoDialog(props) {
             aria-labelledby="responsive-dialog-title"
         >
             <DialogTitle id="responsive-dialog-title">
-                {"Escreva o nome da nova abreviação de unidade de medida"}
+                Cadastro Unidade Medida
             </DialogTitle>
             <DialogContent>
+                <TextField
+                    required
+                    variant="standard"
+                    id="descricao-unidade-medida"
+                    label="Descrição"
+                    type="string"
+                    {...register('descricao')}
+                    error={errors.descricao ? true : false}
+                />
+                <Typography variant="inherit" color="#d32f2f">
+                    {errors.descricao?.message}
+                </Typography>
                 <DialogContentText>
                     <TextField
                         required
                         variant="standard"
                         id="nome-abreviacaoMedida"
-                        label="Abreviação de unidade de medida"
+                        label="Abreviação"
                         type="text"
                         {...register('abreviacao')}
                         error={errors.abreviacao ? true : false}

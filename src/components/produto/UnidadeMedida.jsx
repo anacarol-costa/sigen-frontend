@@ -31,31 +31,16 @@ export default function UnidadeMedida() {
   };
 
   const validacaoUnidade = Yup.object().shape({
-    descricao: Yup.string()
-      .required('campo obrigatório'),
-
     abreviacao: Yup.string()
       .required('campo obrigatório')
   })
 
   const {
     register,
-    handleSubmit,
     formState: { errors }
   } = useForm({
     resolver: yupResolver(validacaoUnidade)
   })
-
-  const cadastrarUnidadeMedida = async (unidadeMedida) => {
-    try {
-      await axiosSemAturozicao.post("/unidades-medida", unidadeMedida)
-      dispatch(mostrarMensagemSucesso('Unidade de medida cadastrada com sucesso.'))
-      navigate('/home');
-    } catch (error) {
-      console.error(error);
-      dispatch(mostrarMensagemErro('Erro ao tentar cadastrar unidade de medida.'))
-    }
-  }
 
   const recuperarAbreviacaoMedidas = async () => {
     try {
@@ -69,65 +54,46 @@ export default function UnidadeMedida() {
   return (
     <Box
       sx={{
-
         paddingTop: "3%",
         rowGap: 3,
       }}
     >
-      <Typography
-        variant='subtitle1'
-      >Unidade de Medida:</Typography>
-      <Box>
-        <TextField
-          required
-          sx={{
-            width: '30%'
-          }}
-          id="descricao-unidade-medida"
-          label="Descrição"
-          type="string"
-          variant="filled"
-          {...register('descricao')}
-          error={errors.descricao ? true : false}
-        />
-        <Typography variant="inherit" color="#d32f2f">
-          {errors.descricao?.message}
-        </Typography>
-        <MedidaAbreviacaoDialog mostrarDialog={open} fecharDialog={handleClose} atualizarAbreviacaoMedidas={recuperarAbreviacaoMedidas} />
-        <FormControl
-          sx={{
-            width: '30vw',
-          }}
-        >
-          <InputLabel
-            id="demo-simple-select-label"
-          >
-            Abreviação
-          </InputLabel>
-          <Select
-            required
+        <Box>
+            <MedidaAbreviacaoDialog mostrarDialog={open} fecharDialog={handleClose} atualizarAbreviacaoMedidas={recuperarAbreviacaoMedidas} />
+          <FormControl
             sx={{
-              m: 1,
-              width: '60%',
+              width: '30vw',
             }}
-            labelId="abreviacao-select-label"
-            id="abreviacao-simple-select"
-            label="Abreviação"
-            type="object"
-            variant="filled"
-            {...register('abreviacao')}
-            error={errors.abreviacao ? true : false}
           >
-            <MenuItem onClick={handleClickOpen}>Acrescentar abreviação de medida</MenuItem>
-            {abreviacaoMedidas.map(abreviacao =>
-            (<MenuItem
-              key={abreviacaoMedida.id} value={abreviacaoMedida.id}>
-              {abreviacaoMedida.abreviacao}
-            </MenuItem>)
-            )}
-          </Select>
-        </FormControl>
-      </Box>
+            <InputLabel
+              id="demo-simple-select-label"
+            >
+              Abreviação
+            </InputLabel>
+            <Select
+              required
+              sx={{
+                m: 1,
+                width: '60%',
+              }}
+              labelId="abreviacao-select-label"
+              id="abreviacao-simple-select"
+              label="Abreviação"
+              type="object"
+              variant="filled"
+              {...register('abreviacao')}
+              error={errors.abreviacao ? true : false}
+            >
+              <MenuItem onClick={handleClickOpen}>Acrescentar abreviação de medida</MenuItem>
+              {abreviacaoMedidas.map(abreviacao =>
+              (<MenuItem
+                key={abreviacaoMedida.id} value={abreviacaoMedida.id}>
+                {abreviacaoMedida.abreviacao}
+              </MenuItem>)
+              )}
+            </Select>
+          </FormControl>
+        </Box>
     </Box>
   )
 }
