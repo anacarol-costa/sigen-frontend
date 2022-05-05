@@ -1,20 +1,14 @@
 import React, {useEffect, useState} from 'react'
 import * as Yup from "yup";
 import {yupResolver} from "@hookform/resolvers/yup";
-import {useNavigate} from 'react-router-dom'
 import {useForm} from 'react-hook-form';
 import {Box, FormControl, InputLabel, MenuItem, Select} from '@mui/material';
-import {useDispatch} from 'react-redux';
 import axiosComAutorizacao from '../../util/axios/axiosComAutorizacao';
 import UnidadeMedidaDialog from './UnidadeMedidaDialog';
 
 export default function UnidadeMedida() {
   const [open, setOpen] = useState(false);
-  const abreviacaoMedida = useState({ abreviacao: '' });
-  const [abreviacaoMedidas, setAbreviacaoMedidas] = useState([]);
-
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const [unidadesMedida, setUnidadesMedida] = useState([]);
 
   useEffect(async () => {
     await recuperarUnidadesMedida();
@@ -43,7 +37,7 @@ export default function UnidadeMedida() {
   const recuperarUnidadesMedida = async () => {
     try {
       const { data } = await axiosComAutorizacao.get("/unidades-medida");
-      setAbreviacaoMedidas(data);
+      setUnidadesMedida(data);
     } catch (error) {
       console.log(error);
     }
@@ -80,12 +74,15 @@ export default function UnidadeMedida() {
               {...register('abreviacao')}
               error={errors.abreviacao ? true : false}
             >
-              <MenuItem onClick={handleClickOpen}>Acrescentar abreviação de medida</MenuItem>
-              {abreviacaoMedidas.map(abreviacao =>
-              (<MenuItem
-                key={abreviacaoMedida.id} value={abreviacaoMedida.id}>
-                {abreviacaoMedida.abreviacao}
-              </MenuItem>)
+              <MenuItem onClick={handleClickOpen}>Criar Undiade Medida</MenuItem>
+              {unidadesMedida.map((unidadeMedida) =>
+                (
+                  <MenuItem
+                    key={unidadeMedida.id}
+                    value={unidadeMedida.id}>
+                    {unidadeMedida.descricao}
+                  </MenuItem>
+                )
               )}
             </Select>
           </FormControl>
