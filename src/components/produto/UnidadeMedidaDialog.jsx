@@ -7,7 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField, Typography } from '@mui/material';
 
-export default function MedidaAbreviacaoDialog(props) {
+export default function UnidadeMedidaDialog(props) {
     const dispatch = useDispatch();
 
     const validacaoAbreviacaoMedida = Yup.object().shape({

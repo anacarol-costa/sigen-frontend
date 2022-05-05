@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import * as Yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useNavigate } from 'react-router-dom'
-import { useForm } from 'react-hook-form';
-import { Box, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
-import { useDispatch } from 'react-redux';
-import { mostrarMensagemErro, mostrarMensagemSucesso } from '../../store/snackbar-reducer';
-import axiosSemAturozicao from '../../util/axios/axiosSemAutorizacao';
+import {yupResolver} from "@hookform/resolvers/yup";
+import {useNavigate} from 'react-router-dom'
+import {useForm} from 'react-hook-form';
+import {Box, FormControl, InputLabel, MenuItem, Select} from '@mui/material';
+import {useDispatch} from 'react-redux';
 import axiosComAutorizacao from '../../util/axios/axiosComAutorizacao';
-import MedidaAbreviacaoDialog from './MedidaAbreviacaoDialog';
+import UnidadeMedidaDialog from './UnidadeMedidaDialog';
 
 export default function UnidadeMedida() {
   const [open, setOpen] = useState(false);
@@ -59,16 +57,14 @@ export default function UnidadeMedida() {
       }}
     >
         <Box>
-            <MedidaAbreviacaoDialog mostrarDialog={open} fecharDialog={handleClose} atualizarAbreviacaoMedidas={recuperarAbreviacaoMedidas} />
+            <UnidadeMedidaDialog mostrarDialog={open} fecharDialog={handleClose} atualizarAbreviacaoMedidas={recuperarAbreviacaoMedidas} />
           <FormControl
             sx={{
               width: '30vw',
             }}
           >
-            <InputLabel
-              id="demo-simple-select-label"
-            >
-              Abreviação
+            <InputLabel id="demo-simple-select-label" >
+              Unidade Medida
             </InputLabel>
             <Select
               required
