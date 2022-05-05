@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Box, FilledInput, FormControl, InputAdornment, InputLabel, TextField } from '@mui/material';
+import React from 'react';
+import { Box, TextField } from '@mui/material';
 
 
 export default function NomeProduto(props) {
@@ -10,7 +10,7 @@ export default function NomeProduto(props) {
             sx={{
                 display: 'inline-flex',
                 paddingTop: "5%",
-                rowGap: 3,  
+                rowGap: 3,
             }}
         >
             <div>

@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Box, Button } from '@mui/material';
+import React from 'react';
+import {Box, Button} from '@mui/material';
 
 export default function ButtonProduto() {
 

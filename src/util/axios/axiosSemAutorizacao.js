@@ -1,6 +1,5 @@
 import axios from 'axios';
-import store from "../../store/store";
-import {LOADING_REDUCER} from "../../store/loading-reducer";
+
 import axiosUtil from "./axiosUtil";
 
 const axiosSemAturozicao = axios.create({

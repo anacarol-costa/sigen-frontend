@@ -1,10 +1,10 @@
-import { Box, FormControl, InputLabel, MenuItem, Select, TextField, Typography, useMediaQuery } from "@mui/material";
-import { React, useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import {Box, FormControl, InputLabel, MenuItem, Select} from "@mui/material";
+import {React, useEffect, useState} from "react";
+import {useForm} from "react-hook-form";
 import * as Yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import {yupResolver} from "@hookform/resolvers/yup";
+import {useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
 import axiosComAutorizacao from "../../util/axios/axiosComAutorizacao";
 import CategoriaDialog from "./CategoriaDialog";
 
@@ -58,8 +58,8 @@ export default function CategoriaSelect() {
       sx={{
         display: 'inline-grid',
         paddingTop: "3%",
-        rowGap: 3,       
-        width:'40%'                  
+        rowGap: 3,
+        width:'40%'
       }}
     >
       <CategoriaDialog mostrarDialog={open} fecharDialog={handleClose} atualizarCategoria={recuperarCategoria} />
