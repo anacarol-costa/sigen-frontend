@@ -17,12 +17,12 @@ export default function UnidadeMedidaDialog(props) {
             .required('campo obrigatório'),
     })
 
-    const cadastrarMedidaAbreviacao = async (abreviacao) => {
+    const cadastrarMedidaAbreviacao = async (unidadeMedida) => {
         try {
-            await axiosComAutorizacao.post("/unidades-medida", abreviacao);
+            await axiosComAutorizacao.post("/unidades-medida", unidadeMedida);
             dispatch(mostrarMensagemSucesso('Abreviação de unidade de medida cadastrada com sucesso.'));
             props.fecharDialog();
-            await props.atualizarAbreviacaoMedida();
+            await props.atualizarAbreviacaoMedidas();
         } catch (error) {
             console.log(error);
             dispatch(mostrarMensagemErro('Erro ao tentar cadastrar de unidade de medida'));

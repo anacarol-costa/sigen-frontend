@@ -17,7 +17,7 @@ export default function UnidadeMedida() {
   const dispatch = useDispatch();
 
   useEffect(async () => {
-    await recuperarAbreviacaoMedidas();
+    await recuperarUnidadesMedida();
   }, [])
 
   const handleClickOpen = () => {
@@ -40,7 +40,7 @@ export default function UnidadeMedida() {
     resolver: yupResolver(validacaoUnidade)
   })
 
-  const recuperarAbreviacaoMedidas = async () => {
+  const recuperarUnidadesMedida = async () => {
     try {
       const { data } = await axiosComAutorizacao.get("/unidades-medida");
       setAbreviacaoMedidas(data);
@@ -57,12 +57,12 @@ export default function UnidadeMedida() {
       }}
     >
         <Box>
-            <UnidadeMedidaDialog mostrarDialog={open} fecharDialog={handleClose} atualizarAbreviacaoMedidas={recuperarAbreviacaoMedidas} />
-          <FormControl
-            sx={{
-              width: '30vw',
-            }}
-          >
+            <UnidadeMedidaDialog
+                mostrarDialog={open}
+                fecharDialog={handleClose}
+                atualizarAbreviacaoMedidas={recuperarUnidadesMedida}
+            />
+          <FormControl sx={{width: '30vw'}} >
             <InputLabel id="demo-simple-select-label" >
               Unidade Medida
             </InputLabel>
