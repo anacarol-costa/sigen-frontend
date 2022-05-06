@@ -3,8 +3,8 @@ import * as Yup from "yup";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {useForm} from 'react-hook-form';
 import {Box, FormControl, InputLabel, MenuItem, Select} from '@mui/material';
-import axiosComAutorizacao from '../../../util/axios/axiosComAutorizacao';
-import UnidadeMedidaDialog from '../UnidadeMedidaDialog';
+import axiosComAutorizacao from '../../../util/axios/axiosComAutorizacao.js';
+import UnidadeMedidaDialog from '../unidadeMedidaProduto/UnidadeMedidaDialog';
 
 export default function UnidadeMedida() {
   const [open, setOpen] = useState(false);

@@ -6,7 +6,7 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import axiosComAutorizacao from "../../../util/axios/axiosComAutorizacao";
-import CategoriaDialog from "./CategoriaDialog";
+import CategoriaDialog from "../categoriaProduto/CategoriaDialog";
 
 export default function CategoriaSelect() {
 

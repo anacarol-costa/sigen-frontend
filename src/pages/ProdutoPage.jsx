@@ -1,12 +1,12 @@
 import { Grid } from "@mui/material";
 import Box from "@mui/material/Box";
 import ButtonProduto from "../components/produto/ButtonProduto";
-import CategoriaSelect from "../components/produto/CategoriaSelect";
-import ItensProduto from "../components/produto/ItensProduto";
+import CategoriaSelect from "../components/produto/categoriaProduto/CategoriaSelect";
+import ItensProduto from "../components/produto/itemProduto/ItensProduto";
 import NomeProduto from "../components/produto/NomeProduto";
-import UnidadeMedida from "../components/produto/UnidadeMedida";
+import UnidadeMedida from "../components/produto/unidadeMedidaProduto/UnidadeMedida";
 import ValorProduto from "../components/produto/ValorProduto";
-import ItemProdutoList from "../components/produto/ItemProdutoList";
+import ItemProdutoList from "../components/produto/itemProduto/ItemProdutoList";
 
 export default function ProdutoPage() {
 

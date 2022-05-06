@@ -1,8 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from "react-redux";
-import { mostrarMensagemErro, mostrarMensagemSucesso } from '../../store/snackbar-reducer';
-import axiosComAutorizacao from '../../util/axios/axiosComAutorizacao';
+import { mostrarMensagemErro, mostrarMensagemSucesso } from '../../../store/snackbar-reducer';
+import axiosComAutorizacao from '../../../util/axios/axiosComAutorizacao.js';
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField, Typography } from '@mui/material';

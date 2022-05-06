@@ -1,8 +1,7 @@
-import ItensProduto from "./ItensProduto";
+import ItensProduto from "../itemProduto/ItensProduto";
 import {Button, List} from "@mui/material";
 import React, {useState} from "react";
 import {Box} from "@mui/system";
-import Collapse from "@mui/material/Collapse";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
 
