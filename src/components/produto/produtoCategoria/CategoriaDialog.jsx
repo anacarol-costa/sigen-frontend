@@ -3,9 +3,9 @@ import { Button, Dialog, DialogActions, DialogContent, DialogContentText, Dialog
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import axiosComAutorizacao from "../../util/axios/axiosComAutorizacao";
+import axiosComAutorizacao from "../../../util/axios/axiosComAutorizacao";
 import { useDispatch } from "react-redux";
-import { mostrarMensagemErro, mostrarMensagemSucesso } from "../../store/snackbar-reducer";
+import { mostrarMensagemErro, mostrarMensagemSucesso } from "../../../store/snackbar-reducer";
 
 export default function CategoriaDialog(props) {
   const theme = useTheme();
