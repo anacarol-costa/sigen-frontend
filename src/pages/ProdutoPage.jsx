@@ -7,9 +7,13 @@ import React, {useState} from "react";
 import * as Yup from "yup";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
+import axiosComAutorizacao from "../util/axios/axiosComAutorizacao";
+import {useDispatch} from "react-redux";
+import {mostrarMensagemErro, mostrarMensagemSucesso} from "../store/snackbar-reducer";
 
 export default function ProdutoPage() {
     const [valores, setValores] = useState({ valor: '' });
+    const dispatch = useDispatch();
 
     const handleChange = (prop) => (event) => {
         setValores({ ...valores, [prop]: event.target.value });
@@ -24,8 +28,18 @@ export default function ProdutoPage() {
 
     })
 
-    const cadastrarProduto = (produto) => {
+    const cadastrarProduto = async (produto) => {
         console.log(produto);
+        const novoProduto = {...produto};
+        novoProduto.valorBase = 0;
+        try {
+            await axiosComAutorizacao.post('/produtos', novoProduto);
+            dispatch(mostrarMensagemSucesso('Usuário excluído com sucesso.'));
+        } catch (error) {
+            console.error('Erro ao cadastrar novo produto', error);
+            dispatch(mostrarMensagemErro('Erro ao cadastrar novo produto'));
+        }
+
     }
 
     const {
