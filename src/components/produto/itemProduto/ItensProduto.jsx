@@ -1,5 +1,7 @@
 import { Box, TextField, Typography } from '@mui/material';
 import React from 'react';
+import OpcaoProduto from "../opcao/OpcaoProduto";
+import OpcaoProdutoList from "../opcao/OpcaoProdutoList";
 
 export default function ItensProduto(props) {
 
@@ -22,23 +24,7 @@ export default function ItensProduto(props) {
                 label="Descrição do produto"
                 type="text"
             />
-            <TextField
-                sx={{width: '140%'}}
-                required
-                variant="filled"
-                id="opcao-do-produto"
-                label="Opção"
-                type="text"
-            />
-            <TextField
-                sx={{width: '140%'}}
-                required
-                variant="filled"
-                id="valor-da-opcao"
-                label="Valor"
-                type="text"
-            />
-
+            <OpcaoProdutoList />
         </Box>
     );
 }
