@@ -1,4 +1,4 @@
-import {FilledInput, Grid, InputAdornment, TextField} from "@mui/material";
+import {Button, FilledInput, Grid, InputAdornment, TextField} from "@mui/material";
 import Box from "@mui/material/Box";
 import ButtonProduto from "../components/produto/ButtonProduto";
 import CategoriaSelect from "../components/produto/categoriaProduto/CategoriaSelect";
@@ -8,12 +8,36 @@ import UnidadeMedida from "../components/produto/unidadeMedidaProduto/UnidadeMed
 // import ValorProduto from "../components/produto/ValorProduto";
 import ItemProdutoList from "../components/produto/itemProduto/ItemProdutoList";
 import React, {useState} from "react";
+import * as Yup from "yup";
+import {useForm} from "react-hook-form";
+import {yupResolver} from "@hookform/resolvers/yup";
 
 export default function ProdutoPage() {
     const [valores, setValores] = useState({ valor: '' });
+
     const handleChange = (prop) => (event) => {
         setValores({ ...valores, [prop]: event.target.value });
     };
+
+    const validacaoSchema = Yup.object().shape({
+        nome: Yup.string().required('campo obrigatório'),
+        valor: Yup.string().required('campo obrigatório'),
+        categoria: Yup.string().required('campo obrigatório'),
+        unidadeMedida: Yup.string().required('campo obrigatório'),
+
+    })
+
+    const cadastrarProduto = (produto) => {
+        console.log(produto);
+    }
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors }
+    } = useForm({
+        resolver: yupResolver(validacaoSchema)
+    });
 
 
     return (
@@ -48,7 +72,12 @@ export default function ProdutoPage() {
                 <ItemProdutoList />
             </Grid>
             <Box>
-                <ButtonProduto />
+                <Button
+                    variant="contained"
+                    onClick={handleSubmit(cadastrarProduto)}
+                >
+                    Enviar
+                </Button>
             </Box>
         </Box>
     )
