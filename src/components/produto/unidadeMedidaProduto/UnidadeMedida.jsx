@@ -1,7 +1,4 @@
 import React, {useEffect, useState} from 'react'
-import * as Yup from "yup";
-import {yupResolver} from "@hookform/resolvers/yup";
-import {useForm} from 'react-hook-form';
 import {Box, FormControl, InputLabel, MenuItem, Select, Typography} from '@mui/material';
 import axiosComAutorizacao from '../../../util/axios/axiosComAutorizacao.js';
 import UnidadeMedidaDialog from '../unidadeMedidaProduto/UnidadeMedidaDialog';
