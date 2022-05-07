@@ -34,8 +34,8 @@ export default function ItensProduto(props) {
                 sx={{width: '140%'}}
                 required
                 variant="filled"
-                id="opcao-do-produto"
-                label="Opção"
+                id="valor-da-opcao"
+                label="Valor"
                 type="text"
             />
 

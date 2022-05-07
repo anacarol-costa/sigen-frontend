@@ -1,11 +1,7 @@
 import {Button, FilledInput, Grid, InputAdornment, TextField, Typography} from "@mui/material";
 import Box from "@mui/material/Box";
-import ButtonProduto from "../components/produto/ButtonProduto";
 import CategoriaSelect from "../components/produto/categoriaProduto/CategoriaSelect";
-import ItensProduto from "../components/produto/itemProduto/ItensProduto";
-// import NomeProduto from "../components/produto/NomeProduto";
 import UnidadeMedida from "../components/produto/unidadeMedidaProduto/UnidadeMedida";
-// import ValorProduto from "../components/produto/ValorProduto";
 import ItemProdutoList from "../components/produto/itemProduto/ItemProdutoList";
 import React, {useState} from "react";
 import * as Yup from "yup";
@@ -24,6 +20,7 @@ export default function ProdutoPage() {
         valor: Yup.string().required('campo obrigatório'),
         categoria: Yup.string().required('campo obrigatório'),
         unidadeMedida: Yup.string().required('campo obrigatório'),
+
 
     })
 
@@ -50,7 +47,6 @@ export default function ProdutoPage() {
         >
             <h1>Cadastrar Produto</h1>
             <Grid>
-                {/*<NomeProduto />*/}
                 <TextField
                     required
                     sx={{width: '140%'}}
@@ -63,7 +59,6 @@ export default function ProdutoPage() {
                 <Typography variant="inherit" color="#d32f2f">
                     {errors.nome?.message}
                 </Typography>
-                {/*<ValorProduto />*/}
                 <FilledInput
                     sx={{ width: '140%'}}
                     id="valor-produto"
@@ -77,7 +72,6 @@ export default function ProdutoPage() {
                 </Typography>
                 <CategoriaSelect formParams={{errors, register}} />
                 <UnidadeMedida formParams={{errors, register}}/>
-                <ItensProduto />
                 <ItemProdutoList />
             </Grid>
             <Box>

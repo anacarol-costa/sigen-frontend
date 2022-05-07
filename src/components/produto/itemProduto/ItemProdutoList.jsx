@@ -7,7 +7,7 @@ import IconButton from "@mui/material/IconButton";
 
 export default function ItemProdutoList() {
 
-    const [itensProduto, setItensProduto] = useState([]);
+    const [itensProduto, setItensProduto] = useState([<ItensProduto />]);
 
     const adicionarNovosCamposProduto = () => {
         setItensProduto([...itensProduto, <ItensProduto/>])
