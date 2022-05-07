@@ -1,14 +1,14 @@
 import {Box} from "@mui/system";
-import {Button, TextField} from "@mui/material";
+import {TextField} from "@mui/material";
 import React from "react";
 
 export default function OpcaoProduto() {
 
 
     return(
-        <Box>
+        <Box sx={{display: 'flex', rowGap: '10'}}>
             <TextField
-                sx={{width: '140%'}}
+                sx={{width: '80%'}}
                 required
                 variant="filled"
                 id="opcao-do-produto"
@@ -16,7 +16,7 @@ export default function OpcaoProduto() {
                 type="text"
             />
             <TextField
-                sx={{width: '140%'}}
+                sx={{width: '80%'}}
                 required
                 variant="filled"
                 id="valor-da-opcao"

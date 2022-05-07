@@ -1,6 +1,5 @@
-import { Box, TextField, Typography } from '@mui/material';
+import {Box, TextField, Typography} from '@mui/material';
 import React from 'react';
-import OpcaoProduto from "../opcao/OpcaoProduto";
 import OpcaoProdutoList from "../opcao/OpcaoProdutoList";
 
 export default function ItensProduto(props) {
@@ -17,7 +16,7 @@ export default function ItensProduto(props) {
                 Itens do produto:
             </Typography>
             <TextField
-                sx={{width: '140%'}}
+                sx={{width: '100%'}}
                 required
                 variant="filled"
                 id="descricao-do-produto"

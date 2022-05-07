@@ -3,6 +3,7 @@ import {Box} from "@mui/system";
 import {Button, List} from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
+import AddIcon from '@mui/icons-material/Add';
 import OpcaoProduto from "./OpcaoProduto";
 
 export default function OpcaoProdutoList() {
@@ -21,27 +22,32 @@ export default function OpcaoProdutoList() {
     return (
         <Box>
             <List>
-                {opcoesProduto.map((opcoesProduto, index) => (
-                    <Box key={index}>
-                        {opcoesProduto}
+                {opcoesProduto.map((opcaoProduto, index) => (
+                    <Box key={index} sx={{display: 'flex'}}>
+                        {opcaoProduto}
                         <IconButton
-                            color="secondary"
+                            onClick={adicionarNovosCamposOpcaoProduto}
                             edge="start"
                             aria-label="delete"
                             title="Deletar"
-                            onClick={() => removerOpcaoProduto(index)}
                         >
-                            <DeleteIcon />
+                            <AddIcon />
                         </IconButton>
+
+                        {opcoesProduto.length > 1 &&
+                            <IconButton
+                                color="secondary"
+                                edge="start"
+                                aria-label="delete"
+                                title="Deletar"
+                                onClick={() => removerOpcaoProduto(index)}
+                            >
+                                <DeleteIcon />
+                            </IconButton>
+                        }
                     </Box>
                 ))}
             </List>
-            <Button
-                variant="contained"
-                onClick={adicionarNovosCamposOpcaoProduto}
-            >
-                nova opcao produto
-            </Button>
         </Box>
     )
 }

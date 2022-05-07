@@ -4,6 +4,7 @@ import React, {useState} from "react";
 import {Box} from "@mui/system";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
+import AddIcon from "@mui/icons-material/Add";
 
 export default function ItemProdutoList() {
 
@@ -21,29 +22,32 @@ export default function ItemProdutoList() {
 
     return (
         <Box>
-            <Button
-                variant="contained"
-                onClick={adicionarNovosCamposProduto}
-            >
-               Novo itens produto
-            </Button>
             <List>
                 {itensProduto.map((itemProduto, index) => (
-                    <Box key={index}>
+                    <Box key={index} sx={{display: 'flex'}}>
                         {itemProduto}
                         <IconButton
-                            color="secondary"
+                            onClick={adicionarNovosCamposProduto}
                             edge="start"
                             aria-label="delete"
                             title="Deletar"
-                            onClick={() => removerItemProduto(index)}
                         >
-                            <DeleteIcon />
+                            <AddIcon />
                         </IconButton>
+                        {itensProduto.length > 1 &&
+                            <IconButton
+                                color="secondary"
+                                edge="start"
+                                aria-label="delete"
+                                title="Deletar"
+                                onClick={() => removerItemProduto(index)}
+                            >
+                                <DeleteIcon />
+                            </IconButton>
+                        }
                     </Box>
                 ))}
             </List>
-
         </Box>
     )
 }
