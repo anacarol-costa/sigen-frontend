@@ -6,7 +6,6 @@ export default function ItensProduto(props) {
     return (
         <Box
             sx={{
-                display: 'inline-grid',
                 paddingTop: "3%",
                 rowGap: 3,
                 paddingBottom: "3%",
@@ -16,9 +15,7 @@ export default function ItensProduto(props) {
                 Itens do produto:
             </Typography>
             <TextField
-                sx={{
-                    width: '90%'
-                }}
+                sx={{width: '140%'}}
                 required
                 variant="filled"
                 id="descricao-do-produto"
@@ -26,9 +23,7 @@ export default function ItensProduto(props) {
                 type="text"
             />
             <TextField
-                sx={{
-                    width: '90%'
-                }}
+                sx={{width: '140%'}}
                 required
                 variant="filled"
                 id="opcao-do-produto"
@@ -36,16 +31,14 @@ export default function ItensProduto(props) {
                 type="text"
             />
             <TextField
-                sx={{
-                    width: '90%'
-                }}
+                sx={{width: '140%'}}
                 required
                 variant="filled"
                 id="opcao-do-produto"
                 label="Opção"
                 type="text"
             />
-           
+
         </Box>
     );
 }

@@ -3,20 +3,15 @@ import {React, useEffect, useState} from "react";
 import {useForm} from "react-hook-form";
 import * as Yup from "yup";
 import {yupResolver} from "@hookform/resolvers/yup";
-import {useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
 import axiosComAutorizacao from "../../../util/axios/axiosComAutorizacao";
 import CategoriaDialog from "../categoriaProduto/CategoriaDialog";
 
 export default function CategoriaSelect() {
 
   const [open, setOpen] = useState(false);
-  const categoria = useState({ categoria: '' });
   const [categorias, setCategorias] = useState([]);
 
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   useEffect(async () => {
     await recuperarCategoria();
@@ -37,7 +32,6 @@ export default function CategoriaSelect() {
 
   const {
     register,
-    handleSubmit,
     formState: { errors }
   } = useForm({
     resolver: yupResolver(validacaoCategoria)
@@ -54,21 +48,14 @@ export default function CategoriaSelect() {
   }
 
   return (
-    <Box
-      sx={{
-        display: 'inline-grid',
-        paddingTop: "3%",
-        rowGap: 3,
-        width:'40%'
-      }}
-    >
-      <CategoriaDialog mostrarDialog={open} fecharDialog={handleClose} atualizarCategoria={recuperarCategoria} />
+    <Box>
+      <CategoriaDialog
+          mostrarDialog={open}
+          fecharDialog={handleClose}
+          atualizarCategoria={recuperarCategoria}
+      />
 
-      <FormControl
-        sx={{
-          width: '100%'
-        }}
-      >
+      <FormControl sx={{width: '100%'}} >
         <InputLabel
           id="demo-simple-select-label"
         >
@@ -76,10 +63,7 @@ export default function CategoriaSelect() {
         </InputLabel>
         <Select
           required
-          sx={{
-            m: 1,
-            width: '60%',
-          }}
+          sx={{width: '140%'}}
           labelId="categoria-select-label"
           id="categoria-simple-select"
           label="Categoria"

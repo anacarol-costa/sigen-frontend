@@ -44,49 +44,39 @@ export default function UnidadeMedida() {
   }
 
   return (
-    <Box
-      sx={{
-        paddingTop: "3%",
-        rowGap: 3,
-      }}
-    >
-        <Box>
-            <UnidadeMedidaDialog
-                mostrarDialog={open}
-                fecharDialog={handleClose}
-                atualizarAbreviacaoMedidas={recuperarUnidadesMedida}
-            />
-          <FormControl sx={{width: '30vw'}} >
-            <InputLabel id="demo-simple-select-label" >
-              Unidade Medida
-            </InputLabel>
-            <Select
-              required
-              sx={{
-                m: 1,
-                width: '60%',
-              }}
-              labelId="abreviacao-select-label"
-              id="abreviacao-simple-select"
-              label="Abreviação"
-              type="object"
-              variant="filled"
-              {...register('abreviacao')}
-              error={errors.abreviacao ? true : false}
-            >
-              <MenuItem onClick={handleClickOpen}>Criar Undiade Medida</MenuItem>
-              {unidadesMedida.map((unidadeMedida) =>
-                (
-                  <MenuItem
-                    key={unidadeMedida.id}
-                    value={unidadeMedida.id}>
-                    {unidadeMedida.descricao}
-                  </MenuItem>
-                )
-              )}
-            </Select>
-          </FormControl>
-        </Box>
+    <Box>
+        <UnidadeMedidaDialog
+            mostrarDialog={open}
+            fecharDialog={handleClose}
+            atualizarAbreviacaoMedidas={recuperarUnidadesMedida}
+        />
+      <FormControl sx={{width: '100%'}} >
+        <InputLabel id="demo-simple-select-label" >
+          Unidade Medida
+        </InputLabel>
+        <Select
+          required
+          sx={{width: '140%'}}
+          labelId="abreviacao-select-label"
+          id="abreviacao-simple-select"
+          label="Abreviação"
+          type="object"
+          variant="filled"
+          {...register('abreviacao')}
+          error={errors.abreviacao ? true : false}
+        >
+          <MenuItem onClick={handleClickOpen}>Criar Undiade Medida</MenuItem>
+          {unidadesMedida.map((unidadeMedida) =>
+            (
+              <MenuItem
+                key={unidadeMedida.id}
+                value={unidadeMedida.id}>
+                {unidadeMedida.descricao}
+              </MenuItem>
+            )
+          )}
+        </Select>
+      </FormControl>
     </Box>
   )
 }
