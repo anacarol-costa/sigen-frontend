@@ -2,13 +2,14 @@ import React, {useEffect, useState} from 'react'
 import * as Yup from "yup";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {useForm} from 'react-hook-form';
-import {Box, FormControl, InputLabel, MenuItem, Select} from '@mui/material';
+import {Box, FormControl, InputLabel, MenuItem, Select, Typography} from '@mui/material';
 import axiosComAutorizacao from '../../../util/axios/axiosComAutorizacao.js';
 import UnidadeMedidaDialog from '../unidadeMedidaProduto/UnidadeMedidaDialog';
 
-export default function UnidadeMedida() {
+export default function UnidadeMedida(props) {
   const [open, setOpen] = useState(false);
   const [unidadesMedida, setUnidadesMedida] = useState([]);
+  const {errors, register} = props.formParams;
 
   useEffect(async () => {
     await recuperarUnidadesMedida();
@@ -21,18 +22,6 @@ export default function UnidadeMedida() {
   const handleClose = () => {
     setOpen(false);
   };
-
-  const validacaoUnidade = Yup.object().shape({
-    abreviacao: Yup.string()
-      .required('campo obrigatório')
-  })
-
-  const {
-    register,
-    formState: { errors }
-  } = useForm({
-    resolver: yupResolver(validacaoUnidade)
-  })
 
   const recuperarUnidadesMedida = async () => {
     try {
@@ -62,10 +51,10 @@ export default function UnidadeMedida() {
           label="Abreviação"
           type="object"
           variant="filled"
-          {...register('abreviacao')}
-          error={errors.abreviacao ? true : false}
+          {...register('unidadeMedida')}
+          error={errors.unidadeMedida ? true : false}
         >
-          <MenuItem onClick={handleClickOpen}>Criar Undiade Medida</MenuItem>
+          <MenuItem onClick={handleClickOpen}>Criar Unidade de Medida</MenuItem>
           {unidadesMedida.map((unidadeMedida) =>
             (
               <MenuItem
@@ -76,6 +65,9 @@ export default function UnidadeMedida() {
             )
           )}
         </Select>
+        <Typography variant="inherit" color="#d32f2f">
+          {errors.unidadeMedida?.message}
+        </Typography>
       </FormControl>
     </Box>
   )

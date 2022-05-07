@@ -76,7 +76,7 @@ export default function ProdutoPage() {
                     {errors.valor?.message}
                 </Typography>
                 <CategoriaSelect formParams={{errors, register}} />
-                <UnidadeMedida />
+                <UnidadeMedida formParams={{errors, register}}/>
                 <ItensProduto />
                 <ItemProdutoList />
             </Grid>
