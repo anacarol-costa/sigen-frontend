@@ -1,4 +1,4 @@
-import {Button, FilledInput, Grid, InputAdornment, TextField} from "@mui/material";
+import {Button, FilledInput, Grid, InputAdornment, TextField, Typography} from "@mui/material";
 import Box from "@mui/material/Box";
 import ButtonProduto from "../components/produto/ButtonProduto";
 import CategoriaSelect from "../components/produto/categoriaProduto/CategoriaSelect";
@@ -57,16 +57,25 @@ export default function ProdutoPage() {
                     id="nome-produto"
                     label="Nome"
                     variant="filled"
+                    {...register('nome')}
+                    error={errors.nome ? true : false}
                 />
+                <Typography variant="inherit" color="#d32f2f">
+                    {errors.nome?.message}
+                </Typography>
                 {/*<ValorProduto />*/}
                 <FilledInput
                     sx={{ width: '140%'}}
                     id="valor-produto"
-                    value={valores.valor}
                     onChange={handleChange('valor')}
                     startAdornment={<InputAdornment position="start">R$</InputAdornment>}
+                    {...register('valor')}
+                    error={errors.valor ? true : false}
                 />
-                <CategoriaSelect />
+                <Typography variant="inherit" color="#d32f2f">
+                    {errors.valor?.message}
+                </Typography>
+                <CategoriaSelect formParams={{errors, register}} />
                 <UnidadeMedida />
                 <ItensProduto />
                 <ItemProdutoList />

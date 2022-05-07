@@ -1,15 +1,13 @@
-import {Box, FormControl, InputLabel, MenuItem, Select} from "@mui/material";
+import {Box, FormControl, InputLabel, MenuItem, Select, Typography} from "@mui/material";
 import {React, useEffect, useState} from "react";
-import {useForm} from "react-hook-form";
-import * as Yup from "yup";
-import {yupResolver} from "@hookform/resolvers/yup";
 import axiosComAutorizacao from "../../../util/axios/axiosComAutorizacao";
 import CategoriaDialog from "../categoriaProduto/CategoriaDialog";
 
-export default function CategoriaSelect() {
+export default function CategoriaSelect(props) {
 
   const [open, setOpen] = useState(false);
   const [categorias, setCategorias] = useState([]);
+  const { errors, register } = props.formParams;
 
 
 
@@ -24,19 +22,6 @@ export default function CategoriaSelect() {
   const handleClose = () => {
     setOpen(false);
   };
-
-  const validacaoCategoria = Yup.object().shape({
-    categoria: Yup.string()
-      .required('campo obrigatório')
-  })
-
-  const {
-    register,
-    formState: { errors }
-  } = useForm({
-    resolver: yupResolver(validacaoCategoria)
-  });
-
 
   const recuperarCategoria = async () => {
     try {
@@ -80,6 +65,9 @@ export default function CategoriaSelect() {
           </MenuItem>)
           )}
         </Select>
+        <Typography variant="inherit" color="#d32f2f">
+          {errors.categoria?.message}
+        </Typography>
       </FormControl>
     </Box>
   );
