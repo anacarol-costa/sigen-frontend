@@ -1,4 +1,4 @@
-import ItensProduto from "../itemProduto/ItensProduto";
+import ItemProdutoSelect from "../itemProduto/ItemProdutoSelect";
 import {List} from "@mui/material";
 import React, {useState} from "react";
 import {Box} from "@mui/system";
@@ -8,10 +8,10 @@ import AddIcon from "@mui/icons-material/Add";
 
 export default function ItemProdutoList() {
 
-    const [itensProduto, setItensProduto] = useState([<ItensProduto />]);
+    const [itensProduto, setItensProduto] = useState([<ItemProdutoSelect />]);
 
     const adicionarNovosCamposProduto = () => {
-        setItensProduto([...itensProduto, <ItensProduto/>])
+        setItensProduto([...itensProduto, <ItemProdutoSelect/>])
     }
 
     const removerItemProduto = (index) => {

@@ -4,9 +4,9 @@ import axiosComAutorizacao from '../../../util/axios/axiosComAutorizacao';
 import OpcaoProdutoList from "../opcao/OpcaoProdutoList";
 import ItemProdutoDialog from './ItemProdutoDialog';
 
-export default function ItensProduto(props) {
+export default function ItemProdutoSelect(props) {
     const [open, setOpen] = useState(false);
-    const [descricoesProduto, setDescricoesProduto] = useState([]);
+    const [itensProduto, setItensProduto] = useState([]);
     // const { errors, register } = props.formParams;
 
     useEffect(async () => {
@@ -24,14 +24,14 @@ export default function ItensProduto(props) {
     const recuperarDescricaoProduto = async () => {
         try {
           const { data } = await axiosComAutorizacao.get("/itens-opcao");
-          setDescricoesProduto(data);
+          setItensProduto(data);
         } catch (error) {
           console.log(error);
         }
       }
 
     return (
-        <Box>
+        <Box sx={{ width: '140%' }}>
 
             <Typography>
                 Itens do produto:
@@ -41,12 +41,11 @@ export default function ItensProduto(props) {
             fecharDialog={handleClose}
             atualizarDescricaoItemProduto={recuperarDescricaoProduto}
             />
-            <FormControl sx={{ width: '100%' }} >
+            <FormControl sx={{ width: '140%' }} >
                 <InputLabel id="demo-simple-select-label" >
                     Descrição
                 </InputLabel>
                 <Select
-                    sx={{ width: '100%' }}
                     required
                     variant="filled"
                     id="descricao-do-produto"
@@ -56,12 +55,12 @@ export default function ItensProduto(props) {
                 // error={errors.descricao ? true : false}
                 >
                     <MenuItem onClick={handleClickOpen}>Criar Descrição</MenuItem>
-                    {descricoesProduto.map((descricao) =>
+                    {itensProduto.map((itemProduto) =>
                     (
                         <MenuItem
-                            key={descricoesProduto.id}
-                            value={descricoesProduto.id}>
-                            {descricoesProduto.item}
+                            key={itemProduto.id}
+                            value={itemProduto.nome}>
+                            {itensProduto.descricao}
                         </MenuItem>
                     )
                     )}
