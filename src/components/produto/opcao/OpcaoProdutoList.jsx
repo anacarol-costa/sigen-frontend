@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Box} from "@mui/system";
-import {Button, List} from "@mui/material";
+import {List} from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from '@mui/icons-material/Add';
@@ -28,8 +28,8 @@ export default function OpcaoProdutoList() {
                         <IconButton
                             onClick={adicionarNovosCamposOpcaoProduto}
                             edge="start"
-                            aria-label="delete"
-                            title="Deletar"
+                            aria-label="add"
+                            title="Adicionar"
                         >
                             <AddIcon />
                         </IconButton>
