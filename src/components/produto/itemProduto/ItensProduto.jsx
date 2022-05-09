@@ -36,7 +36,7 @@ export default function ItensProduto(props) {
             <Typography>
                 Itens do produto:
             </Typography>
-            <ItemProdutoDialog 
+            <ItemProdutoDialog
             mostrarDialog={open}
             fecharDialog={handleClose}
             atualizarDescricaoItemProduto={recuperarDescricaoProduto}
@@ -70,7 +70,6 @@ export default function ItensProduto(props) {
                     {errors.descricao?.message}
                 </Typography> */}
             </FormControl>
-            <OpcaoProdutoList />
         </Box >
     );
 }

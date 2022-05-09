@@ -10,7 +10,7 @@ export default function OpcaoProduto() {
             <TextField
                 sx={{width: '80%'}}
                 required
-                variant="filled"
+                variant="standard"
                 id="opcao-do-produto"
                 label="Opção"
                 type="text"
@@ -18,7 +18,7 @@ export default function OpcaoProduto() {
             <TextField
                 sx={{width: '80%'}}
                 required
-                variant="filled"
+                variant="standard"
                 id="valor-da-opcao"
                 label="Valor"
                 type="text"

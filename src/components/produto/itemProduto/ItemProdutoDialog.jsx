@@ -5,11 +5,12 @@ import * as Yup from "yup";
 import axiosComAutorizacao from "../../../util/axios/axiosComAutorizacao";
 import { mostrarMensagemErro, mostrarMensagemSucesso } from "../../../store/snackbar-reducer";
 import { useForm } from "react-hook-form";
+import OpcaoProdutoList from "../opcao/OpcaoProdutoList";
 
 export default function ItemProdutoDialog(props) {
     const dispatch = useDispatch();
 
-    const validacaoItemProduto = Yup.object().shape({     
+    const validacaoItemProduto = Yup.object().shape({
         descricao: Yup.string()
             .required('campo obrigatório'),
     })
@@ -55,7 +56,8 @@ export default function ItemProdutoDialog(props) {
                 />
                 <Typography variant="inherit" color="#d32f2f">
                     {errors.descricao?.message}
-                </Typography>                
+                </Typography>
+                <OpcaoProdutoList />
             </DialogContent>
             <DialogActions>
                 <Button autoFocus onClick={props.fecharDialog}>
