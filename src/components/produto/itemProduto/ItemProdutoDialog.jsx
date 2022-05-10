@@ -15,9 +15,9 @@ export default function ItemProdutoDialog(props) {
             .required('campo obrigatório'),
     })
 
-    const cadastrarDescricaoProduto = async (descricao) => {
+    const cadastrarDescricaoProduto = async (itemOpcao) => {
         try {
-            // await axiosComAutorizacao.post("/itens-produto", descricao);
+            await axiosComAutorizacao.post("/itens-produto", itemOpcao);
             dispatch(mostrarMensagemSucesso('Descrição de produto cadastrada com sucesso.'));
             props.fecharDialog();
             await props.atualizarDescricaoItemProduto();

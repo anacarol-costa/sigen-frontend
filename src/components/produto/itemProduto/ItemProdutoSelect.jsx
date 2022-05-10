@@ -59,8 +59,8 @@ export default function ItemProdutoSelect(props) {
                     (
                         <MenuItem
                             key={itemProduto.id}
-                            value={itemProduto.nome}>
-                            {itensProduto.descricao}
+                            value={itemProduto.id}>
+                            {itemProduto.item.descricao}
                         </MenuItem>
                     )
                     )}

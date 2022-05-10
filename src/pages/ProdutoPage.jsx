@@ -24,8 +24,7 @@ export default function ProdutoPage() {
         valor: Yup.string().required('campo obrigatório'),
         categoria: Yup.string().required('campo obrigatório'),
         unidadeMedida: Yup.string().required('campo obrigatório'),
-
-
+        itemProduto: Yup.string().required('campo obrigatório'),
     })
 
     const cadastrarProduto = async (produto) => {
