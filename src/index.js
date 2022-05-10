@@ -21,6 +21,7 @@ import UsuarioPage from "./pages/usuario/UsuarioPage";
 import AreaRestrita from "./pages/administrador/AreaRestrita";
 import CardapioUploadPage from "./pages/CardapioUploadPage";
 import CarrosselUploadPage from "./pages/CarrosselUploadPage";
+import ListaProdutoPage from "./pages/produto/ListaProdutoPage";
 
 const rootElement = document.getElementById("root");
 
@@ -54,6 +55,8 @@ render(
             >
               <Route path="home" element={<AreaRestrita />} />
               <Route path="produto" element={<ProdutoPage />} />
+              <Route path="novo-produto" element={<ProdutoPage />} />
+              <Route path="produto/lista-produto" element={<ListaProdutoPage />} />
               <Route path="administrador" element={<AdministradorPage />} />
               <Route path="usuarios" element={<ListaUsuario />} />
               <Route path="novo-usuario" element={<UsuarioPage />} />    
