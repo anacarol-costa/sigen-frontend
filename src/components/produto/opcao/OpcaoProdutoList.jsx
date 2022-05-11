@@ -7,10 +7,11 @@ import AddIcon from '@mui/icons-material/Add';
 import OpcaoProduto from "./OpcaoProduto";
 
 export default function OpcaoProdutoList() {
-    const [opcoesProduto, setOpcoesProduto] = useState([<OpcaoProduto />]);
+    const [opcoesProduto, setOpcoesProduto] = useState([<OpcaoProduto indice={0} />]);
 
-    const adicionarNovosCamposOpcaoProduto = () => {
-        setOpcoesProduto([...opcoesProduto, <OpcaoProduto />])
+    const adicionarNovosCamposOpcaoProduto = (index) => {
+        const proximoIndice = index + 1;
+        setOpcoesProduto([...opcoesProduto, <OpcaoProduto indice={proximoIndice} />])
     }
 
     const removerOpcaoProduto = (index) => {
@@ -24,9 +25,9 @@ export default function OpcaoProdutoList() {
             <List>
                 {opcoesProduto.map((opcaoProduto, index) => (
                     <Box key={index} sx={{display: 'flex'}}>
-                        {opcaoProduto}
+                        { opcaoProduto }
                         <IconButton
-                            onClick={adicionarNovosCamposOpcaoProduto}
+                            onClick={() => adicionarNovosCamposOpcaoProduto(index)}
                             edge="start"
                             aria-label="add"
                             title="Adicionar"

@@ -1,17 +1,18 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Typography } from "@mui/material";
-import { useDispatch } from "react-redux";
-import { yupResolver } from "@hookform/resolvers/yup";
+import {Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Typography} from "@mui/material";
+import {useDispatch} from "react-redux";
+import {yupResolver} from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import axiosComAutorizacao from "../../../util/axios/axiosComAutorizacao";
-import { mostrarMensagemErro, mostrarMensagemSucesso } from "../../../store/snackbar-reducer";
-import { useForm } from "react-hook-form";
+import {mostrarMensagemErro, mostrarMensagemSucesso} from "../../../store/snackbar-reducer";
+import {useForm} from "react-hook-form";
 import OpcaoProdutoList from "../opcao/OpcaoProdutoList";
+import {atualizarDescricaoItemOpcao} from "../../../store/item-opcao-reducer";
 
 export default function ItemProdutoDialog(props) {
     const dispatch = useDispatch();
 
     const validacaoItemProduto = Yup.object().shape({
-        descricao: Yup.string()
+        itemDescricao: Yup.string()
             .required('campo obrigatório'),
     })
 
@@ -27,6 +28,10 @@ export default function ItemProdutoDialog(props) {
         }
     }
 
+    const handleAtualizarDesc = (event) => {
+        dispatch(atualizarDescricaoItemOpcao(event.target.value))
+    }
+
     const {
         register,
         handleSubmit,
@@ -34,6 +39,8 @@ export default function ItemProdutoDialog(props) {
     } = useForm({
         resolver: yupResolver(validacaoItemProduto)
     });
+
+    const itemDescricaoRegister = register('itemDescricao', { required: true })
 
     return (
         <Dialog
@@ -47,15 +54,18 @@ export default function ItemProdutoDialog(props) {
             <DialogContent>
                 <TextField
                     required
+                    onChange={e => {
+                        itemDescricaoRegister.onChange(e)
+                        handleAtualizarDesc(e)
+                    }}
                     variant="standard"
                     id="descricao-unidade-medida"
                     label="Descrição"
                     type="string"
-                    {...register('descricao')}
-                    error={errors.descricao ? true : false}
+                    error={errors.itemDescricao ? true : false}
                 />
                 <Typography variant="inherit" color="#d32f2f">
-                    {errors.descricao?.message}
+                    {errors.itemDescricao?.message}
                 </Typography>
                 <OpcaoProdutoList />
             </DialogContent>
