@@ -5,8 +5,12 @@ import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from '@mui/icons-material/Add';
 import OpcaoProduto from "./OpcaoProduto";
+import {useDispatch} from "react-redux";
+import {removerItemProduto} from "../../../store/item-opcao-reducer";
 
 export default function OpcaoProdutoList() {
+    const dispatch = useDispatch()
+
     const [opcoesProduto, setOpcoesProduto] = useState([<OpcaoProduto indice={0} />]);
 
     const adicionarNovosCamposOpcaoProduto = (index) => {
@@ -15,6 +19,7 @@ export default function OpcaoProdutoList() {
     }
 
     const removerOpcaoProduto = (index) => {
+        dispatch(removerItemProduto(index))
         const novaListaOpcaoProduto = opcoesProduto.filter((item, i) => index !== i)
 
         setOpcoesProduto(novaListaOpcaoProduto)

@@ -21,10 +21,13 @@ export const itemOpcaoSlice = createSlice({
         },
         atualizarDescricaoItemOpcao: (state, action) => {
             state.descricao = action.payload
+        },
+        removerItemProduto: (state, action) => {
+            state.itemOpcaoModel = state.itemOpcaoModel.filter((item, index) => action.payload !== index)
         }
     }
 });
 
-export const { atualizarItemOpcaoModel, atualizarDescricaoItemOpcao } = itemOpcaoSlice.actions;
+export const { atualizarItemOpcaoModel, atualizarDescricaoItemOpcao, removerItemProduto } = itemOpcaoSlice.actions;
 
 export default itemOpcaoSlice.reducer;
