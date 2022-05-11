@@ -16,8 +16,8 @@ export default function ListaProduto() {
     const columns = [
         { field: 'nome', headerName: 'Nome', width: 130 },
         { field: 'valorBase', headerName: 'Valor', width: 130 },
-        { field: 'categoria.nome', headerName: 'Categoria', width: 130 },
-        { field: 'unidadeMedida.abreviacao', headerName: 'Unidade de medida', width: 140 },
+        { field: 'categoria', headerName: 'Categoria', width: 130, valueFormatter: ({ value }) => value.nome },
+        { field: 'unidadeMedida', headerName: 'Unidade de medida', width: 140, valueFormatter: ({ value }) => value.abreviacao },
 
         {
             field: 'actions',
@@ -56,7 +56,7 @@ export default function ListaProduto() {
         navigate('/private/administracao/novo-produto')
     }
 
-    return (               
+    return (
         <div style={{ height: 400, width: '100%' }}>
             <DataGrid rows={rows} columns={columns} />
             <Button variant='contained' onClick={novoProduto}>Novo Produto</Button>
