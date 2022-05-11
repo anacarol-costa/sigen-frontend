@@ -1,13 +1,14 @@
-import { Box, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import {Box, FormControl, InputLabel, MenuItem, Select, Typography} from '@mui/material';
+import React, {useEffect, useState} from 'react';
 import axiosComAutorizacao from '../../../util/axios/axiosComAutorizacao';
-import OpcaoProdutoList from "../opcao/OpcaoProdutoList";
 import ItemProdutoDialog from './ItemProdutoDialog';
+import {useDispatch} from "react-redux";
+import {atualizarItensOpcao} from "../../../store/produto-reducer";
 
 export default function ItemProdutoSelect(props) {
     const [open, setOpen] = useState(false);
     const [itensProduto, setItensProduto] = useState([]);
-    // const { errors, register } = props.formParams;
+    const dispatch = useDispatch();
 
     useEffect(async () => {
         await recuperarDescricaoProduto();
@@ -21,6 +22,10 @@ export default function ItemProdutoSelect(props) {
         setOpen(false);
     };
 
+    const atualizarValorItemProduto = (evento) => {
+        dispatch(atualizarItensOpcao(evento.target.value))
+    }
+
     const recuperarDescricaoProduto = async () => {
         try {
           const { data } = await axiosComAutorizacao.get("/itens-opcao");
@@ -29,6 +34,8 @@ export default function ItemProdutoSelect(props) {
           console.log(error);
         }
       }
+
+
 
     return (
         <Box sx={{ width: '140%' }}>
@@ -51,6 +58,7 @@ export default function ItemProdutoSelect(props) {
                     id="descricao-do-produto"
                     label="Descrição do produto"
                     type="text"
+                    onChange={atualizarValorItemProduto}
                 // {...register('descricao')}
                 // error={errors.descricao ? true : false}
                 >

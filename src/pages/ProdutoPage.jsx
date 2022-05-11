@@ -1,38 +1,33 @@
-import { Button, FilledInput, Grid, InputAdornment, TextField, Typography } from "@mui/material";
+import {Button, FilledInput, Grid, InputAdornment, TextField, Typography} from "@mui/material";
 import Box from "@mui/material/Box";
 import CategoriaSelect from "../components/produto/categoriaProduto/CategoriaSelect";
 import UnidadeMedida from "../components/produto/unidadeMedidaProduto/UnidadeMedida";
 import ItemProdutoList from "../components/produto/itemProduto/ItemProdutoList";
-import React, { useState } from "react";
+import React from "react";
 import * as Yup from "yup";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import {useForm} from "react-hook-form";
+import {yupResolver} from "@hookform/resolvers/yup";
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate} from "react-router-dom";
 import axiosComAutorizacao from "../util/axios/axiosComAutorizacao";
-import { useDispatch } from "react-redux";
-import { mostrarMensagemErro, mostrarMensagemSucesso } from "../store/snackbar-reducer";
-import { Navigate, useNavigate } from "react-router-dom";
+import {mostrarMensagemErro, mostrarMensagemSucesso} from "../store/snackbar-reducer";
 
 export default function ProdutoPage() {
-    const [valores, setValores] = useState({ valor: '' });
-    const dispatch = useDispatch();
     const navigate = useNavigate();
-
-    const handleChange = (prop) => (event) => {
-        setValores({ ...valores, [prop]: event.target.value });
-    };
+    const dispatch = useDispatch()
+    const { itensOpcao } = useSelector(state => state.produto);
 
     const validacaoSchema = Yup.object().shape({
         nome: Yup.string().required('campo obrigatório'),
-        valor: Yup.string().required('campo obrigatório'),
+        valorBase: Yup.string().required('campo obrigatório'),
         categoria: Yup.string().required('campo obrigatório'),
         unidadeMedida: Yup.string().required('campo obrigatório'),
-        itemProduto: Yup.string().required('campo obrigatório'),
     })
 
     const cadastrarProduto = async (produto) => {
-        console.log(produto);
-        const novoProduto = { ...produto };
-        novoProduto.valorBase = 0;
+        const novoProduto = {...produto}
+        novoProduto.itensOpcao = itensOpcao;
+
         try {
             await axiosComAutorizacao.post('/produtos', novoProduto);
             dispatch(mostrarMensagemSucesso('Usuário excluído com sucesso.'));
@@ -92,13 +87,12 @@ export default function ProdutoPage() {
                 <FilledInput
                     sx={{ width: '140%' }}
                     id="valor-produto"
-                    onChange={handleChange('valor')}
                     startAdornment={<InputAdornment position="start">R$</InputAdornment>}
-                    {...register('valor')}
-                    error={errors.valor ? true : false}
+                    {...register('valorBase')}
+                    error={errors.valorBase ? true : false}
                 />
                 <Typography variant="inherit" color="#d32f2f">
-                    {errors.valor?.message}
+                    {errors.valorBase?.message}
                 </Typography>
                 <CategoriaSelect formParams={{ errors, register }} />
                 <UnidadeMedida formParams={{ errors, register }} />
