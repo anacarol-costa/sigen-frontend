@@ -20,7 +20,7 @@ const menuAdmin = [
     { nome: 'Home', path: 'administracao/home' },
     { nome: 'Carrossel', path: 'administracao/carrossel' },
     { nome: 'Cardápio', path: 'administracao/cardapio' },
-    { nome: 'Cadastrar produto', path: 'administracao/produto' },
+    { nome: 'Gerenciar produtos', path: 'administracao/produto/lista-produto' },
     { nome: 'Agenda', path: 'fake' },
     { nome: 'Gerenciar usuários', path: 'administracao/usuarios' }
 ];
@@ -29,9 +29,9 @@ const menuUsuario = [
     {nome: 'Home', path: 'home'},
     {nome: 'Cardápio', path: 'cardapio'},
     {nome: 'Encomenda', path: 'encomenda'},
-    {nome: 'Contato', path: 'contato'},    
+    {nome: 'Contato', path: 'contato'},
     {nome: 'Instagram', path: 'home'},
-    
+
 ]
 
 
@@ -77,7 +77,7 @@ const MenuComponente = ({ usuario }) => {
                         variant="h6"
                         noWrap
                         component="div"
-                        sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+                        sx={{ mr: 4, display: { xs: 'none', md: 'flex' } }}
                     >
                         SIGEN
                     </Typography>
@@ -122,11 +122,11 @@ const MenuComponente = ({ usuario }) => {
                         variant="h6"
                         noWrap
                         component="div"
-                        sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
+                        sx={{ flexGrow: 2, display: { xs: 'flex', md: 'none' } }}
                     >
                         SIGEN
                     </Typography>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                    <Box sx={{ flexGrow: 2, display: { xs: 'none', md: 'flex' } }}>
                         {paginas.map((page) => (
                             <Button
                                 key={page.nome}

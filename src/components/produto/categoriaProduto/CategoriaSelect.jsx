@@ -53,7 +53,7 @@ export default function CategoriaSelect(props) {
           id="categoria-simple-select"
           label="Categoria"
           type="object"
-          variant="filled"
+          variant="standard"
           {...register('categoria')}
           error={errors.categoria ? true : false}
         >

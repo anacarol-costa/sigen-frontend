@@ -30,16 +30,13 @@ export default function ProdutoPage() {
 
         try {
             await axiosComAutorizacao.post('/produtos', novoProduto);
-            dispatch(mostrarMensagemSucesso('Usuário excluído com sucesso.'));
+            dispatch(mostrarMensagemSucesso('Produto criado com sucesso.'));
+            navigate('/private/administracao/produto/lista-produto');
         } catch (error) {
             console.error('Erro ao cadastrar novo produto', error);
             dispatch(mostrarMensagemErro('Erro ao cadastrar novo produto'));
         }
 
-    }
-
-    const alterarProdutos = () => {
-        navigate('/private/administracao/produto/lista-produto');
     }
 
     const {
@@ -62,13 +59,6 @@ export default function ProdutoPage() {
             <Box
                 sx={{ paddingTop: '5%', position:'right' }}
             >
-                <Button
-                    variant="contained"
-                    onClick={(alterarProdutos)}
-                    color="secondary"
-                >
-                    Consultar produtos
-                </Button>
             </Box>
             <h1>Cadastrar Produto</h1>
             <Grid>
@@ -77,7 +67,7 @@ export default function ProdutoPage() {
                     sx={{ width: '140%' }}
                     id="nome-produto"
                     label="Nome"
-                    variant="filled"
+                    variant="standard"
                     {...register('nome')}
                     error={errors.nome ? true : false}
                 />
@@ -87,6 +77,7 @@ export default function ProdutoPage() {
                 <FilledInput
                     sx={{ width: '140%' }}
                     id="valor-produto"
+                    variant="standard"
                     startAdornment={<InputAdornment position="start">R$</InputAdornment>}
                     {...register('valorBase')}
                     error={errors.valorBase ? true : false}
