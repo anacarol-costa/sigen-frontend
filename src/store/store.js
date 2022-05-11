@@ -7,6 +7,6 @@ export default configureStore({
     reducer: {
         snackbar: snackbarReducer,
         loading: loadingReducer,
-        opcaoProduto: itemOpcaoReducer
+        itemOpcao: itemOpcaoReducer
     }
 })

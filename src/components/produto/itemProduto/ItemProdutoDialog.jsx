@@ -1,5 +1,5 @@
-import {Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Typography} from "@mui/material";
-import {useDispatch} from "react-redux";
+import {Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField} from "@mui/material";
+import {useDispatch, useSelector} from "react-redux";
 import {yupResolver} from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import axiosComAutorizacao from "../../../util/axios/axiosComAutorizacao";
@@ -10,15 +10,16 @@ import {atualizarDescricaoItemOpcao} from "../../../store/item-opcao-reducer";
 
 export default function ItemProdutoDialog(props) {
     const dispatch = useDispatch();
+    const { itensOpcoesModel, itemDescricao } = useSelector(state => state.itemOpcao);
 
     const validacaoItemProduto = Yup.object().shape({
         itemDescricao: Yup.string()
             .required('campo obrigatório'),
     })
 
-    const cadastrarDescricaoProduto = async (itemOpcao) => {
+    const cadastrarDescricaoProduto = async () => {
         try {
-            await axiosComAutorizacao.post("/itens-produto", itemOpcao);
+            await axiosComAutorizacao.post("/itens-opcao", {itemDescricao, opcoes: itensOpcoesModel});
             dispatch(mostrarMensagemSucesso('Descrição de produto cadastrada com sucesso.'));
             props.fecharDialog();
             await props.atualizarDescricaoItemProduto();
@@ -55,25 +56,21 @@ export default function ItemProdutoDialog(props) {
                 <TextField
                     required
                     onChange={e => {
-                        itemDescricaoRegister.onChange(e)
                         handleAtualizarDesc(e)
                     }}
                     variant="standard"
                     id="descricao-unidade-medida"
                     label="Descrição"
                     type="string"
-                    error={errors.itemDescricao ? true : false}
                 />
-                <Typography variant="inherit" color="#d32f2f">
-                    {errors.itemDescricao?.message}
-                </Typography>
+
                 <OpcaoProdutoList />
             </DialogContent>
             <DialogActions>
                 <Button autoFocus onClick={props.fecharDialog}>
                     Cancelar
                 </Button>
-                <Button onClick={handleSubmit(cadastrarDescricaoProduto)} autoFocus>
+                <Button onClick={cadastrarDescricaoProduto} autoFocus>
                     Salvar
                 </Button>
             </DialogActions>

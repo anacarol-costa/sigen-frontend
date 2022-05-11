@@ -5,25 +5,24 @@ export const ITEM_OPCAO_REDUCER = 'ITEM_OPCAO_REDUCER';
 export const itemOpcaoSlice = createSlice({
     name: ITEM_OPCAO_REDUCER,
     initialState: {
-        itemOpcaoModel: [],
-        descricao: null,
+        itensOpcoesModel: [],
+        itemDescricao: null,
     },
     reducers: {
         atualizarItemOpcaoModel: (state, action) => {
             const {indice, ...novoPayload} = action.payload;
-            const estadoAnterior = state.itemOpcaoModel[indice];
+            const estadoAnterior = state.itensOpcoesModel[indice];
 
-            state.itemOpcaoModel[indice] = {
-                itemDescricao: state.descricao,
+            state.itensOpcoesModel[indice] = {
                 ...estadoAnterior,
                 ...novoPayload,
             };
         },
         atualizarDescricaoItemOpcao: (state, action) => {
-            state.descricao = action.payload
+            state.itemDescricao = action.payload
         },
         removerItemProduto: (state, action) => {
-            state.itemOpcaoModel = state.itemOpcaoModel.filter((item, index) => action.payload !== index)
+            state.itensOpcoesModel = state.itensOpcoesModel.filter((item, index) => action.payload !== index)
         }
     }
 });
