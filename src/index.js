@@ -25,6 +25,9 @@ import ListaProdutoPage from "./pages/produto/ListaProdutoPage";
 import EncomendaPage from "./pages/encomenda/EncomendaPage";
 import CriarEncomendaPage from "./pages/encomenda/CriarEncomendaPage";
 import InstagramRedirecionar from "./components/instagram/InstagramRedirecionar";
+import FormContatoPage from "./pages/contato/FormContatoPage";
+
+
 
 const rootElement = document.getElementById("root");
 
@@ -47,6 +50,7 @@ render(
             <Route path="home" element={<HomePage />} />
             <Route path="encomenda" element={<EncomendaPage />} />
             <Route path="criar-encomenda/categoria/:id" element={<CriarEncomendaPage />} />
+            <Route path="contato" element={<FormContatoPage />} />
             <Route path="instagram" element={<InstagramRedirecionar />} />
             <Route
               path="administracao"
