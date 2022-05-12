@@ -33,6 +33,13 @@ export default function CriarEncomendaPage() {
                         elevation={3}
                     >
                         <h2>{produto.nome}</h2>
+                        {produto.itensProduto.map(itemproduto =>(
+                            <Box key={itemproduto.id}>
+                                <Box>{itemproduto.itemOpcao.item.descricao}</Box>
+                                <Box>{itemproduto.itemOpcao.opcao.nome}</Box> - <div>{itemproduto.itemOpcao.opcao.valor}</div>
+                            </Box>
+                        ))}
+                        <h2>{produto.unidadeMedida.descricao}</h2>
                     </Box>
                 ))}
             </Box>

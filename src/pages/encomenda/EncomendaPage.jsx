@@ -59,9 +59,9 @@ export default function EncomendaPage() {
                                 Opções
                             </Typography>
                             <Stack direction="row" spacing={1}>
-                                {produtos.map(v => (
-                                    <Box key={v.id}>
-                                        <Chip label={v.nome} />
+                                {produtos.map(produto => (
+                                    <Box key={produto.id}>
+                                        <Chip label={produto.nome} />
                                     </Box>
                                 ))}
                             </Stack>
