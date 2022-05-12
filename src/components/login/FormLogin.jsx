@@ -52,7 +52,6 @@ export function FormularioLogin() {
             console.error(error);
             dispatch(mostrarMensagemErro('Error ao tentar realizar login.'))
         }
-
     }
 
     return (

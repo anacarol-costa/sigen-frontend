@@ -1,23 +1,59 @@
-import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
-import { Button, FormControl, InputLabel, MenuItem, Select, Typography } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import React, { useState } from 'react';
-import * as Yup from "yup";
-import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import sessionUtil, { SessionUtil } from "../../util/sessionUtil";
-import axiosSemAutorizacao from "../../util/axios/axiosSemAutorizacao";
+import { Button, FormControl, InputLabel, MenuItem, Select, Typography } from '@mui/material';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import React, { useState } from 'react';
+import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { mostrarMensagemErro } from "../../store/snackbar-reducer";
-
+import { useNavigate } from "react-router-dom";
+import * as Yup from "yup";
+import { mostrarMensagemSucesso } from "../../store/snackbar-reducer";
 
 export default function FormContatoPage() {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [hora, setHora] = useState('');
 
     const handleChange = (event) => {
         setHora(event.target.value);
     };
+
+    const validacaoSchema = Yup.object().shape({
+        nome: Yup.string()
+            .required('campo obrigatório')
+            .max(40, 'senha excedeu o limite máximo de 40 caracteres'),
+
+
+        email: Yup.string()
+            .required('campo obrigatório')
+            .max(40, 'você excedeu o limite máximo de 40 caracteres'),
+
+        assunto: Yup.string()
+            .required('campo obrigatório')
+            .max(45, 'você excedeu o limite máximo de 45 caracteres'),
+
+        multiline: Yup.string()
+            .required('campo obrigatório')
+    })
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors }
+    } = useForm({
+        resolver: yupResolver(validacaoSchema)
+    });
+
+    const enviarFormContato = async () => {
+        // try {
+        //     const { data } = await axiosSemAutorizacao.post("/auth/login");            
+        //     dispatch(mostrarMensagemSucesso('Contato enviado com sucesso. Em breve, entraremos em contato.'))
+        // } catch (error) {
+        //     console.error(error);
+        //     dispatch(mostrarMensagemErro('Error ao tentar enviar contato.'))
+        // }
+
+    }
 
 
     return (
@@ -42,19 +78,28 @@ export default function FormContatoPage() {
                 id="form-nome"
                 label="Nome"
                 variant="standard"
+                {...register('nome')}
+                error={errors.nome ? true : false}
             />
+            <Typography variant="inherit" color="#d32f2f">
+                {errors.nome?.message}
+            </Typography>
             <TextField
                 required
                 sx={{ width: '30vw' }}
                 id="form-email"
                 label="E-mail"
                 variant="standard"
+                {...register('email')}
+                error={errors.email ? true : false}
             />
+            <Typography variant="inherit" color="#d32f2f">
+                {errors.email?.message}
+            </Typography>
             <TextField
-                required
                 sx={{ width: '25vw' }}
-                id="telefone"
-                label="Telefone"
+                id="whatsapp"
+                label="WhatsApp"
                 type="tel"
                 autoComplete="current-tel"
                 variant="standard"
@@ -86,15 +131,25 @@ export default function FormContatoPage() {
                 label="Assunto"
                 type="text"
                 variant="standard"
+                {...register('assunto')}
+                error={errors.assunto ? true : false}
             />
+            <Typography variant="inherit" color="#d32f2f">
+                {errors.assunto?.message}
+            </Typography>
             <TextField
-                id="outlined-multiline-static"                
+                id="outlined-multiline-static"
                 multiline
                 rows={8}
                 defaultValue="Olá, gostaria de..."
+                {...register('multiline')}
+                error={errors.multiline ? true : false}
             />
+            <Typography variant="inherit" color="#d32f2f">
+                {errors.multiline?.message}
+            </Typography>
             <Box>
-                <Button>Enviar</Button>
+                <Button variant="contained" onClick={handleSubmit(enviarFormContato)}>Enviar</Button>
             </Box>
         </Box>
     )
