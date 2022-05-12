@@ -13,10 +13,10 @@ export default function ListaProdutoPage() {
     const [rows, setRows] = useState([]);
 
     const columns = [
-        { field: 'nome', headerName: 'Nome', width: 130 },
-        { field: 'valorBase', headerName: 'Valor', width: 130 },
+        { field: 'nome', headerName: 'Nome', width: 180 },        
         { field: 'categoria', headerName: 'Categoria', width: 130, valueFormatter: ({ value }) => value.nome },
-        { field: 'unidadeMedida', headerName: 'Unidade de medida', width: 140, valueFormatter: ({ value }) => value.abreviacao },
+        { field: 'unidadeMedida', headerName: 'Unidade de medida', width: 150, valueFormatter: ({ value }) => value.abreviacao },
+        { field: 'valorBase', headerName: 'Valor (R$)', width: 130 },        
 
         {
             field: 'actions',

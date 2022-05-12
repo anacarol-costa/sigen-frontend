@@ -20,9 +20,9 @@ const menuAdmin = [
     { nome: 'Home', path: 'administracao/home' },
     { nome: 'Carrossel', path: 'administracao/carrossel' },
     { nome: 'Cardápio', path: 'administracao/cardapio' },
-    { nome: 'Gerenciar produtos', path: 'administracao/produto/lista-produto' },
-    { nome: 'Agenda', path: 'fake' },
-    { nome: 'Gerenciar usuários', path: 'administracao/usuarios' }
+    { nome: 'Gerenciar produtos', path: 'administracao/produto/lista-produto' },   
+    { nome: 'Gerenciar usuários', path: 'administracao/usuarios' },
+    { nome: 'Agenda', path: 'fake' }
 ];
 
 const menuUsuario = [
