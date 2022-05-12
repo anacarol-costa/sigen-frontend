@@ -2,9 +2,11 @@ import {Box} from "@mui/system";
 import {useEffect, useState} from "react";
 import axiosComAutorizacao from "../../util/axios/axiosComAutorizacao";
 import {Button, Chip, Divider, Grid, Paper, Stack, Typography} from "@mui/material";
+import {useNavigate} from "react-router-dom";
 
 export default function EncomendaPage() {
     const [rows, setRows] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(async () => {
         await consultarItensProduto()
@@ -17,7 +19,9 @@ export default function EncomendaPage() {
 
     const detalharOpcao = (produtos) => {
         const categoria = produtos[0].categoria;
+        navigate(`/private/criar-encomenda/categoria/${categoria.id}`)
         console.log(categoria);
+
     }
 
 
@@ -28,7 +32,6 @@ export default function EncomendaPage() {
             <Box sx={{
                 display: 'flex',
                 paddingLeft: '20%',
-
             }}>
                 {Object.entries(rows).map(([categoria, produtos]) =>(
                     <Box
@@ -38,8 +41,8 @@ export default function EncomendaPage() {
                             width: '100%',
                             maxWidth: 350,
                         }}
-                            elevation={3}
-                            key={categoria}
+                        elevation={3}
+                        key={categoria}
                     >
                         <Box sx={{ my: 3, mx: 2 }}>
                             <Grid container alignItems="center">

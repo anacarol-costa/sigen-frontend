@@ -23,6 +23,7 @@ import CardapioUploadPage from "./pages/CardapioUploadPage";
 import CarrosselUploadPage from "./pages/CarrosselUploadPage";
 import ListaProdutoPage from "./pages/produto/ListaProdutoPage";
 import EncomendaPage from "./pages/encomenda/EncomendaPage";
+import CriarEncomendaPage from "./pages/encomenda/CriarEncomendaPage";
 
 const rootElement = document.getElementById("root");
 
@@ -44,6 +45,7 @@ render(
           >
             <Route path="home" element={<HomePage />} />
             <Route path="encomenda" element={<EncomendaPage />} />
+            <Route path="criar-encomenda/categoria/:id" element={<CriarEncomendaPage />} />
 
             <Route
               path="administracao"
