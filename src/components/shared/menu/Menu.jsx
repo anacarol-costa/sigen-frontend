@@ -13,24 +13,24 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { useNavigate } from 'react-router-dom';
 import sessionUtil from "../../../util/sessionUtil";
-import {Divider} from "@mui/material";
+import { Divider } from "@mui/material";
 
 
 const menuAdmin = [
     { nome: 'Home', path: 'administracao/home' },
     { nome: 'Carrossel', path: 'administracao/carrossel' },
     { nome: 'Cardápio', path: 'administracao/cardapio' },
-    { nome: 'Gerenciar produtos', path: 'administracao/produto/lista-produto' },   
+    { nome: 'Gerenciar produtos', path: 'administracao/produto/lista-produto' },
     { nome: 'Gerenciar usuários', path: 'administracao/usuarios' },
     { nome: 'Agenda', path: 'fake' }
 ];
 
 const menuUsuario = [
-    {nome: 'Home', path: 'home'},
-    {nome: 'Cardápio', path: 'cardapio'},
-    {nome: 'Encomenda', path: 'encomenda'},
-    {nome: 'Contato', path: 'contato'},
-    {nome: 'Instagram', path: 'home'},
+    { nome: 'Home', path: 'home' },
+    { nome: 'Cardápio', path: 'cardapio' },
+    { nome: 'Encomenda', path: 'encomenda' },
+    { nome: 'Contato', path: 'contato' },
+    { nome: 'Instagram', path: 'instagram' },
 
 ]
 
@@ -160,13 +160,13 @@ const MenuComponente = ({ usuario }) => {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
-                        <MenuItem onClick={handleCloseUserMenu}>
-                            <Typography style={{ height: "100%", width: "100%" }} textAlign="center">Olá, { nomeUsuario }</Typography>
-                        </MenuItem>
-                        <Divider />
-                        <MenuItem onClick={logout}>
-                            <Typography textAlign="center">Sair</Typography>
-                        </MenuItem>
+                            <MenuItem onClick={handleCloseUserMenu}>
+                                <Typography style={{ height: "100%", width: "100%" }} textAlign="center">Olá, {nomeUsuario}</Typography>
+                            </MenuItem>
+                            <Divider />
+                            <MenuItem onClick={logout}>
+                                <Typography textAlign="center">Sair</Typography>
+                            </MenuItem>
                         </Menu>
                     </Box>
                 </Toolbar>
