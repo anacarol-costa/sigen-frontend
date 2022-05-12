@@ -5,10 +5,9 @@ import { useNavigate } from "react-router-dom";
 import DeleteIcon from '@mui/icons-material/Delete';
 import axiosComAutorizacao from "../../util/axios/axiosComAutorizacao";
 import { mostrarMensagemSucesso } from "../../store/snackbar-reducer";
-import axiosSemAutorizacao from "../../util/axios/axiosSemAutorizacao";
 import { Button } from "@mui/material";
 
-export default function ListaProduto() {
+export default function ListaProdutoPage() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [rows, setRows] = useState([]);
@@ -48,7 +47,7 @@ export default function ListaProduto() {
     }, [])
 
     const consultarProduto = async () => {
-        const { data } = await axiosSemAutorizacao.get('/produtos');
+        const { data } = await axiosComAutorizacao.get('/produtos');
         setRows(data);
     }
 

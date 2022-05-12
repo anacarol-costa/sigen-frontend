@@ -22,6 +22,7 @@ import AreaRestrita from "./pages/administrador/AreaRestrita";
 import CardapioUploadPage from "./pages/CardapioUploadPage";
 import CarrosselUploadPage from "./pages/CarrosselUploadPage";
 import ListaProdutoPage from "./pages/produto/ListaProdutoPage";
+import EncomendaPage from "./pages/encomenda/EncomendaPage";
 
 const rootElement = document.getElementById("root");
 
@@ -42,6 +43,7 @@ render(
             }
           >
             <Route path="home" element={<HomePage />} />
+            <Route path="encomenda" element={<EncomendaPage />} />
 
             <Route
               path="administracao"
@@ -59,9 +61,9 @@ render(
               <Route path="produto/lista-produto" element={<ListaProdutoPage />} />
               <Route path="administrador" element={<AdministradorPage />} />
               <Route path="usuarios" element={<ListaUsuario />} />
-              <Route path="novo-usuario" element={<UsuarioPage />} />    
-              <Route path="cardapio" element={<CardapioUploadPage />} />  
-              <Route path="carrossel" element={<CarrosselUploadPage />} />       
+              <Route path="novo-usuario" element={<UsuarioPage />} />
+              <Route path="cardapio" element={<CardapioUploadPage />} />
+              <Route path="carrossel" element={<CarrosselUploadPage />} />
             </Route>
           </Route>
           <Route path="*" element={<NotFoundPage />} />
