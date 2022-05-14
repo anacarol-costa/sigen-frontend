@@ -1,29 +1,21 @@
 import {Box} from "@mui/system";
-import {useEffect, useState} from "react";
 
-function normalizarItensProduto(lista) {
-    let result = {}
 
-    lista.forEach((item) => {
-        item.itensProduto.forEach((itemProduto) => {
+export default function DetalheEncomendaCard({produtos}) {
+
+    const normalizarItensProduto = (lista) => {
+        let result = {}
+
+        lista.forEach((itemProduto) => {
             const opcao = itemProduto.itemOpcao.opcao;
             const itemNome = itemProduto.itemOpcao.item.descricao;
 
             const itemAtualDoMap = result[itemNome] ? result[itemNome] : [];
             result[itemNome] = [...itemAtualDoMap, opcao]
         })
-    });
-
-    return result;
-}
-
-export default function DetalheEncomendaCard({produtos}) {
-
-    const [opcoes, setOpcoes] = useState([]);
-    useEffect(() => {
-        setOpcoes(normalizarItensProduto(produtos))
-    }, [])
-
+        console.log('result', result);
+        return result;
+    }
 
     return (
         <Box sx={{
@@ -42,15 +34,26 @@ export default function DetalheEncomendaCard({produtos}) {
                     elevation={3}
                 >
                     <h2>{produto.nome}</h2>
-                    {produto.itensProduto.map(itemproduto =>(
-                        <Box key={itemproduto.id}>
-                            <Box>{itemproduto.itemOpcao.item.descricao}</Box>
-                            <Box>{itemproduto.itemOpcao.opcao.nome}</Box> - <div>{itemproduto.itemOpcao.opcao.valor}</div>
-                        </Box>
-                    ))}
                     <h2>{produto.unidadeMedida.descricao}</h2>
+                    {
+                        Object.entries(normalizarItensProduto(produto.itensProduto)).map(([opcao, item]) => (
+                            <Box key={opcao}>
+                                <Box >{opcao}</Box>
+                                <Box key={opcao}>
+                                    {item.map(item => (
+                                        <Box key={item.id}>
+                                            <Box>{item.nome}</Box>
+                                            <Box>{item.valor}</Box>
+                                        </Box>
+                                    ))}
+                                </Box>
+                            </Box>
+                        ))
+                    }
                 </Box>
             ))}
+
+
         </Box>
     )
 }
