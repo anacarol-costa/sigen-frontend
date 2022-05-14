@@ -1,7 +1,13 @@
 import {Box} from "@mui/system";
-
+import {Checkbox, FormControlLabel} from "@mui/material";
+import {useState} from "react";
 
 export default function DetalheEncomendaCard({produtos}) {
+    const [checado, setChecado] = useState(false);
+    const [valorTotalProduto, setValorTotalProduto] = useState(0);
+
+    const handleChange = (event, valor) => {
+    };
 
     const normalizarItensProduto = (lista) => {
         let result = {}
@@ -13,7 +19,6 @@ export default function DetalheEncomendaCard({produtos}) {
             const itemAtualDoMap = result[itemNome] ? result[itemNome] : [];
             result[itemNome] = [...itemAtualDoMap, opcao]
         })
-        console.log('result', result);
         return result;
     }
 
@@ -40,10 +45,14 @@ export default function DetalheEncomendaCard({produtos}) {
                             <Box key={opcao}>
                                 <Box >{opcao}</Box>
                                 <Box key={opcao}>
-                                    {item.map(item => (
+                                    {item.map((item) => (
                                         <Box key={item.id}>
-                                            <Box>{item.nome}</Box>
-                                            <Box>{item.valor}</Box>
+                                            <FormControlLabel
+                                                onChange={(evento) => handleChange(evento, item.valor)}
+                                                control={<Checkbox />}
+                                                label={item.nome}
+                                            />
+                                            <Box>R${item.valor}</Box>
                                         </Box>
                                     ))}
                                 </Box>
