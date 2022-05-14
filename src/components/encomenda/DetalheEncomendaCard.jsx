@@ -1,6 +1,28 @@
 import {Box} from "@mui/system";
+import {useEffect, useState} from "react";
+
+function normalizarItensProduto(lista) {
+    let result = {}
+
+    lista.forEach((item) => {
+        item.itensProduto.forEach((itemProduto) => {
+            const opcao = itemProduto.itemOpcao.opcao;
+            const itemNome = itemProduto.itemOpcao.item.descricao;
+
+            const itemAtualDoMap = result[itemNome] ? result[itemNome] : [];
+            result[itemNome] = [...itemAtualDoMap, opcao]
+        })
+    });
+
+    return result;
+}
 
 export default function DetalheEncomendaCard({produtos}) {
+
+    const [opcoes, setOpcoes] = useState([]);
+    useEffect(() => {
+        setOpcoes(normalizarItensProduto(produtos))
+    }, [])
 
 
     return (

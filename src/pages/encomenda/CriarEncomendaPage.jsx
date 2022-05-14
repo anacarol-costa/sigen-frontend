@@ -18,7 +18,10 @@ export default function CriarEncomendaPage() {
         <Box>
             <h1>Criar Encomenda</h1>
 
-            <DetalheEncomendaCard produtos={produtos}/>
+            {produtos.length > 0 &&
+                <DetalheEncomendaCard produtos={produtos}/>
+            }
+
 
         </Box>
     )
