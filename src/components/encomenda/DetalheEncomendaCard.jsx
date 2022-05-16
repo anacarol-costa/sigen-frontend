@@ -1,12 +1,14 @@
-import {Box} from "@mui/system";
-import {Checkbox, FormControlLabel} from "@mui/material";
-import {useState} from "react";
+import { Checkbox, FormControlLabel } from "@mui/material";
+import { Box } from "@mui/system";
+import { useState } from "react";
+import ButtonGroupEncomenda from "./ButtonGroupEncomenda";
 
-export default function DetalheEncomendaCard({produtos}) {
+export default function DetalheEncomendaCard({ produtos }) {
     const [checado, setChecado] = useState(false);
     const [valorTotalProduto, setValorTotalProduto] = useState(0);
 
     const handleChange = (event, valor) => {
+        console.log('opcao', event);
     };
 
     const normalizarItensProduto = (lista) => {
@@ -21,6 +23,14 @@ export default function DetalheEncomendaCard({produtos}) {
         })
         return result;
     }
+
+
+    function handleEvento(e) {
+        // e.preventDefault();         
+        e.addEventListener(e);
+        console.log('clique', e);
+    }
+
 
     return (
         <Box sx={{
@@ -47,11 +57,13 @@ export default function DetalheEncomendaCard({produtos}) {
                                 <Box key={opcao}>
                                     {item.map((item) => (
                                         <Box key={item.id}>
-                                            <FormControlLabel
+                                            {/* <FormControlLabel
                                                 onChange={(evento) => handleChange(evento, item.valor)}
                                                 control={<Checkbox />}
                                                 label={item.nome}
-                                            />
+                                            /> */}
+                                            <Box>{item.nome}</Box>
+                                            <ButtonGroupEncomenda onClick={handleEvento} />
                                             <Box>R${item.valor}</Box>
                                         </Box>
                                     ))}
