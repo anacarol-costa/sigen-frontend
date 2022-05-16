@@ -7,7 +7,8 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
-import { mostrarMensagemSucesso } from "../../store/snackbar-reducer";
+import { mostrarMensagemErro, mostrarMensagemSucesso } from "../../store/snackbar-reducer";
+import axiosSemAutorizacao from "../../util/axios/axiosSemAutorizacao";
 
 export default function FormContatoPage() {
     const navigate = useNavigate();
@@ -22,7 +23,6 @@ export default function FormContatoPage() {
         nome: Yup.string()
             .required('campo obrigatório')
             .max(40, 'senha excedeu o limite máximo de 40 caracteres'),
-
 
         email: Yup.string()
             .required('campo obrigatório')
@@ -44,15 +44,14 @@ export default function FormContatoPage() {
         resolver: yupResolver(validacaoSchema)
     });
 
-    const enviarFormContato = async () => {
-        // try {
-        //     const { data } = await axiosSemAutorizacao.post("/auth/login");            
-        //     dispatch(mostrarMensagemSucesso('Contato enviado com sucesso. Em breve, entraremos em contato.'))
-        // } catch (error) {
-        //     console.error(error);
-        //     dispatch(mostrarMensagemErro('Error ao tentar enviar contato.'))
-        // }
-
+    const enviarFormContato = async (contato) => {
+        try {
+            await axiosSemAutorizacao.post('/contatos', contato);
+            dispatch(mostrarMensagemSucesso('Contato enviado com sucesso. Em breve, entraremos em contato.'));
+        } catch (error) {
+            console.error(error);
+            dispatch(mostrarMensagemErro('Error ao tentar enviar contato.'))
+        }
     }
 
 
@@ -103,6 +102,7 @@ export default function FormContatoPage() {
                 type="tel"
                 autoComplete="current-tel"
                 variant="standard"
+                {...register('whatsapp')}
             />
 
             <FormControl sx={{ width: '30%' }}>
@@ -114,6 +114,7 @@ export default function FormContatoPage() {
                     label="Hora"
                     variant="standard"
                     onChange={handleChange}
+                    {...register('horario')}
                 >
                     <MenuItem value={12}>12h</MenuItem>
                     <MenuItem value={13}>13h</MenuItem>
