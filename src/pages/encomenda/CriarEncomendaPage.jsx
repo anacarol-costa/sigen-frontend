@@ -84,7 +84,7 @@ export default function CriarEncomendaPage() {
         try {
             const { data } = await axiosComAutorizacao.post('/compras', payload);
             dispatch(mostrarMensagemSucesso('Encomenda feita.'));
-            navigate(`private/encomenda/${data.id}/resumo`)
+            navigate(`../encomenda/${data.id}/resumo`)
         } catch (error) {
             console.error('Erro ao tentar encomendar produto.', error);
             dispatch(mostrarMensagemErro('Erro ao tentar encomendar produto.'));
