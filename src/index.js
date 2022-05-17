@@ -27,6 +27,7 @@ import CriarEncomendaPage from "./pages/encomenda/CriarEncomendaPage";
 import InstagramRedirecionar from "./components/instagram/InstagramRedirecionar";
 import FormContatoPage from "./pages/contato/FormContatoPage";
 import EnderecoPage from "./pages/usuario/EnderecoPage";
+import ListaContatoPage from "./pages/contato/ListaContatoPage";
 
 
 
@@ -73,6 +74,7 @@ render(
               <Route path="novo-usuario" element={<UsuarioPage />} />
               <Route path="cardapio" element={<CardapioUploadPage />} />
               <Route path="carrossel" element={<CarrosselUploadPage />} />
+              <Route path="lista-contato" element={<ListaContatoPage />} />
             </Route>
           </Route>
           <Route path="*" element={<NotFoundPage />} />

@@ -14,6 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { useNavigate } from 'react-router-dom';
 import sessionUtil from "../../../util/sessionUtil";
 import { Divider } from "@mui/material";
+import BadgeEmblema from '../../contato/BadgeEmblema';
 
 
 const menuAdmin = [
@@ -22,7 +23,8 @@ const menuAdmin = [
     { nome: 'Cardápio', path: 'administracao/cardapio' },
     { nome: 'Gerenciar produtos', path: 'administracao/produto/lista-produto' },
     { nome: 'Gerenciar usuários', path: 'administracao/usuarios' },
-    { nome: 'Agenda', path: 'fake' }
+    { nome: 'Agenda', path: 'fake' },
+    { nome: <BadgeEmblema />, path: 'administracao/lista-contato' }
 ];
 
 const menuUsuario = [
