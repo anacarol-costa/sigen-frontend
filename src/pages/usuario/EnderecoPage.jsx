@@ -9,6 +9,7 @@ import axiosSemAutorizacao from "../../util/axios/axiosSemAutorizacao";
 import {mostrarMensagemErro, mostrarMensagemSucesso} from "../../store/snackbar-reducer";
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
+import sessionUtil from "../../util/sessionUtil";
 
 export default function EnderecoPage() {
 
@@ -45,14 +46,14 @@ export default function EnderecoPage() {
 
 
     const enviarFormContato = async (endereco) => {
-        console.log('endereco', endereco)
-        // try {
-        //     await axiosSemAutorizacao.post('/contatos', contato);
-        //     dispatch(mostrarMensagemSucesso('Contato enviado com sucesso. Em breve, entraremos em contato.'));
-        // } catch (error) {
-        //     console.error(error);
-        //     dispatch(mostrarMensagemErro('Error ao tentar enviar contato.'))
-        // }
+        const payload = { usuario: sessionUtil.getIdUsuario(), endereco };
+        try {
+            await axiosSemAutorizacao.post('/usuarios/endereco', payload);
+            dispatch(mostrarMensagemSucesso('Contato enviado com sucesso. Em breve, entraremos em contato.'));
+        } catch (error) {
+            console.error(error);
+            dispatch(mostrarMensagemErro('Error ao tentar enviar contato.'))
+        }
     }
 
 
