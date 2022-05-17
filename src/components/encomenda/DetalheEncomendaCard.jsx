@@ -1,5 +1,6 @@
 import {Box} from "@mui/system";
 import ButtonGroupEncomenda from "./ButtonGroupEncomenda";
+import {Divider} from "@mui/material";
 
 export default function DetalheEncomendaCard({ produtos, handleAdicionarItemQuantidade }) {
 
@@ -44,23 +45,22 @@ export default function DetalheEncomendaCard({ produtos, handleAdicionarItemQuan
                     {
                         Object.entries(normalizarItensProduto(produto.itensProduto)).map(([opcao, item]) => (
                             <Box key={opcao}>
-                                <Box >{opcao}</Box>
+                                <h4>{opcao}</h4>
                                 <Box key={opcao}>
                                     {item.map((item, indexItem) => (
                                         <Box key={item.id}>
-                                            <Box>{item.nome}</Box>
+                                            <Box>{item.nome} - R${item.total || item.valor}</Box>
                                             <ButtonGroupEncomenda
                                                 handleEvent={(evento) => handleEvento(evento, item.valor, indexProduto, indexItem)}
                                             />
-                                            <Box>R${item.total || item.valor}</Box>
+                                            <br/>
                                         </Box>
                                     ))}
+                                <Divider />
                                 </Box>
                             </Box>
                         ))
                     }
-
-                    <label>Total produto R$ {produto.total || produto.valorBase}</label>
                 </Box>
             ))}
         </Box>

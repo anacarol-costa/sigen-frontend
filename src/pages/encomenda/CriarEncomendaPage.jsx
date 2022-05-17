@@ -7,6 +7,7 @@ import {Button, Divider} from "@mui/material";
 import sessionUtil from "../../util/sessionUtil";
 import {mostrarMensagemErro, mostrarMensagemSucesso} from "../../store/snackbar-reducer";
 import {useDispatch} from "react-redux";
+import ButtonGroupEncomenda from "../../components/encomenda/ButtonGroupEncomenda";
 
 export default function CriarEncomendaPage() {
     const { id } = useParams();
@@ -25,7 +26,7 @@ export default function CriarEncomendaPage() {
 
     const handleAdicionarItemQuantidade = ({total, indexProduto, indexItem}) => {
         const produtosCopia = [...produtos];
-        produtosCopia[indexProduto].itensProduto[indexItem].itemOpcao.opcao.total = total;
+        produtosCopia[indexProduto].itensProduto[indexItem].itemOpcao.opcao.total = total; // Obter index of por id de opcao ou item.
         setProdutos(produtosCopia)
 
         atualizarTotalProdutoSelecionado(produtosCopia[indexProduto], indexProduto)
@@ -90,6 +91,20 @@ export default function CriarEncomendaPage() {
         }
     }
 
+    const normalizarItensProduto = (lista) => {
+        let result = {}
+
+        lista.filter(itemProduto => itemProduto.itemOpcao.opcao.total).forEach((itemProduto) => {
+            const opcao = itemProduto.itemOpcao.opcao;
+            const itemNome = itemProduto.itemOpcao.item.descricao;
+
+            const itemAtualDoMap = result[itemNome] ? result[itemNome] : [];
+            result[itemNome] = [...itemAtualDoMap, opcao]
+        })
+        return result;
+    }
+
+
     return (
         <Box>
             <h1>Criar Encomenda</h1>
@@ -115,10 +130,11 @@ export default function CriarEncomendaPage() {
                         elevation={3}
                     >
                         <Box>
-                            <label>Total R$ {totalEncomenda}</label>
+                            <h3>Total R$ {totalEncomenda}</h3>
+                            <br/>
                             <Divider />
 
-                            <h4>Endereço de entrega</h4>
+                            <h3>Endereço de entrega</h3>
                             <Box>
                                 <Box>{endereco.bairro}</Box>
                                 <Box>
@@ -126,23 +142,40 @@ export default function CriarEncomendaPage() {
                                     <Box>{endereco.complemento}</Box>
                                 </Box>
                             </Box>
+                            <br/>
                             <Divider />
 
 
-                            <h4>Itens selecionados</h4>
+                            <h3>Itens selecionados</h3>
                             <Box>
                                 {
                                     produtos.filter(produto => produto.total).map(produto => (
                                         <Box key={produto.id}>
-                                            <h4>{produto.nome}</h4>
+                                            <h3>{produto.nome}</h3>
                                             {
                                                 produto.itensProduto.filter(item => item.itemOpcao.opcao.total).map(itemProduto => (
                                                     <Box key={itemProduto.id}>
-                                                        <Box>{itemProduto.itemOpcao.item.descricao}</Box>
+                                                        <h4>{itemProduto.itemOpcao.item.descricao}</h4>
                                                         <Box>{itemProduto.itemOpcao.opcao.nome} - {itemProduto.itemOpcao.opcao.valor}</Box>
                                                     </Box>
                                                 ))
                                             }
+                                            {/*{*/}
+                                            {/*    Object.entries(normalizarItensProduto(produto.itensProduto)).map(([opcao, item]) => (*/}
+                                            {/*        <Box key={opcao}>*/}
+                                            {/*            <h3>{opcao}</h3>*/}
+                                            {/*            <Box key={opcao}>*/}
+                                            {/*                {item.map((item) => (*/}
+                                            {/*                    <Box key={item.id}>*/}
+                                            {/*                        <label>{item.nome}</label>*/}
+
+                                            {/*                        <Box>R${item.total || item.valor}</Box>*/}
+                                            {/*                    </Box>*/}
+                                            {/*                ))}*/}
+                                            {/*            </Box>*/}
+                                            {/*        </Box>*/}
+                                            {/*    ))*/}
+                                            {/*}*/}
                                         </Box>
                                     ))
                                 }
