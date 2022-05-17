@@ -40,8 +40,7 @@ export default function DetalheEncomendaCard({ produtos, handleAdicionarItemQuan
                     elevation={3}
                 >
                     <h2>{produto.nome}</h2>
-                    <h3>{produto.unidadeMedida.descricao}</h3>
-                    <h3>Valor Base {produto.valorBase}</h3>
+                    <h3>R${produto.valorBase} {produto.unidadeMedida.abreviacao}</h3>
                     {
                         Object.entries(normalizarItensProduto(produto.itensProduto)).map(([opcao, item]) => (
                             <Box key={opcao}>
