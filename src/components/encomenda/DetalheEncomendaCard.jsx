@@ -5,12 +5,11 @@ import encomendaUtil from "../../util/encomenda/encomendaUtil";
 
 export default function DetalheEncomendaCard({ produtos, handleAdicionarItemQuantidade }) {
 
-
     function handleEvento(qtdSelecionada, valor, indexProduto, itemId) {
-        const total = valor * qtdSelecionada;
+        let total = valor * qtdSelecionada;
+        total = parseFloat(total.toFixed(2));
         handleAdicionarItemQuantidade({total, indexProduto, itemId})
     }
-
 
     return (
         <Box sx={{
