@@ -4,9 +4,13 @@ import {useParams} from "react-router-dom";
 import axiosComAutorizacao from "../../util/axios/axiosComAutorizacao";
 import DetalheEncomendaCard from "../../components/encomenda/DetalheEncomendaCard";
 import {Button} from "@mui/material";
+import sessionUtil from "../../util/sessionUtil";
+import {mostrarMensagemErro, mostrarMensagemSucesso} from "../../store/snackbar-reducer";
+import {useDispatch} from "react-redux";
 
 export default function CriarEncomendaPage() {
     const { id } = useParams();
+    const dispatch = useDispatch();
     const [produtos, setProdutos] = useState([]);
     const [totalEncomenda, setTotalEncomenda] = useState(0);
 
@@ -60,8 +64,26 @@ export default function CriarEncomendaPage() {
         setTotalEncomenda(valorTotalEncomenda);
     }
 
-    const encomendar = () => {
-        console.log('aqui')
+    const encomendar = async () => {
+        const payload = montarPayload();
+        try {
+            await axiosComAutorizacao.post('/compras', payload);
+            dispatch(mostrarMensagemSucesso('Encomenda feita.'));
+        } catch (error) {
+            console.error('Erro ao tentar encomendar produto.', error);
+            dispatch(mostrarMensagemErro('Erro ao tentar encomendar produto.'));
+        }
+    }
+
+    function montarPayload() {
+        const produtosSelecionados = produtos.filter(produto => produto.total).map(produto => produto.id);
+
+        return  {
+            produtosId: produtosSelecionados,
+            valorCompra: totalEncomenda,
+            usuarioId: sessionUtil.getIdUsuario(),
+            enderecoCompraId: 2
+        }
     }
 
     return (

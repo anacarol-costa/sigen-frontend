@@ -1,10 +1,7 @@
-import { Box } from "@mui/system";
-import { useState } from "react";
+import {Box} from "@mui/system";
 import ButtonGroupEncomenda from "./ButtonGroupEncomenda";
 
 export default function DetalheEncomendaCard({ produtos, handleAdicionarItemQuantidade }) {
-    const [checado, setChecado] = useState(false);
-    const [valorTotalProduto, setValorTotalProduto] = useState(0);
 
     const normalizarItensProduto = (lista) => {
         let result = {}
@@ -43,7 +40,8 @@ export default function DetalheEncomendaCard({ produtos, handleAdicionarItemQuan
                     elevation={3}
                 >
                     <h2>{produto.nome}</h2>
-                    <h2>{produto.unidadeMedida.descricao}</h2>
+                    <h3>{produto.unidadeMedida.descricao}</h3>
+                    <h3>Valor Base {produto.valorBase}</h3>
                     {
                         Object.entries(normalizarItensProduto(produto.itensProduto)).map(([opcao, item]) => (
                             <Box key={opcao}>

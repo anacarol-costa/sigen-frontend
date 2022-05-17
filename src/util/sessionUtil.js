@@ -24,6 +24,11 @@ export default {
     return nome;
   },
 
+  getIdUsuario() {
+    const { sub } = this.getTokenCookieDecode()
+    return sub;
+  },
+
   removerTknCookie() {
     cookies.remove(SessionUtil.TKN,  { path: '/' });
   },
