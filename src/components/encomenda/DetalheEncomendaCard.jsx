@@ -2,13 +2,9 @@ import { Box } from "@mui/system";
 import { useState } from "react";
 import ButtonGroupEncomenda from "./ButtonGroupEncomenda";
 
-export default function DetalheEncomendaCard({ produtos }) {
+export default function DetalheEncomendaCard({ produtos, handleAdicionarItemQuantidade }) {
     const [checado, setChecado] = useState(false);
     const [valorTotalProduto, setValorTotalProduto] = useState(0);
-
-    const handleChange = (event, valor) => {
-        console.log('opcao', event);
-    };
 
     const normalizarItensProduto = (lista) => {
         let result = {}
@@ -24,8 +20,15 @@ export default function DetalheEncomendaCard({ produtos }) {
     }
 
 
-    function handleEvento(e) {
-        console.log('clique', e);
+    function handleEvento(qtdSelecionada, valor, indexProduto, indexItem) {
+        // console.log('qtdSelecionada', qtdSelecionada);
+        // console.log('valor', valor);
+        // console.log('indexProduto', indexProduto);
+        // console.log('indexItem', indexItem);
+
+        const total = valor * qtdSelecionada;
+        handleAdicionarItemQuantidade({total, indexProduto, indexItem})
+
     }
 
 
@@ -34,7 +37,7 @@ export default function DetalheEncomendaCard({ produtos }) {
             display: 'flex',
             paddingLeft: '20%',
         }}>
-            {produtos.map(produto => (
+            {produtos.map((produto, indexProduto) => (
                 <Box
                     key={produto.id}
                     sx={{
@@ -52,7 +55,7 @@ export default function DetalheEncomendaCard({ produtos }) {
                             <Box key={opcao}>
                                 <Box >{opcao}</Box>
                                 <Box key={opcao}>
-                                    {item.map((item) => (
+                                    {item.map((item, indexItem) => (
                                         <Box key={item.id}>
                                             {/* <FormControlLabel
                                                 onChange={(evento) => handleChange(evento, item.valor)}
@@ -60,8 +63,10 @@ export default function DetalheEncomendaCard({ produtos }) {
                                                 label={item.nome}
                                             /> */}
                                             <Box>{item.nome}</Box>
-                                            <ButtonGroupEncomenda handleEvent={handleEvento} />
-                                            <Box>R${item.valor}</Box>
+                                            <ButtonGroupEncomenda
+                                                handleEvent={(evento) => handleEvento(evento, item.valor, indexProduto, indexItem)}
+                                            />
+                                            <Box>R${item.total || item.valor}</Box>
                                         </Box>
                                     ))}
                                 </Box>
