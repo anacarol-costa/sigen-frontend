@@ -1,9 +1,9 @@
-import {Box, FormControl, InputLabel, MenuItem, Select, Typography} from '@mui/material';
-import React, {useEffect, useState} from 'react';
+import { Box, FormControl, InputLabel, MenuItem, Select, Typography } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from "react-redux";
+import { atualizarItensOpcao } from "../../../store/produto-reducer";
 import axiosComAutorizacao from '../../../util/axios/axiosComAutorizacao';
 import ItemProdutoDialog from './ItemProdutoDialog';
-import {useDispatch} from "react-redux";
-import {atualizarItensOpcao} from "../../../store/produto-reducer";
 
 export default function ItemProdutoSelect(props) {
     const [open, setOpen] = useState(false);
@@ -12,7 +12,7 @@ export default function ItemProdutoSelect(props) {
 
     useEffect(async () => {
         await recuperarDescricaoProduto();
-      }, [])
+    }, [])
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -28,39 +28,38 @@ export default function ItemProdutoSelect(props) {
 
     const recuperarDescricaoProduto = async () => {
         try {
-          const { data } = await axiosComAutorizacao.get("/itens-opcao");
-          setItensProduto(data);
+            const { data } = await axiosComAutorizacao.get("/itens-opcao");
+            setItensProduto(data);
         } catch (error) {
-          console.log(error);
+            console.log(error);
         }
-      }
+    }
 
 
 
     return (
-        <Box sx={{ width: '140%' }}>
+        <Box sx={{paddingLeft:'3%',  m: 2 }}>
 
-            <Typography>
+            <Typography variant='h6' align="center">
                 Itens do produto:
             </Typography>
             <ItemProdutoDialog
-            mostrarDialog={open}
-            fecharDialog={handleClose}
-            atualizarDescricaoItemProduto={recuperarDescricaoProduto}
+                mostrarDialog={open}
+                fecharDialog={handleClose}
+                atualizarDescricaoItemProduto={recuperarDescricaoProduto}
             />
-            <FormControl sx={{ width: '140%' }} >
+            <FormControl>
                 <InputLabel id="demo-simple-select-label" >
                     Descrição
                 </InputLabel>
                 <Select
+                    sx={{ width: '28vw' }}
                     required
-                    variant="filled"
+                    variant="standard"
                     id="descricao-do-produto"
                     label="Descrição do produto"
                     type="text"
-                    onChange={atualizarValorItemProduto}
-                // {...register('descricao')}
-                // error={errors.descricao ? true : false}
+                    onChange={atualizarValorItemProduto}                
                 >
                     <MenuItem onClick={handleClickOpen}>Criar Descrição</MenuItem>
                     {itensProduto.map((itemProduto) =>
@@ -68,14 +67,11 @@ export default function ItemProdutoSelect(props) {
                         <MenuItem
                             key={itemProduto.id}
                             value={itemProduto.id}>
-                            {itemProduto.item.descricao} - { itemProduto.opcao.nome }
+                            {itemProduto.item.descricao} - {itemProduto.opcao.nome}
                         </MenuItem>
                     )
                     )}
-                </Select>
-                {/* <Typography variant="inherit" color="#d32f2f">
-                    {errors.descricao?.message}
-                </Typography> */}
+                </Select>                
             </FormControl>
         </Box >
     );
