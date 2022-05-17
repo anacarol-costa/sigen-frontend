@@ -26,6 +26,7 @@ import EncomendaPage from "./pages/encomenda/EncomendaPage";
 import CriarEncomendaPage from "./pages/encomenda/CriarEncomendaPage";
 import InstagramRedirecionar from "./components/instagram/InstagramRedirecionar";
 import FormContatoPage from "./pages/contato/FormContatoPage";
+import EnderecoPage from "./pages/usuario/EnderecoPage";
 
 
 
@@ -48,6 +49,7 @@ render(
             }
           >
             <Route path="home" element={<HomePage />} />
+            <Route path="endereco" element={<EnderecoPage />} />
             <Route path="encomenda" element={<EncomendaPage />} />
             <Route path="criar-encomenda/categoria/:id" element={<CriarEncomendaPage />} />
             <Route path="contato" element={<FormContatoPage />} />

@@ -59,6 +59,11 @@ const MenuComponente = ({ usuario }) => {
         setAnchorElUser(null);
     };
 
+    const handleEndereco = () => {
+        navigate("/private/endereco");
+        setAnchorElUser(null);
+    };
+
     const logout = () => {
         console.log('logout');
         sessionUtil.removerTknCookie();
@@ -164,9 +169,14 @@ const MenuComponente = ({ usuario }) => {
                                 <Typography style={{ height: "100%", width: "100%" }} textAlign="center">Olá, {nomeUsuario}</Typography>
                             </MenuItem>
                             <Divider />
+                            <MenuItem onClick={handleEndereco}>
+                                <Typography style={{ height: "100%", width: "100%" }} textAlign="center">Endereço</Typography>
+                            </MenuItem>
+                            <Divider />
                             <MenuItem onClick={logout}>
                                 <Typography textAlign="center">Sair</Typography>
                             </MenuItem>
+
                         </Menu>
                     </Box>
                 </Toolbar>
