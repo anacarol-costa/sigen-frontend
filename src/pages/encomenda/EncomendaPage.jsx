@@ -1,7 +1,7 @@
 import {Box} from "@mui/system";
 import {useEffect, useState} from "react";
 import axiosComAutorizacao from "../../util/axios/axiosComAutorizacao";
-import {Button, Chip, Divider, Grid, Paper, Stack, Typography} from "@mui/material";
+import {Button, Chip, Divider, Grid, Stack, Typography} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 
 export default function EncomendaPage() {

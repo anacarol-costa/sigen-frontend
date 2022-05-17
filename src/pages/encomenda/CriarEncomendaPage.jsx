@@ -7,21 +7,29 @@ import {Button, Divider} from "@mui/material";
 import sessionUtil from "../../util/sessionUtil";
 import {mostrarMensagemErro, mostrarMensagemSucesso} from "../../store/snackbar-reducer";
 import {useDispatch} from "react-redux";
+import UsuarioSemEnderecoDialog from "../../components/encomenda/UsuarioSemEnderecoDialog";
 
 export default function CriarEncomendaPage() {
     const { id } = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [produtos, setProdutos] = useState([]);
-    const [endereco, setEndereco] = useState([]);
+    const [endereco, setEndereco] = useState(null);
+    const [dialogOpen, setDialogOpen] = useState(false);
     const [totalEncomenda, setTotalEncomenda] = useState(0);
 
     useEffect(async () => {
         const { data: produtosRecuperados } = await axiosComAutorizacao.get(`/produtos/categoria/${id}`)
-        const { data: enderecoUsuario } = await axiosComAutorizacao.get(`/usuarios/${sessionUtil.getIdUsuario()}/endereco`)
+        try {
+            const { data: enderecoUsuario } = await axiosComAutorizacao.get(`/usuarios/${sessionUtil.getIdUsuario()}/endereco`)
+            setEndereco(enderecoUsuario);
+        } catch (_) {
+            setDialogOpen(true);
+        }
+
 
         setProdutos(produtosRecuperados);
-        setEndereco(enderecoUsuario);
+
     }, []);
 
     const handleAdicionarItemQuantidade = ({total, indexProduto, itemId}) => {
@@ -115,84 +123,102 @@ export default function CriarEncomendaPage() {
         return result;
     }
 
+    const fecharDialog = () => {
+        setDialogOpen(false);
+        navigate('../encomenda')
+    }
+
+    const seguirParaEndereco = () => {
+        setDialogOpen(false);
+        navigate('../endereco')
+    }
 
     return (
         <Box>
-            <h1>Criar Encomenda</h1>
-            <Box sx={{display: 'flex'}}>
-                {
-                    produtos.length > 0 &&
-                    <DetalheEncomendaCard
-                        produtos={produtos}
-                        handleAdicionarItemQuantidade={handleAdicionarItemQuantidade}
-                    />
-                }
+            <UsuarioSemEnderecoDialog
+                open={dialogOpen}
+                fecharDialog={fecharDialog}
+                seguirParaEndereco={seguirParaEndereco}
+            />
+            { endereco &&
+                <Box>
+                    <h1>Criar Encomenda</h1>
+                    <Box sx={{display: 'flex'}}>
+                        {
+                            produtos.length > 0 &&
+                            <DetalheEncomendaCard
+                                produtos={produtos}
+                                handleAdicionarItemQuantidade={handleAdicionarItemQuantidade}
+                            />
+                        }
 
-                <Box sx={{
-                    display: 'flex',
-                }}>
-                    <Box
-                        sx={{
-                            background: 'white',
-                            margin: '5px',
-                            width: '100%',
-                            maxWidth: 350,
-                        }}
-                        elevation={3}
-                    >
-                        <Box>
-                            <h3>Total R$ {totalEncomenda}</h3>
-                            <br/>
-                            <Divider />
-
-                            <h3>Endereço de entrega</h3>
-                            <Box>
-                                <Box>{endereco.bairro}</Box>
+                        <Box sx={{
+                            display: 'flex',
+                        }}>
+                            <Box
+                                sx={{
+                                    background: 'white',
+                                    margin: '5px',
+                                    width: '100%',
+                                    maxWidth: 350,
+                                }}
+                                elevation={3}
+                            >
                                 <Box>
-                                    <Box>{endereco.cep}</Box>
-                                    <Box>{endereco.complemento}</Box>
+                                    <h3>Total R$ {totalEncomenda}</h3>
+                                    <br/>
+                                    <Divider />
+
+                                    <h3>Endereço de entrega</h3>
+                                    <Box>
+                                        <Box>{endereco.bairro}</Box>
+                                        <Box>
+                                            <Box>{endereco.cep}</Box>
+                                            <Box>{endereco.complemento}</Box>
+                                        </Box>
+                                    </Box>
+                                    <br/>
+                                    <Divider />
+
+
+                                    <h3>Itens selecionados</h3>
+                                    <Box>
+                                        {
+                                            produtos.filter(produto => produto.total).map(produto => (
+                                                <Box key={produto.id}>
+                                                    <h3>{produto.nome}</h3>
+                                                    {
+                                                        Object.entries(normalizarItensProduto(produto.itensProduto)).map(([opcao, item]) => (
+                                                            <Box key={opcao}>
+                                                                <h3>{opcao}</h3>
+                                                                <Box key={opcao}>
+                                                                    {item.map((item) => (
+                                                                        <Box key={item.id} sx={{ marginBottom: '10px' }}>
+                                                                            <label>{item.nome} - R${item.total || item.valor}</label>
+                                                                        </Box>
+                                                                    ))}
+                                                                </Box>
+                                                            </Box>
+                                                        ))
+                                                    }
+                                                </Box>
+                                            ))
+                                        }
+                                    </Box>
+
                                 </Box>
                             </Box>
-                            <br/>
-                            <Divider />
-
-
-                            <h3>Itens selecionados</h3>
-                            <Box>
-                                {
-                                    produtos.filter(produto => produto.total).map(produto => (
-                                        <Box key={produto.id}>
-                                            <h3>{produto.nome}</h3>
-                                            {
-                                                Object.entries(normalizarItensProduto(produto.itensProduto)).map(([opcao, item]) => (
-                                                    <Box key={opcao}>
-                                                        <h3>{opcao}</h3>
-                                                        <Box key={opcao}>
-                                                            {item.map((item) => (
-                                                                <Box key={item.id} sx={{ marginBottom: '10px' }}>
-                                                                    <label>{item.nome} - R${item.total || item.valor}</label>
-                                                                </Box>
-                                                            ))}
-                                                        </Box>
-                                                    </Box>
-                                                ))
-                                            }
-                                        </Box>
-                                    ))
-                                }
-                            </Box>
-
                         </Box>
                     </Box>
-                </Box>
-            </Box>
 
-            <Button
-                variant="contained"
-                onClick={encomendar}
-            >
-                Encomendar
-            </Button>
+                    <Button
+                        variant="contained"
+                        onClick={encomendar}
+                    >
+                        Encomendar
+                    </Button>
+                </Box>
+            }
         </Box>
     )
 }
