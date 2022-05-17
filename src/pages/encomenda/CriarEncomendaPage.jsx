@@ -7,7 +7,6 @@ import {Button, Divider} from "@mui/material";
 import sessionUtil from "../../util/sessionUtil";
 import {mostrarMensagemErro, mostrarMensagemSucesso} from "../../store/snackbar-reducer";
 import {useDispatch} from "react-redux";
-import ButtonGroupEncomenda from "../../components/encomenda/ButtonGroupEncomenda";
 
 export default function CriarEncomendaPage() {
     const { id } = useParams();
@@ -17,21 +16,25 @@ export default function CriarEncomendaPage() {
     const [totalEncomenda, setTotalEncomenda] = useState(0);
 
     useEffect(async () => {
-        const { data: produtos } = await axiosComAutorizacao.get(`/produtos/categoria/${id}`)
+        const { data: produtosRecuperados } = await axiosComAutorizacao.get(`/produtos/categoria/${id}`)
         const { data: enderecoUsuario } = await axiosComAutorizacao.get(`/usuarios/${sessionUtil.getIdUsuario()}/endereco`)
 
-        setProdutos(produtos);
+        setProdutos(produtosRecuperados);
         setEndereco(enderecoUsuario);
     }, []);
 
     const handleAdicionarItemQuantidade = ({total, indexProduto, itemId}) => {
         const produtosCopia = [...produtos];
-        const index = produtosCopia[indexProduto].itensProduto.findIndex(itemProduto => itemProduto.itemOpcao.opcao.id === itemId)
-        produtosCopia[indexProduto].itensProduto[index].itemOpcao.opcao.total = total; // Obter index of por id de opcao ou item.
+        const index = obterIndiceOpcaoSelecionada(produtosCopia, indexProduto, itemId)
+        produtosCopia[indexProduto].itensProduto[index].itemOpcao.opcao.total = total;
         setProdutos(produtosCopia)
 
         atualizarTotalProdutoSelecionado(produtosCopia[indexProduto], indexProduto)
         atualizarTotalEncomenda()
+    }
+
+    function obterIndiceOpcaoSelecionada(produtosCopia, indexProduto, itemId) {
+        return produtosCopia[indexProduto].itensProduto.findIndex(itemProduto => itemProduto.itemOpcao.opcao.id === itemId);
     }
 
     const atualizarTotalProdutoSelecionado = (produtoSeleciondo, indexProdutoSelecionado) => {
@@ -54,9 +57,12 @@ export default function CriarEncomendaPage() {
     }
 
     function calcularTotalItemSelecionado(itensSeleciondados, produtoSeleciondo) {
-        return itensSeleciondados.reduce((acumulador, valorAtual) => {
+        const total = itensSeleciondados.reduce((acumulador, valorAtual) => {
             return acumulador + valorAtual;
         }, produtoSeleciondo.valorBase);
+
+        return total.toFixed(2);
+
     }
 
     function atualizarTotalEncomenda() {
@@ -66,7 +72,7 @@ export default function CriarEncomendaPage() {
             return acumulador + valorAtual
         }, 0);
 
-        setTotalEncomenda(valorTotalEncomenda);
+        setTotalEncomenda(valorTotalEncomenda.toFixed(2));
     }
 
     const encomendar = async () => {
@@ -153,29 +159,19 @@ export default function CriarEncomendaPage() {
                                         <Box key={produto.id}>
                                             <h3>{produto.nome}</h3>
                                             {
-                                                produto.itensProduto.filter(item => item.itemOpcao.opcao.total).map(itemProduto => (
-                                                    <Box key={itemProduto.id}>
-                                                        <h4>{itemProduto.itemOpcao.item.descricao}</h4>
-                                                        <Box>{itemProduto.itemOpcao.opcao.nome} - {itemProduto.itemOpcao.opcao.valor}</Box>
+                                                Object.entries(normalizarItensProduto(produto.itensProduto)).map(([opcao, item]) => (
+                                                    <Box key={opcao}>
+                                                        <h3>{opcao}</h3>
+                                                        <Box key={opcao}>
+                                                            {item.map((item) => (
+                                                                <Box key={item.id} sx={{ marginBottom: '10px' }}>
+                                                                    <label>{item.nome} - R${item.total || item.valor}</label>
+                                                                </Box>
+                                                            ))}
+                                                        </Box>
                                                     </Box>
                                                 ))
                                             }
-                                            {/*{*/}
-                                            {/*    Object.entries(normalizarItensProduto(produto.itensProduto)).map(([opcao, item]) => (*/}
-                                            {/*        <Box key={opcao}>*/}
-                                            {/*            <h3>{opcao}</h3>*/}
-                                            {/*            <Box key={opcao}>*/}
-                                            {/*                {item.map((item) => (*/}
-                                            {/*                    <Box key={item.id}>*/}
-                                            {/*                        <label>{item.nome}</label>*/}
-
-                                            {/*                        <Box>R${item.total || item.valor}</Box>*/}
-                                            {/*                    </Box>*/}
-                                            {/*                ))}*/}
-                                            {/*            </Box>*/}
-                                            {/*        </Box>*/}
-                                            {/*    ))*/}
-                                            {/*}*/}
                                         </Box>
                                     ))
                                 }
