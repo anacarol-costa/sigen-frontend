@@ -18,9 +18,9 @@ export default function DetalheEncomendaCard({ produtos, handleAdicionarItemQuan
     }
 
 
-    function handleEvento(qtdSelecionada, valor, indexProduto, indexItem) {
+    function handleEvento(qtdSelecionada, valor, indexProduto, itemId) {
         const total = valor * qtdSelecionada;
-        handleAdicionarItemQuantidade({total, indexProduto, indexItem})
+        handleAdicionarItemQuantidade({total, indexProduto, itemId})
     }
 
 
@@ -46,11 +46,11 @@ export default function DetalheEncomendaCard({ produtos, handleAdicionarItemQuan
                             <Box key={opcao}>
                                 <h4>{opcao}</h4>
                                 <Box key={opcao}>
-                                    {item.map((item, indexItem) => (
+                                    {item.map((item) => (
                                         <Box key={item.id}>
                                             <Box>{item.nome} - R${item.total || item.valor}</Box>
                                             <ButtonGroupEncomenda
-                                                handleEvent={(evento) => handleEvento(evento, item.valor, indexProduto, indexItem)}
+                                                handleEvent={(evento) => handleEvento(evento, item.valor, indexProduto, item.id)}
                                             />
                                             <br/>
                                         </Box>

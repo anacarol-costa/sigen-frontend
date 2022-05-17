@@ -24,9 +24,10 @@ export default function CriarEncomendaPage() {
         setEndereco(enderecoUsuario);
     }, []);
 
-    const handleAdicionarItemQuantidade = ({total, indexProduto, indexItem}) => {
+    const handleAdicionarItemQuantidade = ({total, indexProduto, itemId}) => {
         const produtosCopia = [...produtos];
-        produtosCopia[indexProduto].itensProduto[indexItem].itemOpcao.opcao.total = total; // Obter index of por id de opcao ou item.
+        const index = produtosCopia[indexProduto].itensProduto.findIndex(itemProduto => itemProduto.itemOpcao.opcao.id === itemId)
+        produtosCopia[indexProduto].itensProduto[index].itemOpcao.opcao.total = total; // Obter index of por id de opcao ou item.
         setProdutos(produtosCopia)
 
         atualizarTotalProdutoSelecionado(produtosCopia[indexProduto], indexProduto)
@@ -50,7 +51,6 @@ export default function CriarEncomendaPage() {
 
         produtosCopia[indexProdutoSelecionado].total = calcularTotalItemSelecionado(itensSeleciondados, produtoSeleciondo);
         setProdutos(produtosCopia);
-        console.log('produtos', produtos)
     }
 
     function calcularTotalItemSelecionado(itensSeleciondados, produtoSeleciondo) {
