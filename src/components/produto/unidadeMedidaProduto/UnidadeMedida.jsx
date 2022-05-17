@@ -30,24 +30,24 @@ export default function UnidadeMedida(props) {
   }
 
   return (
-    <Box>
+    <Box sx={{ m: 3 }} >
         <UnidadeMedidaDialog
             mostrarDialog={open}
             fecharDialog={handleClose}
             atualizarAbreviacaoMedidas={recuperarUnidadesMedida}
         />
-      <FormControl sx={{width: '100%'}} >
+      <FormControl>
         <InputLabel id="demo-simple-select-label" >
           Unidade Medida
         </InputLabel>
         <Select
           required
-          sx={{width: '140%'}}
+          sx={{ width: '30vw' }}
           labelId="abreviacao-select-label"
           id="abreviacao-simple-select"
           label="Abreviação"
           type="object"
-          variant="filled"
+          variant="standard"
           {...register('unidadeMedida')}
           error={errors.unidadeMedida ? true : false}
         >

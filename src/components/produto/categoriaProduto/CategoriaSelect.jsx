@@ -33,14 +33,14 @@ export default function CategoriaSelect(props) {
   }
 
   return (
-    <Box>
+    <Box sx={{ m: 2 }} >
       <CategoriaDialog
           mostrarDialog={open}
           fecharDialog={handleClose}
           atualizarCategoria={recuperarCategoria}
       />
 
-      <FormControl sx={{width: '100%'}} >
+      <FormControl>
         <InputLabel
           id="demo-simple-select-label"
         >
@@ -48,7 +48,7 @@ export default function CategoriaSelect(props) {
         </InputLabel>
         <Select
           required
-          sx={{width: '140%'}}
+          sx={{ width: '30vw' }}
           labelId="categoria-select-label"
           id="categoria-simple-select"
           label="Categoria"

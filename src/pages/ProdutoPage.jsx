@@ -1,16 +1,16 @@
-import {Button, FilledInput, Grid, InputAdornment, TextField, Typography} from "@mui/material";
+import { Button, FilledInput, FormControl, Grid, Input, InputAdornment, InputLabel, TextField, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import CategoriaSelect from "../components/produto/categoriaProduto/CategoriaSelect";
 import UnidadeMedida from "../components/produto/unidadeMedidaProduto/UnidadeMedida";
 import ItemProdutoList from "../components/produto/itemProduto/ItemProdutoList";
 import React from "react";
 import * as Yup from "yup";
-import {useForm} from "react-hook-form";
-import {yupResolver} from "@hookform/resolvers/yup";
-import {useDispatch, useSelector} from "react-redux";
-import {useNavigate} from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import axiosComAutorizacao from "../util/axios/axiosComAutorizacao";
-import {mostrarMensagemErro, mostrarMensagemSucesso} from "../store/snackbar-reducer";
+import { mostrarMensagemErro, mostrarMensagemSucesso } from "../store/snackbar-reducer";
 
 export default function ProdutoPage() {
     const navigate = useNavigate();
@@ -25,7 +25,7 @@ export default function ProdutoPage() {
     })
 
     const cadastrarProduto = async (produto) => {
-        const novoProduto = {...produto}
+        const novoProduto = { ...produto }
         novoProduto.itensOpcao = itensOpcao;
 
         try {
@@ -51,20 +51,21 @@ export default function ProdutoPage() {
     return (
         <Box
             sx={{
-                width: [100, 200, 300, 400, 500],
-                paddingTop: '2%',
-                paddingLeft: '30%'
+                display: 'inline-grid',
+                rowGap: 1,
+                width: '50%',
+                alignItems: "center",
+                justifyContent: "center",
+                '& > :not(style)': { m: 1, width: '100%' },
             }}
         >
-            <Box
-                sx={{ paddingTop: '5%', position:'right' }}
-            >
+            <Box>
+                <h1>Cadastrar Produto</h1>
             </Box>
-            <h1>Cadastrar Produto</h1>
             <Grid>
                 <TextField
                     required
-                    sx={{ width: '140%' }}
+                    sx={{ width: '30vw', m: 2 }}
                     id="nome-produto"
                     label="Nome"
                     variant="standard"
@@ -74,14 +75,17 @@ export default function ProdutoPage() {
                 <Typography variant="inherit" color="#d32f2f">
                     {errors.nome?.message}
                 </Typography>
-                <FilledInput
-                    sx={{ width: '140%' }}
-                    id="valor-produto"
-                    variant="standard"
-                    startAdornment={<InputAdornment position="start">R$</InputAdornment>}
-                    {...register('valorBase')}
-                    error={errors.valorBase ? true : false}
-                />
+                <FormControl sx={{ m: 2 }} variant="standard">
+                    <InputLabel required htmlFor="standard-adornment-amount">Valor</InputLabel>
+                    <Input
+                        sx={{ width: '30vw' }}
+                        id="valor-produto"
+                        variant="standard"
+                        startAdornment={<InputAdornment position="start">R$</InputAdornment>}
+                        {...register('valorBase')}
+                        error={errors.valorBase ? true : false}
+                    />
+                </FormControl>
                 <Typography variant="inherit" color="#d32f2f">
                     {errors.valorBase?.message}
                 </Typography>
