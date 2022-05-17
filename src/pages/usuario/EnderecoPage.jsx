@@ -12,7 +12,6 @@ import {useDispatch} from "react-redux";
 import sessionUtil from "../../util/sessionUtil";
 
 export default function EnderecoPage() {
-
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -49,7 +48,8 @@ export default function EnderecoPage() {
         const payload = { usuario: sessionUtil.getIdUsuario(), endereco };
         try {
             await axiosSemAutorizacao.post('/usuarios/endereco', payload);
-            dispatch(mostrarMensagemSucesso('Contato enviado com sucesso. Em breve, entraremos em contato.'));
+            dispatch(mostrarMensagemSucesso('Endereço cadastrado com sucesso.'));
+            navigate('../home')
         } catch (error) {
             console.error(error);
             dispatch(mostrarMensagemErro('Error ao tentar enviar contato.'))
