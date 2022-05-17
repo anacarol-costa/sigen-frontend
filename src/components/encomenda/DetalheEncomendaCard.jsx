@@ -21,14 +21,8 @@ export default function DetalheEncomendaCard({ produtos, handleAdicionarItemQuan
 
 
     function handleEvento(qtdSelecionada, valor, indexProduto, indexItem) {
-        // console.log('qtdSelecionada', qtdSelecionada);
-        // console.log('valor', valor);
-        // console.log('indexProduto', indexProduto);
-        // console.log('indexItem', indexItem);
-
         const total = valor * qtdSelecionada;
         handleAdicionarItemQuantidade({total, indexProduto, indexItem})
-
     }
 
 
@@ -57,11 +51,6 @@ export default function DetalheEncomendaCard({ produtos, handleAdicionarItemQuan
                                 <Box key={opcao}>
                                     {item.map((item, indexItem) => (
                                         <Box key={item.id}>
-                                            {/* <FormControlLabel
-                                                onChange={(evento) => handleChange(evento, item.valor)}
-                                                control={<Checkbox />}
-                                                label={item.nome}
-                                            /> */}
                                             <Box>{item.nome}</Box>
                                             <ButtonGroupEncomenda
                                                 handleEvent={(evento) => handleEvento(evento, item.valor, indexProduto, indexItem)}
@@ -73,10 +62,10 @@ export default function DetalheEncomendaCard({ produtos, handleAdicionarItemQuan
                             </Box>
                         ))
                     }
+
+                    <label>Total produto R$ {produto.total || produto.valorBase}</label>
                 </Box>
             ))}
-
-
         </Box>
     )
 }
