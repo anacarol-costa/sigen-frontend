@@ -1,6 +1,6 @@
 import {Box} from "@mui/system";
 import React, {useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import axiosComAutorizacao from "../../util/axios/axiosComAutorizacao";
 import DetalheEncomendaCard from "../../components/encomenda/DetalheEncomendaCard";
 import {Button, Divider} from "@mui/material";
@@ -11,6 +11,7 @@ import {useDispatch} from "react-redux";
 export default function CriarEncomendaPage() {
     const { id } = useParams();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [produtos, setProdutos] = useState([]);
     const [endereco, setEndereco] = useState([]);
     const [totalEncomenda, setTotalEncomenda] = useState(0);
@@ -57,29 +58,33 @@ export default function CriarEncomendaPage() {
     }
 
     function calcularTotalItemSelecionado(itensSeleciondados, produtoSeleciondo) {
-        const total = itensSeleciondados.reduce((acumulador, valorAtual) => {
+        let total = itensSeleciondados.reduce((acumulador, valorAtual) => {
             return acumulador + valorAtual;
         }, produtoSeleciondo.valorBase);
 
+        total = parseFloat(total)
         return total.toFixed(2);
 
     }
 
     function atualizarTotalEncomenda() {
-        const valorTotalEncomenda = produtos.filter(produto => produto.total)
+        let valorTotalEncomenda = produtos.filter(produto => produto.total)
             .map(produto => produto.total)
             .reduce((acumulador, valorAtual) => {
-            return acumulador + valorAtual
+            const valorAtualNumerico = +valorAtual;
+
+            return acumulador + valorAtualNumerico
         }, 0);
 
-        setTotalEncomenda(valorTotalEncomenda.toFixed(2));
+        setTotalEncomenda(valorTotalEncomenda);
     }
 
     const encomendar = async () => {
         const payload = montarPayload();
         try {
-            await axiosComAutorizacao.post('/compras', payload);
+            const { data } = await axiosComAutorizacao.post('/compras', payload);
             dispatch(mostrarMensagemSucesso('Encomenda feita.'));
+            navigate(`private/encomenda/${data.id}/resumo`)
         } catch (error) {
             console.error('Erro ao tentar encomendar produto.', error);
             dispatch(mostrarMensagemErro('Erro ao tentar encomendar produto.'));

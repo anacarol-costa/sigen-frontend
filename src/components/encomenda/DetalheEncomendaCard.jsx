@@ -1,21 +1,9 @@
 import {Box} from "@mui/system";
 import ButtonGroupEncomenda from "./ButtonGroupEncomenda";
 import {Divider} from "@mui/material";
+import encomendaUtil from "../../util/encomenda/encomendaUtil";
 
 export default function DetalheEncomendaCard({ produtos, handleAdicionarItemQuantidade }) {
-
-    const normalizarItensProduto = (lista) => {
-        let result = {}
-
-        lista.forEach((itemProduto) => {
-            const opcao = itemProduto.itemOpcao.opcao;
-            const itemNome = itemProduto.itemOpcao.item.descricao;
-
-            const itemAtualDoMap = result[itemNome] ? result[itemNome] : [];
-            result[itemNome] = [...itemAtualDoMap, opcao]
-        })
-        return result;
-    }
 
 
     function handleEvento(qtdSelecionada, valor, indexProduto, itemId) {
@@ -42,7 +30,7 @@ export default function DetalheEncomendaCard({ produtos, handleAdicionarItemQuan
                     <h2>{produto.nome}</h2>
                     <h3>R${produto.valorBase} {produto.unidadeMedida.abreviacao}</h3>
                     {
-                        Object.entries(normalizarItensProduto(produto.itensProduto)).map(([opcao, item]) => (
+                        Object.entries(encomendaUtil.normalizarItensProduto(produto.itensProduto)).map(([opcao, item]) => (
                             <Box key={opcao}>
                                 <h4>{opcao}</h4>
                                 <Box key={opcao}>
