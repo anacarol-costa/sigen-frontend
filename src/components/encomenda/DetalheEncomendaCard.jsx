@@ -25,8 +25,6 @@ export default function DetalheEncomendaCard({ produtos }) {
 
 
     function handleEvento(e) {
-        // e.preventDefault();         
-        e.addEventListener(e);
         console.log('clique', e);
     }
 
@@ -62,7 +60,7 @@ export default function DetalheEncomendaCard({ produtos }) {
                                                 label={item.nome}
                                             /> */}
                                             <Box>{item.nome}</Box>
-                                            <ButtonGroupEncomenda onClick={handleEvento} />
+                                            <ButtonGroupEncomenda handleEvent={handleEvento} />
                                             <Box>R${item.valor}</Box>
                                         </Box>
                                     ))}

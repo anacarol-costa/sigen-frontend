@@ -2,18 +2,19 @@ import React, { useState } from 'react';
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 
-export default function ButtonGroupEncomenda() {
+export default function ButtonGroupEncomenda(props) {
     const [count, setCount] = useState(0);
 
-    const handleIncrement = (data) => {
+    const handleIncrement = () => {
         setCount(count + 1);
-        console.log('incrementa', data);
+        props.handleEvent((count + 1))
     };
 
-    const handleDecrement = (data) => {
-        setCount(count - 1);
-        console.log('decrementa', data);
-
+    const handleDecrement = () => {
+        if(count > 0) {
+            setCount(count - 1);
+            props.handleEvent((count - 1))
+        }
     }
 
     const displayCount = () => {
