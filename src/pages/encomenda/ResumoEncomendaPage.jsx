@@ -65,14 +65,14 @@ export default function ResumoEncomendaPage() {
                                         }
                                     </Typography>
                                     <Divider variant="middle" />
-                                    <Typography gutterBottom variant="h5" component="div">
-                                        Total R${compra.valorCompra}
-                                    </Typography>
                                 </Box>
                             ))}
                         </Box>
                     </Box>
                 </Box>
+                <Typography gutterBottom variant="h5" component="div">
+                    Total R${compra.valorCompra}
+                </Typography>
             </Box>
             }
         </Grid>
