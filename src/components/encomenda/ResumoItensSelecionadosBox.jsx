@@ -16,31 +16,31 @@ export default function ResumoItensSelecionadosBox({produtos}) {
         return result;
     }
 
-
     return (
         <Box>
-            <h3>Itens selecionados</h3>
-            {
-                produtos.filter(produto => produto.total).map(produto => (
-                    <Box key={produto.id}>
-                        <h3>{produto.nome}</h3>
-                        {
-                            Object.entries(normalizarItensProduto(produto.itensProduto)).map(([opcao, item]) => (
-                                <Box key={opcao}>
-                                    <h3>{opcao}</h3>
+            <Box>
+                {
+                    produtos.filter(produto => produto.total).map(produto => (
+                        <Box key={produto.id}>
+                            <h3>{produto.nome}</h3>
+                            {
+                                Object.entries(normalizarItensProduto(produto.itensProduto)).map(([opcao, item]) => (
                                     <Box key={opcao}>
-                                        {item.map((item) => (
-                                            <Box key={item.id} sx={{ marginBottom: '10px' }}>
-                                                <label>{item.nome} - R${item.total || item.valor}</label>
-                                            </Box>
-                                        ))}
+                                        <h3>{opcao}</h3>
+                                        <Box key={opcao}>
+                                            {item.map((item) => (
+                                                <Box key={item.id} sx={{ marginBottom: '10px' }}>
+                                                    <label>{item.nome} - R${item.total || item.valor}</label>
+                                                </Box>
+                                            ))}
+                                        </Box>
                                     </Box>
-                                </Box>
-                            ))
-                        }
-                    </Box>
-                ))
-            }
+                                ))
+                            }
+                        </Box>
+                    ))
+                }
+            </Box>
         </Box>
     )
 

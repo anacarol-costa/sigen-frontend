@@ -9,6 +9,7 @@ import {mostrarMensagemErro, mostrarMensagemSucesso} from "../../store/snackbar-
 import {useDispatch} from "react-redux";
 import UsuarioSemEnderecoDialog from "../../components/encomenda/UsuarioSemEnderecoDialog";
 import ResumoItensSelecionadosBox from "../../components/encomenda/ResumoItensSelecionadosBox";
+import ResumoEnderecoBox from "../../components/encomenda/ResumoEnderecoBox";
 
 export default function CriarEncomendaPage() {
     const { id } = useParams();
@@ -157,14 +158,7 @@ export default function CriarEncomendaPage() {
                                     <br/>
                                     <Divider />
 
-                                    <h3>Endereço de entrega</h3>
-                                    <Box>
-                                        <Box>{endereco.bairro}</Box>
-                                        <Box>
-                                            <Box>{endereco.cep}</Box>
-                                            <Box>{endereco.complemento}</Box>
-                                        </Box>
-                                    </Box>
+                                    <ResumoEnderecoBox endereco={endereco} />
                                     <br/>
                                     <Divider />
 
