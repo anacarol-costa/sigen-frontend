@@ -34,8 +34,7 @@ export default function DetalheEncomendaCard({ produtos, handleAdicionarItemQuan
                     sx={{
                         background: 'white',
                         margin: '5px',
-                        width: '100%',
-                        maxWidth: 350,
+                        width: '25vw',
                     }}
                     elevation={3}
                 >
