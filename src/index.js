@@ -29,6 +29,7 @@ import FormContatoPage from "./pages/contato/FormContatoPage";
 import EnderecoPage from "./pages/usuario/EnderecoPage";
 import ListaContatoPage from "./pages/contato/ListaContatoPage";
 import ResumoEncomendaPage from "./pages/encomenda/ResumoEncomendaPage";
+import GerenciarContaUsuario from "./pages/contaUsuario/GerenciarContaUsuario";
 
 
 
@@ -57,6 +58,7 @@ render(
             <Route path="criar-encomenda/categoria/:id" element={<CriarEncomendaPage />} />
             <Route path="contato" element={<FormContatoPage />} />
             <Route path="instagram" element={<InstagramRedirecionar />} />
+            <Route path="gerenciar-conta" element={<GerenciarContaUsuario />} />
             <Route
               path="administracao"
               element={

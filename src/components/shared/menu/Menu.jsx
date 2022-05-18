@@ -61,8 +61,8 @@ const MenuComponente = ({ usuario }) => {
         setAnchorElUser(null);
     };
 
-    const handleEndereco = () => {
-        navigate("/private/endereco");
+    const handleGerenciarConta = () => {
+        navigate("/private/gerenciar-conta");
         setAnchorElUser(null);
     };
 
@@ -171,8 +171,8 @@ const MenuComponente = ({ usuario }) => {
                                 <Typography style={{ height: "100%", width: "100%" }} textAlign="center">Olá, {nomeUsuario}</Typography>
                             </MenuItem>
                             <Divider />
-                            <MenuItem onClick={handleEndereco}>
-                                <Typography style={{ height: "100%", width: "100%" }} textAlign="center">Endereço</Typography>
+                            <MenuItem onClick={handleGerenciarConta}>
+                                <Typography style={{ height: "100%", width: "100%" }} textAlign="center">Gerenciar conta</Typography>
                             </MenuItem>
                             <Divider />
                             <MenuItem onClick={logout}>
