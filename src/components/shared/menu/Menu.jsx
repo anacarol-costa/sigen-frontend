@@ -66,6 +66,11 @@ const MenuComponente = ({ usuario }) => {
         setAnchorElUser(null);
     };
 
+    const handleListarEncomenda = () => {
+        navigate("/private/lista-encomenda/:id");
+        setAnchorElUser(null);
+    };
+
     const logout = () => {
         console.log('logout');
         sessionUtil.removerTknCookie();
@@ -173,6 +178,10 @@ const MenuComponente = ({ usuario }) => {
                             <Divider />
                             <MenuItem onClick={handleGerenciarConta}>
                                 <Typography style={{ height: "100%", width: "100%" }} textAlign="center">Gerenciar conta</Typography>
+                            </MenuItem>
+                            <Divider />
+                            <MenuItem onClick={handleListarEncomenda}>
+                                <Typography style={{ height: "100%", width: "100%" }} textAlign="center">Minhas encomendas</Typography>
                             </MenuItem>
                             <Divider />
                             <MenuItem onClick={logout}>

@@ -64,7 +64,7 @@ export default function FormContaUsuario(props) {
                 onLoad={recuperarDadosUsuario}
             />
 
-            <InputLabel id="label-enderdeço" sx={{ paddingTop: '6%' }} align="left">
+            <InputLabel id="label-endereço" sx={{ paddingTop: '6%' }} align="left">
                 Endereço
             </InputLabel>
             <TextField

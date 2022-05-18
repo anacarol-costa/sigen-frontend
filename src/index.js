@@ -30,6 +30,7 @@ import EnderecoPage from "./pages/usuario/EnderecoPage";
 import ListaContatoPage from "./pages/contato/ListaContatoPage";
 import ResumoEncomendaPage from "./pages/encomenda/ResumoEncomendaPage";
 import GerenciarContaUsuario from "./pages/contaUsuario/GerenciarContaUsuario";
+import ListaEncomendaUsuarioPage from "./pages/contaUsuario/ListaEncomendaUsuarioPage";
 
 
 
@@ -59,6 +60,7 @@ render(
             <Route path="contato" element={<FormContatoPage />} />
             <Route path="instagram" element={<InstagramRedirecionar />} />
             <Route path="gerenciar-conta/:id" element={<GerenciarContaUsuario />} />
+            <Route path="lista-encomenda/:id" element={<ListaEncomendaUsuarioPage />} />
             <Route
               path="administracao"
               element={
