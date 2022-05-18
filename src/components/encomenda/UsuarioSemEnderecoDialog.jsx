@@ -11,18 +11,18 @@ export default function UsuarioSemEnderecoDialog({open, fecharDialog, seguirPara
             aria-describedby="alert-dialog-description"
         >
             <DialogTitle id="alert-dialog-title">
-                {"Cadstrar endereço"}
+                {"Cadastrar endereço"}
             </DialogTitle>
             <DialogContent>
-                <DialogContentText id="alert-dialog-description">
-                   Verificamos que você não tem infomação de endereço, para realizar uma encomenda cadastre
-                   um endereço primeira.
+                <DialogContentText id="alert-dialog-description" align="center">
+                   Identificamos que seu endereço não está cadastrado. 
+                   Para dar prosseguimento a encomenda, cadastre seu endereço.                   
                 </DialogContentText>
             </DialogContent>
             <DialogActions>
                 <Button onClick={fecharDialog}>Cancelar</Button>
                 <Button onClick={seguirParaEndereco} autoFocus>
-                    Confirmar
+                    Cadastrar
                 </Button>
             </DialogActions>
         </Dialog>
