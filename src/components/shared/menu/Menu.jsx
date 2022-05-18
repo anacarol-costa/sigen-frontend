@@ -62,7 +62,7 @@ const MenuComponente = ({ usuario }) => {
     };
 
     const handleGerenciarConta = () => {
-        navigate("/private/gerenciar-conta");
+        navigate("/private/gerenciar-conta/:id");
         setAnchorElUser(null);
     };
 

@@ -58,7 +58,7 @@ render(
             <Route path="criar-encomenda/categoria/:id" element={<CriarEncomendaPage />} />
             <Route path="contato" element={<FormContatoPage />} />
             <Route path="instagram" element={<InstagramRedirecionar />} />
-            <Route path="gerenciar-conta" element={<GerenciarContaUsuario />} />
+            <Route path="gerenciar-conta/:id" element={<GerenciarContaUsuario />} />
             <Route
               path="administracao"
               element={
