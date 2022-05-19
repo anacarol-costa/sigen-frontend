@@ -13,14 +13,14 @@ export default function ListaMinhasEncomendas() {
     const [rows, setRows] = useState([]);
     const columns = [
         { field: 'id', headerName: 'Número do pedido', width: 130 },
-        { field: 'produtosId.nome', headerName: 'Produto', width: 200 },      
+        { field: 'produtosId.produto.id.nome', headerName: 'Produto', width: 200 },      
         { field: 'valorCompra', headerName: 'Total (R$)', width: 200 },      
 
         {
             field: 'actions',
             type: 'actions',
             headerName: 'Cancelar encomenda',
-            width: 120,
+            width: 160,
             getActions: (params) => [
                 <GridActionsCellItem
                     icon={<DeleteIcon />}
