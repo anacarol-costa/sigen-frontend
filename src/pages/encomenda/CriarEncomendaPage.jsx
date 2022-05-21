@@ -10,6 +10,7 @@ import {useDispatch} from "react-redux";
 import UsuarioSemEnderecoDialog from "../../components/encomenda/UsuarioSemEnderecoDialog";
 import ResumoItensSelecionadosBox from "../../components/encomenda/ResumoItensSelecionadosBox";
 import ResumoEnderecoBox from "../../components/encomenda/ResumoEnderecoBox";
+import PeriodoSeletorData from "../../components/encomenda/PeriodoSeletorData";
 
 export default function CriarEncomendaPage() {
     const { id } = useParams();
@@ -162,7 +163,12 @@ export default function CriarEncomendaPage() {
                                     <br/>
                                     <Divider />
 
+                                    <PeriodoSeletorData />
+                                    <br/>
+                                    <Divider />
+
                                     <ResumoItensSelecionadosBox produtos={produtos}/>
+                                    
 
                                 </Box>
                             </Box>
