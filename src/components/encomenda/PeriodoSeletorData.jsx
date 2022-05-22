@@ -1,5 +1,6 @@
 import * as React from 'react';
 import ptBRLocale from 'date-fns/locale/pt-BR';
+import { useState } from "react";
 import TextField from '@mui/material/TextField';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -15,7 +16,7 @@ const mascara = {
 
 export default function PeriodoSeletorData() {
     const [local] = useState('ptBR');
-    const [value, setValue] = useState(null);
+    const [value, setValue] = React.useState(null);
 
     return (
         <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={localeMap[local]}>
