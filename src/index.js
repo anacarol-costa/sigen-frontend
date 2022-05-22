@@ -31,6 +31,7 @@ import ListaContatoPage from "./pages/contato/ListaContatoPage";
 import ResumoEncomendaPage from "./pages/encomenda/ResumoEncomendaPage";
 import GerenciarContaUsuario from "./pages/contaUsuario/GerenciarContaUsuario";
 import ListaEncomendaUsuarioPage from "./pages/contaUsuario/ListaEncomendaUsuarioPage";
+import ConsultarEncomendasPage from "./pages/agenda/ConsultarEncomendasPage";
 
 
 
@@ -81,6 +82,7 @@ render(
               <Route path="cardapio" element={<CardapioUploadPage />} />
               <Route path="carrossel" element={<CarrosselUploadPage />} />
               <Route path="lista-contato" element={<ListaContatoPage />} />
+              <Route path="agenda-encomendas" element={<ConsultarEncomendasPage />} />
             </Route>
           </Route>
           <Route path="*" element={<NotFoundPage />} />

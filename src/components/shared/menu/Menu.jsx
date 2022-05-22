@@ -23,7 +23,7 @@ const menuAdmin = [
     { nome: 'Cardápio', path: 'administracao/cardapio' },
     { nome: 'Gerenciar produtos', path: 'administracao/produto/lista-produto' },
     { nome: 'Gerenciar usuários', path: 'administracao/usuarios' },
-    { nome: 'Agenda', path: 'fake' },
+    { nome: 'Agenda', path: 'administracao/agenda-encomendas' },
     { nome: <BadgeEmblema />, path: 'administracao/lista-contato' }
 ];
 
