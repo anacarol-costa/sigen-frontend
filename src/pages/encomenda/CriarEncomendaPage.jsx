@@ -11,6 +11,7 @@ import UsuarioSemEnderecoDialog from "../../components/encomenda/UsuarioSemEnder
 import ResumoItensSelecionadosBox from "../../components/encomenda/ResumoItensSelecionadosBox";
 import ResumoEnderecoBox from "../../components/encomenda/ResumoEnderecoBox";
 import PeriodoSeletorData from "../../components/encomenda/PeriodoSeletorData";
+import HorarioEntregaSelect from "../../components/encomenda/HorarioEntregaSelect";
 
 export default function CriarEncomendaPage() {
     const { id } = useParams();
@@ -20,6 +21,9 @@ export default function CriarEncomendaPage() {
     const [endereco, setEndereco] = useState(null);
     const [dialogOpen, setDialogOpen] = useState(false);
     const [totalEncomenda, setTotalEncomenda] = useState(0);
+    const [horariosIndisponiveis, setHorariosIndisponiveis] = useState([]);
+    const [dataEncomenda, setDataEncomenda] = useState([]);
+    const [horarioEntrega, setHorarioEntrega] = useState([]);
 
     useEffect(async () => {
         const { data: produtosRecuperados } = await axiosComAutorizacao.get(`/produtos/categoria/${id}`)
@@ -109,7 +113,11 @@ export default function CriarEncomendaPage() {
             produtosId: produtosSelecionados,
             valorCompra: totalEncomenda,
             usuarioId: sessionUtil.getIdUsuario(),
-            enderecoCompraId: endereco.id
+            enderecoCompraId: endereco.id,
+            dia: dataEncomenda.dia,
+            mes: dataEncomenda.mes,
+            ano: dataEncomenda.ano,
+            hora: horarioEntrega,
         }
     }
 
@@ -121,6 +129,17 @@ export default function CriarEncomendaPage() {
     const seguirParaEndereco = () => {
         setDialogOpen(false);
         navigate('../endereco')
+    }
+
+    const carregarHorariosIndisponiveis = (horarios) => {
+        setHorariosIndisponiveis(horarios)
+    }
+    const handleDataEncomenda = ({dia, mes, ano}) => {
+        setDataEncomenda({dia, mes, ano})
+    }
+
+    const handleHorarioEncomenda = (horario) => {
+        setHorarioEntrega(horario)
     }
 
     return (
@@ -163,13 +182,16 @@ export default function CriarEncomendaPage() {
                                     <br/>
                                     <Divider />
 
-                                    <PeriodoSeletorData />
+                                    <PeriodoSeletorData
+                                        carregarHorariosIndisponiveis={carregarHorariosIndisponiveis}
+                                        setDataEncomenda={handleDataEncomenda}
+                                    />
                                     <br/>
+                                    <br/>
+                                    <HorarioEntregaSelect horariosIndiponiveis={horariosIndisponiveis} setHorario={handleHorarioEncomenda}/>
                                     <Divider />
 
                                     <ResumoItensSelecionadosBox produtos={produtos}/>
-                                    
-
                                 </Box>
                             </Box>
                         </Box>
