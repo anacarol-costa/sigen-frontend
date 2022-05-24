@@ -41,13 +41,13 @@ export default function HomePage() {
                 <ol>
                     <li>Primeiramente, caso haja alguma dúvida sobre os produtos, acesse cardápio. Lá contém fotos, preços e quantidade. Ainda havendo dúvidas, entre em contato conosco ou acesse nosso perfil no instagram;</li>
                     <li>Clique em encomenda no menu superior;</li>
+                    <li>O sistema verificando que você não possue endereço cadastrado, um alert/dialog (caixinha com mensagem) aparecerá na tela para que você cadastre seu endereço e assim dar prosseguimento a encomenda. Após o cadastro, é só clicar novamente em encomenda;</li>
                     <li>Ao carregar a página encomenda, você deve escolher qual categoria de produto quer escolher. Exemplo, para encomendar um bolo para festa, clique em Festa;</li>
                     <li>Depois de escolher a categoria, aparecerá os produtos e suas opções;</li>
-                    <li>Com os produtos escolhidos, agora deve escolher a data para entrega ou retirada e preencher o campo endereço;</li>
-                    <li>Conferidos os dados, clique em "comprar do carrinho"</li>
-                    <li>Na próxima tela, escolha a forma de pagamento e clique em "encomendar pedido";</li>
-                    <li>Uma mensagem de confirmação aparecerá informando o número do pedido;</li>
-                    <li>Pronto! agora é só aguardar a data para retirar ou que seja entregue seu pedido.</li>
+                    <li>Com os produtos escolhidos, agora deve escolher a data e horário para entrega;</li>                    
+                    <li>Conferidos os dados, clique em "encomendar"</li>                    
+                    <li>Na próxima tela, aparecerá o resumo da sua encomenda, como: produto(s), total, data e horário de entrega;</li>                    
+                    <li>Pronto! agora é só aguardar a data de entrega do seu pedido.</li>
                 </ol>
             </Grid>
             <RodaPe />
