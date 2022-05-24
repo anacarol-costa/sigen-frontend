@@ -19,3 +19,7 @@ h2 {
 .css-6hp17o-MuiList-root-MuiMenu-list {
   display: grid;
 }
+
+button.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButtonBase-root.css-1q39md6-MuiButtonBase-root-MuiButton-root {
+  color: #ffffff;
+}
