@@ -16,4 +16,6 @@ h2 {
   text-align: center;
 }
 
-
+.css-6hp17o-MuiList-root-MuiMenu-list {
+  display: grid;
+}
