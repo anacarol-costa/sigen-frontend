@@ -17,7 +17,7 @@ export default function ListaContato() {
         { field: 'whatsapp', headerName: 'WhatsApp', width: 130 },
         { field: 'horario', headerName: 'Horário', width: 130 },
         { field: 'assunto', headerName: 'Assunto', width: 150,  },
-        { field: 'multiline', headerName: 'Multiline', width: 400},
+        { field: 'multiline', headerName: 'Mensagem', width: 460},
 
         {
             field: 'actions',
