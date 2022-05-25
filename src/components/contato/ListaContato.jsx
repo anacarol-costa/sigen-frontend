@@ -39,7 +39,7 @@ export default function ListaContato() {
         await axiosComAutorizacao.delete(`/contatos/${id}`);
         await consultarContato();
         dispatch(mostrarMensagemSucesso('Contato excluído com sucesso.'));
-        navigate('private/administracao/lista-contato');
+        navigate('../lista-contato');
     }
 
     useEffect(async () => {
