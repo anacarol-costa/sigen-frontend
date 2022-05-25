@@ -19,6 +19,11 @@ export default function FormContatoPage() {
         setHora(event.target.value);
     };
 
+    const selecionarHorario = (event) => {
+        const horarioSelecionado = event.target.value;
+        setHora(horarioSelecionado);        
+    }
+
     const validacaoSchema = Yup.object().shape({
         nome: Yup.string()
             .required('campo obrigatório')
@@ -109,20 +114,19 @@ export default function FormContatoPage() {
                 <InputLabel id="demo-simple-select-label">Melhor horário para entrar em contato</InputLabel>
                 <Select
                     labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={hora}
+                    id="demo-simple-select"                    
                     label="Hora"
                     variant="standard"
-                    onChange={handleChange}
+                    onChange={setHora}
                     {...register('horario')}
                 >
-                    <MenuItem value={12}>12h</MenuItem>
-                    <MenuItem value={13}>13h</MenuItem>
-                    <MenuItem value={14}>14h</MenuItem>
-                    <MenuItem value={15}>15h</MenuItem>
-                    <MenuItem value={16}>16h</MenuItem>
-                    <MenuItem value={17}>17h</MenuItem>
-                    <MenuItem value={18}>18h</MenuItem>
+                    <MenuItem value={12} key={hora}>12h</MenuItem>
+                    <MenuItem value={13} key={hora}>13h</MenuItem>
+                    <MenuItem value={14} key={hora}>14h</MenuItem>
+                    <MenuItem value={15} key={hora}>15h</MenuItem>
+                    <MenuItem value={16} key={hora}>16h</MenuItem>
+                    <MenuItem value={17} key={hora}>17h</MenuItem>
+                    <MenuItem value={18} key={hora}>18h</MenuItem>
                 </Select>
             </FormControl>
             <TextField
