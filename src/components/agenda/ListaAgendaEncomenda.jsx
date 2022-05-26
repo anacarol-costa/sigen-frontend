@@ -41,7 +41,7 @@ export default function ListaAgendaEncomenda() {
         await axiosComAutorizacao.delete(`/compras/${id}`);
         await consultarCompra();
         dispatch(mostrarMensagemSucesso('Encomenda cancelada com sucesso.'));
-        navigate('private/administracao/agenda-encomendas');
+        navigate('/private/administracao/agenda-encomendas');
     }
 
     useEffect(async () => {
