@@ -1,39 +1,38 @@
-import React from "react";
-import "./index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
 import { Box } from "@mui/material";
+import React from "react";
 import { render } from "react-dom";
-import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "./store/store";
-import SnackbarMensagem from "./components/shared/snackbar/SnackbarMensagem";
-import ProdutoPage from "./pages/ProdutoPage";
-import AdministradorPage from "./pages/administrador/GerenciarAdministradorPage";
-import RotaPrivada from "./components/shared/autorizacao/RotaPrivada";
-import HomePage from "./pages/HomePage";
-import NotFoundPage from "./pages/NotFoundPage";
-import Loading from "./components/shared/loading/Loading";
-import Acessopage from "./pages/AcessoPage";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
+import App from "./App";
+import CardapioRedirecionar from "./components/cardapio/CardapioRedirecionar";
+import InstagramRedirecionar from "./components/instagram/InstagramRedirecionar";
 import RotaAdministracao from "./components/shared/autorizacao/RotaAdministracao";
-import ListaUsuario from "./pages/usuario/ListaUsuario";
-import UsuarioPage from "./pages/usuario/UsuarioPage";
+import RotaPrivada from "./components/shared/autorizacao/RotaPrivada";
+import Loading from "./components/shared/loading/Loading";
+import SnackbarMensagem from "./components/shared/snackbar/SnackbarMensagem";
+import "./index.css";
+import Acessopage from "./pages/AcessoPage";
 import AreaRestrita from "./pages/administrador/AreaRestrita";
+import AdministradorPage from "./pages/administrador/GerenciarAdministradorPage";
+import ConsultarEncomendasPage from "./pages/agenda/ConsultarEncomendasPage";
 import CardapioUploadPage from "./pages/CardapioUploadPage";
 import CarrosselUploadPage from "./pages/CarrosselUploadPage";
-import ListaProdutoPage from "./pages/produto/ListaProdutoPage";
-import EncomendaPage from "./pages/encomenda/EncomendaPage";
-import CriarEncomendaPage from "./pages/encomenda/CriarEncomendaPage";
-import InstagramRedirecionar from "./components/instagram/InstagramRedirecionar";
 import FormContatoPage from "./pages/contato/FormContatoPage";
-import EnderecoPage from "./pages/usuario/EnderecoPage";
 import ListaContatoPage from "./pages/contato/ListaContatoPage";
-import ResumoEncomendaPage from "./pages/encomenda/ResumoEncomendaPage";
 import GerenciarContaUsuario from "./pages/contaUsuario/GerenciarContaUsuario";
 import ListaEncomendaUsuarioPage from "./pages/contaUsuario/ListaEncomendaUsuarioPage";
-import ConsultarEncomendasPage from "./pages/agenda/ConsultarEncomendasPage";
-
-
+import CriarEncomendaPage from "./pages/encomenda/CriarEncomendaPage";
+import EncomendaPage from "./pages/encomenda/EncomendaPage";
+import ResumoEncomendaPage from "./pages/encomenda/ResumoEncomendaPage";
+import HomePage from "./pages/HomePage";
+import NotFoundPage from "./pages/NotFoundPage";
+import ListaProdutoPage from "./pages/produto/ListaProdutoPage";
+import ProdutoPage from "./pages/ProdutoPage";
+import EnderecoPage from "./pages/usuario/EnderecoPage";
+import ListaUsuario from "./pages/usuario/ListaUsuario";
+import UsuarioPage from "./pages/usuario/UsuarioPage";
+import reportWebVitals from "./reportWebVitals";
+import store from "./store/store";
 
 const rootElement = document.getElementById("root");
 
@@ -56,12 +55,25 @@ render(
             <Route path="home" element={<HomePage />} />
             <Route path="endereco" element={<EnderecoPage />} />
             <Route path="encomenda" element={<EncomendaPage />} />
-            <Route path="encomenda/:id/resumo" element={<ResumoEncomendaPage />} />
-            <Route path="criar-encomenda/categoria/:id" element={<CriarEncomendaPage />} />
+            <Route
+              path="encomenda/:id/resumo"
+              element={<ResumoEncomendaPage />}
+            />
+            <Route
+              path="criar-encomenda/categoria/:id"
+              element={<CriarEncomendaPage />}
+            />
             <Route path="contato" element={<FormContatoPage />} />
             <Route path="instagram" element={<InstagramRedirecionar />} />
-            <Route path="gerenciar-conta/:id" element={<GerenciarContaUsuario />} />
-            <Route path="lista-encomenda/:id" element={<ListaEncomendaUsuarioPage />} />
+            <Route
+              path="gerenciar-conta/:id"
+              element={<GerenciarContaUsuario />}
+            />
+            <Route
+              path="lista-encomenda/:id"
+              element={<ListaEncomendaUsuarioPage />}
+            />
+            <Route path="cardapio" element={<CardapioRedirecionar />} />
             <Route
               path="administracao"
               element={
@@ -75,14 +87,20 @@ render(
               <Route path="home" element={<AreaRestrita />} />
               <Route path="produto" element={<ProdutoPage />} />
               <Route path="novo-produto" element={<ProdutoPage />} />
-              <Route path="produto/lista-produto" element={<ListaProdutoPage />} />
+              <Route
+                path="produto/lista-produto"
+                element={<ListaProdutoPage />}
+              />
               <Route path="administrador" element={<AdministradorPage />} />
               <Route path="usuarios" element={<ListaUsuario />} />
               <Route path="novo-usuario" element={<UsuarioPage />} />
               <Route path="cardapio" element={<CardapioUploadPage />} />
               <Route path="carrossel" element={<CarrosselUploadPage />} />
               <Route path="lista-contato" element={<ListaContatoPage />} />
-              <Route path="agenda-encomendas" element={<ConsultarEncomendasPage />} />
+              <Route
+                path="agenda-encomendas"
+                element={<ConsultarEncomendasPage />}
+              />
             </Route>
           </Route>
           <Route path="*" element={<NotFoundPage />} />
