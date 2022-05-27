@@ -36,7 +36,7 @@ export default function ListaMinhasEncomendas() {
         await axiosComAutorizacao.delete(`/compras/${id}`);
         await consultarEncomenda();
         dispatch(mostrarMensagemSucesso('Encomenda cancelada com sucesso.'));
-        navigate(`private/lista-encomenda/${id}`);
+        navigate(`/private/lista-encomenda/${id}`);
     }
 
     useEffect(async () => {
