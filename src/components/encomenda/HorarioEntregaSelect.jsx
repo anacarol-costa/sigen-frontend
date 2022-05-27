@@ -28,7 +28,7 @@ export default function HorarioEntregaSelect(props) {
 
     return (
         <Box>
-            <FormControl fullWidth sx={{ display: 'flex' }}>
+            <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">Horários Disponíveis</InputLabel>
                 <Select
                     labelId="demo-simple-select-label"
@@ -37,7 +37,7 @@ export default function HorarioEntregaSelect(props) {
                     onChange={selecionarHorario}
                 >
                     { horarios.map(horario => (
-                        <MenuItem key={horario} value={horario} sx={{ display: 'flex' }}>
+                        <MenuItem key={horario} value={horario}>
                             {horario}
                         </MenuItem>
                     ))}

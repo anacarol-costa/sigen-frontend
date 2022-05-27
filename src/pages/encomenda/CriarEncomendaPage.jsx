@@ -161,9 +161,7 @@ export default function CriarEncomendaPage() {
                             />
                         }
 
-                        <Box sx={{
-                            display: 'flex',
-                        }}>
+                        <Box>
                             <Box
                                 sx={{
                                     background: 'white',
