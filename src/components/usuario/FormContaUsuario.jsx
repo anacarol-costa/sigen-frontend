@@ -7,103 +7,93 @@ import sessionUtil from "../../util/sessionUtil";
 export default function FormContaUsuario(props) {
     const { id } = useParams();
     const [conta, setConta] = useState({});
+    const [endereco, setEndereco] = useState({});
 
     useEffect(async () => {
-        const { data } = await axiosComAutorizacao.get(`/usuarios/${id}`)                
+        const { data } = await axiosComAutorizacao.get(`/usuarios/${id}`)
         setConta(data);
+        setEndereco(data.endereco);
     }, []);
 
 
 
     return (
         <Box sx={{ display: 'inline-grid' }}>
-            <Typography>
-                Nome {conta.nome}
-            </Typography>
             <TextField
                 sx={{ width: '40vw', m: 1 }}
-                // disabled
+                disabled
                 id="nome-usuario"
                 label="Nome"
+                value={conta.nome}
                 type="string"
-                variant="standard"
-                {...conta.nome}
             />
             <TextField
                 sx={{ width: '40vw', m: 1 }}
-                // disabled
+                disabled
                 id="email-usuario"
                 label="Email"
+                value={conta.email}
                 type="string"
-                variant="standard"
-            // onLoad={recuperarDadosUsuario}
+
             />
             <TextField
                 sx={{ width: '40vw', m: 1 }}
-                // disabled
+                disabled
                 id="senha-usuario"
                 label="Senha"
+                value={conta.senha}
                 type="string"
-                variant="standard"
-            // onLoad={recuperarDadosUsuario}
             />
             <TextField
                 sx={{ width: '40vw', m: 1 }}
-                // disabled
+                disabled
                 id="telefone-usuario"
                 label="Telefone"
+                value={conta.telefone}
                 type="string"
-                variant="standard"
-            // onLoad={recuperarDadosUsuario}
             />
-
-            <InputLabel id="label-endereço" sx={{ paddingTop: '6%' }} align="left">
+            <InputLabel id="label-endereço" sx={{ paddingTop: '6%', paddingBottom:'2%' }} align="left">
                 Endereço
             </InputLabel>
             <TextField
                 sx={{ width: '40vw', m: 1 }}
-                // disabled
+                disabled
                 id="cep-usuario"
                 label="CEP"
-                type="string"
-                variant="standard"
-            // onLoad={recuperarDadosUsuario}
+                value={endereco.cep}
+                type="string"                
             />
             <TextField
                 sx={{ width: '40vw', m: 1 }}
-                // disabled
+                disabled
                 id="bairro-usuario"
                 label="Bairro"
-                type="string"
-                variant="standard"
-            // onLoad={recuperarDadosUsuario}
+                value={endereco.bairro}
+                type="string"                
             />
             <TextField
                 sx={{ width: '40vw', m: 1 }}
-                // disabled
+                disabled
                 id="quadra-usuario"
                 label="Quadra"
-                type="string"
-                variant="standard"
-            // onLoad={recuperarDadosUsuario}
+                value={endereco.quadra}
+                type="string"                
             />
             <TextField
                 sx={{ width: '40vw', m: 1 }}
-                // disabled
+                disabled
                 id="complemento-usuario"
                 label="Complemento"
-                type="string"
-                variant="standard"
-            // onLoad={recuperarDadosUsuario}
+                value={endereco.complemento}
+                type="string"                
             />
             <TextField
                 sx={{ width: '40vw', m: 1 }}
-                // disabled
+                disabled
                 id="ponto-referencia-usuario"
                 label="Ponto de referência"
-                type="string"
-                variant="standard"
-            // onLoad={recuperarDadosUsuario}
+                value={endereco.pontoReferencia}
+                type="string"              
             />
         </Box>
     )
