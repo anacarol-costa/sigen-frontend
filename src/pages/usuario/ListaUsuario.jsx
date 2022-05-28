@@ -5,7 +5,7 @@ import axiosSemAutorizacao from "../../util/axios/axiosSemAutorizacao";
 import { useEffect, useState } from "react";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { mostrarMensagemSucesso } from '../../store/snackbar-reducer';
+import {mostrarMensagemErro, mostrarMensagemSucesso} from '../../store/snackbar-reducer';
 import { useDispatch } from 'react-redux';
 import axiosComAutorizacao from '../../util/axios/axiosComAutorizacao';
 
@@ -18,7 +18,7 @@ export default function ListaUsuario() {
         { field: 'nome', headerName: 'Nome', width: 130 },
         { field: 'telefone', headerName: 'Telefone', width: 130 },
         { field: 'email', headerName: 'E-mail', width: 200 },
-               
+
         {
             field: 'actions',
             type: 'actions',
@@ -35,11 +35,15 @@ export default function ListaUsuario() {
     ]
 
     const delatarUsuario = async (id) => {
-        console.log('deletar usuario');
-        await axiosComAutorizacao.delete(`/usuarios/${id}`);
-        await consultarUsuario();
-        dispatch(mostrarMensagemSucesso('Usuário excluído com sucesso.'));
-        navigate('/private/administracao/usuarios');
+        try {
+            await axiosComAutorizacao.delete(`/usuarios/${id}`);
+            await consultarUsuario();
+            dispatch(mostrarMensagemSucesso('Usuário excluído com sucesso.'));
+            navigate('/private/administracao/usuarios');
+        } catch (e) {
+            dispatch(mostrarMensagemErro('Erro ao excluir usuário.'));
+        }
+
     };
 
 
