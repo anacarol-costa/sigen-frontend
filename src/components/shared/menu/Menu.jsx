@@ -68,7 +68,8 @@ const MenuComponente = ({ usuario }) => {
     };
 
     const handleListarEncomenda = () => {
-        navigate("/private/lista-encomenda/:id");
+        const idEncomenda = sessionUtil.getIdUsuario()
+        navigate(`/private/lista-encomenda/${idEncomenda}`);
         setAnchorElUser(null);
     };
 
