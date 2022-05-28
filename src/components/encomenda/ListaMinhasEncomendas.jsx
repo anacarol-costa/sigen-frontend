@@ -1,7 +1,7 @@
 import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import DeleteIcon from '@mui/icons-material/Delete';
 import axiosComAutorizacao from "../../util/axios/axiosComAutorizacao";
 import { mostrarMensagemSucesso } from "../../store/snackbar-reducer";
@@ -10,11 +10,14 @@ import axiosSemAturozicao from "../../util/axios/axiosSemAutorizacao";
 export default function ListaMinhasEncomendas() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const [rows, setRows] = useState([]);
+    const [rows, setRows] = useState([]);    
     const columns = [
         { field: 'id', headerName: 'Número do pedido', width: 130 },
-        { field: 'produtosId.produto.id.nome', headerName: 'Produto', width: 200 },      
-        { field: 'valorCompra', headerName: 'Total (R$)', width: 200 },      
+        { field: 'produtos', headerName: 'Produto', width: 200, valueFormatter: ({ value }) => value.map(produto => produto.nome) },        
+        { field: 'dia', headerName: 'Dia', width: 70 },
+        { field: 'mes', headerName: 'Mês', width: 70 },
+        { field: 'hora', headerName: 'Horário', width: 70 },
+        { field: 'valorCompra', headerName: 'Total (R$)', width: 80 },
 
         {
             field: 'actions',
