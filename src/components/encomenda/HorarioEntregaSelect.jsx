@@ -34,7 +34,7 @@ export default function HorarioEntregaSelect(props) {
                     labelId="demo-simple-select-label"
                     id="select-horario"
                     value={horario}
-                    onChange={selecionarHorario}
+                    onChange={selecionarHorario}                    
                 >
                     { horarios.map(horario => (
                         <MenuItem key={horario} value={horario}>

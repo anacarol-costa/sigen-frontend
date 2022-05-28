@@ -1,12 +1,12 @@
-import {Box} from "@mui/system";
-import React, {useEffect, useState} from "react";
-import {useNavigate, useParams} from "react-router-dom";
+import { Box } from "@mui/system";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import axiosComAutorizacao from "../../util/axios/axiosComAutorizacao";
 import DetalheEncomendaCard from "../../components/encomenda/DetalheEncomendaCard";
-import {Button, Divider} from "@mui/material";
+import { Button, Divider } from "@mui/material";
 import sessionUtil from "../../util/sessionUtil";
-import {mostrarMensagemErro, mostrarMensagemSucesso} from "../../store/snackbar-reducer";
-import {useDispatch} from "react-redux";
+import { mostrarMensagemErro, mostrarMensagemSucesso } from "../../store/snackbar-reducer";
+import { useDispatch } from "react-redux";
 import UsuarioSemEnderecoDialog from "../../components/encomenda/UsuarioSemEnderecoDialog";
 import ResumoItensSelecionadosBox from "../../components/encomenda/ResumoItensSelecionadosBox";
 import ResumoEnderecoBox from "../../components/encomenda/ResumoEnderecoBox";
@@ -39,7 +39,7 @@ export default function CriarEncomendaPage() {
 
     }, []);
 
-    const handleAdicionarItemQuantidade = ({total, indexProduto, itemId}) => {
+    const handleAdicionarItemQuantidade = ({ total, indexProduto, itemId }) => {
         const produtosCopia = [...produtos];
         const index = obterIndiceOpcaoSelecionada(produtosCopia, indexProduto, itemId)
         produtosCopia[indexProduto].itensProduto[index].itemOpcao.opcao.total = total;
@@ -86,10 +86,10 @@ export default function CriarEncomendaPage() {
         let valorTotalEncomenda = produtos.filter(produto => produto.total)
             .map(produto => produto.total)
             .reduce((acumulador, valorAtual) => {
-            const valorAtualNumerico = +valorAtual;
+                const valorAtualNumerico = +valorAtual;
 
-            return acumulador + valorAtualNumerico
-        }, 0);
+                return acumulador + valorAtualNumerico
+            }, 0);
 
         setTotalEncomenda(valorTotalEncomenda);
     }
@@ -109,7 +109,7 @@ export default function CriarEncomendaPage() {
     function montarPayload() {
         const produtosSelecionados = produtos.filter(produto => produto.total).map(produto => produto.id);
 
-        return  {
+        return {
             produtosId: produtosSelecionados,
             valorCompra: totalEncomenda,
             usuarioId: sessionUtil.getIdUsuario(),
@@ -134,8 +134,8 @@ export default function CriarEncomendaPage() {
     const carregarHorariosIndisponiveis = (horarios) => {
         setHorariosIndisponiveis(horarios)
     }
-    const handleDataEncomenda = ({dia, mes, ano}) => {
-        setDataEncomenda({dia, mes, ano})
+    const handleDataEncomenda = ({ dia, mes, ano }) => {
+        setDataEncomenda({ dia, mes, ano })
     }
 
     const handleHorarioEncomenda = (horario) => {
@@ -149,10 +149,10 @@ export default function CriarEncomendaPage() {
                 fecharDialog={fecharDialog}
                 seguirParaEndereco={seguirParaEndereco}
             />
-            { endereco &&
+            {endereco &&
                 <Box>
                     <h1>Criar Encomenda</h1>
-                    <Box sx={{display: 'flex'}}>
+                    <Box sx={{ display: 'flex' }}>
                         {
                             produtos.length > 0 &&
                             <DetalheEncomendaCard
@@ -167,29 +167,29 @@ export default function CriarEncomendaPage() {
                                     background: 'white',
                                     margin: '5px',
                                     width: '100%',
-                                    maxWidth: 350,
+                                    maxWidth: 350,                                    
                                 }}
                                 elevation={3}
                             >
                                 <Box>
                                     <h3>Total R$ {totalEncomenda}</h3>
-                                    <br/>
+                                    <br />
                                     <Divider />
 
                                     <ResumoEnderecoBox endereco={endereco} />
-                                    <br/>
+                                    <br />
                                     <Divider />
 
                                     <PeriodoSeletorData
                                         carregarHorariosIndisponiveis={carregarHorariosIndisponiveis}
                                         setDataEncomenda={handleDataEncomenda}
                                     />
-                                    <br/>
-                                    <br/>
-                                    <HorarioEntregaSelect horariosIndiponiveis={horariosIndisponiveis} setHorario={handleHorarioEncomenda}/>
+                                    <br />
+                                    <br />
+                                    <HorarioEntregaSelect horariosIndiponiveis={horariosIndisponiveis} setHorario={handleHorarioEncomenda} />
                                     <Divider />
 
-                                    <ResumoItensSelecionadosBox produtos={produtos}/>
+                                    <ResumoItensSelecionadosBox produtos={produtos} />
                                 </Box>
                             </Box>
                         </Box>
