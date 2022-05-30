@@ -4,7 +4,6 @@ import { render } from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import App from "./App";
-import CardapioRedirecionar from "./components/cardapio/CardapioRedirecionar";
 import InstagramRedirecionar from "./components/instagram/InstagramRedirecionar";
 import RotaAdministracao from "./components/shared/autorizacao/RotaAdministracao";
 import RotaPrivada from "./components/shared/autorizacao/RotaPrivada";
@@ -15,6 +14,7 @@ import Acessopage from "./pages/AcessoPage";
 import AreaRestrita from "./pages/administrador/AreaRestrita";
 import AdministradorPage from "./pages/administrador/GerenciarAdministradorPage";
 import ConsultarEncomendasPage from "./pages/agenda/ConsultarEncomendasPage";
+import CardapioPage from "./pages/cardapio/CardapioPage";
 import CardapioUploadPage from "./pages/CardapioUploadPage";
 import CarrosselUploadPage from "./pages/CarrosselUploadPage";
 import FormContatoPage from "./pages/contato/FormContatoPage";
@@ -73,7 +73,7 @@ render(
               path="lista-encomenda/:id"
               element={<ListaEncomendaUsuarioPage />}
             />
-            <Route path="cardapio" element={<CardapioRedirecionar />} />
+            <Route path="cardapio" element={<CardapioPage />} />
             <Route
               path="administracao"
               element={
