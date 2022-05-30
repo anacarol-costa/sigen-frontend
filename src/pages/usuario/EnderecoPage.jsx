@@ -1,14 +1,14 @@
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import {Button, Typography} from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import React from "react";
 import * as Yup from "yup";
-import {useForm} from "react-hook-form";
-import {yupResolver} from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import axiosSemAutorizacao from "../../util/axios/axiosSemAutorizacao";
-import {mostrarMensagemErro, mostrarMensagemSucesso} from "../../store/snackbar-reducer";
-import {useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
+import { mostrarMensagemErro, mostrarMensagemSucesso } from "../../store/snackbar-reducer";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import sessionUtil from "../../util/sessionUtil";
 
 export default function EnderecoPage() {
@@ -49,7 +49,7 @@ export default function EnderecoPage() {
         try {
             await axiosSemAutorizacao.post('/usuarios/endereco', payload);
             dispatch(mostrarMensagemSucesso('Endereço cadastrado com sucesso.'));
-            navigate('../home')
+            navigate('/private/encomenda')
         } catch (error) {
             console.error(error);
             dispatch(mostrarMensagemErro('Error ao tentar enviar contato.'))
@@ -71,7 +71,7 @@ export default function EnderecoPage() {
             }}
         >
             <Box sx={{ paddingBottom: "3%" }}>
-                <h1>Endereço</h1>
+                <h1>Cadastro de endereço</h1>
             </Box>
             <TextField
                 required
@@ -96,6 +96,19 @@ export default function EnderecoPage() {
             />
             <Typography variant="inherit" color="#d32f2f">
                 {errors.bairro?.message}
+            </Typography>
+            <TextField
+                required
+                sx={{ width: '25vw' }}
+                id="quadra"
+                label="Quadra"
+                type="text"
+                variant="standard"
+                {...register('quadra')}
+                error={errors.quadra ? true : false}
+            />
+            <Typography variant="inherit" color="#d32f2f">
+                {errors.quadra?.message}
             </Typography>
             <TextField
                 sx={{ width: '25vw' }}
@@ -123,20 +136,6 @@ export default function EnderecoPage() {
             />
             <Typography variant="inherit" color="#d32f2f">
                 {errors.pontoReferencia?.message}
-            </Typography>
-
-            <TextField
-                required
-                sx={{ width: '25vw' }}
-                id="quadra"
-                label="Quadra"
-                type="text"
-                variant="standard"
-                {...register('quadra')}
-                error={errors.quadra ? true : false}
-            />
-            <Typography variant="inherit" color="#d32f2f">
-                {errors.quadra?.message}
             </Typography>
 
             <Box>
