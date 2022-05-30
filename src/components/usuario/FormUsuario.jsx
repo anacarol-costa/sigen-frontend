@@ -1,11 +1,11 @@
-import {Box, Button, Stack, TextField, Typography} from "@mui/material";
-import React, {useState} from "react";
+import { Box, Button, FormControl, Stack, TextField, Typography } from "@mui/material";
+import React, { useState } from "react";
 import * as Yup from "yup";
-import {useForm} from "react-hook-form";
-import {yupResolver} from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import NumberFormat from 'react-number-format';
 
-export default function FormUsuario(props) {
-
+export default function FormUsuario(props, telefone) {  
     const [errorSenhasDiferentes] = useState('');
     const [telefoneValido] = useState("");
 
@@ -54,6 +54,8 @@ export default function FormUsuario(props) {
             return (<></>);
         }
     }
+
+
 
     return (
         <Box
@@ -130,10 +132,11 @@ export default function FormUsuario(props) {
             <Typography variant="inherit" color="#d32f2f">
                 {errors.repetirSenha?.message}
             </Typography>
-
-            <TextField
-                required
-                sx={{ width: '30vw' }}
+            
+            <NumberFormat
+                format="(##) #####-####"
+                mask="_"
+                customInput={TextField}
                 id="telefone"
                 label="Telefone"
                 type="tel"

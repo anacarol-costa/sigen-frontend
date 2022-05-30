@@ -20,6 +20,7 @@ export default function FormContaUsuario(props) {
     return (
         <Box sx={{ display: 'inline-grid' }}>
             <TextField
+                variant="outlined"
                 sx={{ width: '40vw', m: 1 }}
                 disabled
                 id="nome-usuario"
@@ -28,6 +29,7 @@ export default function FormContaUsuario(props) {
                 type="string"
             />
             <TextField
+                variant="outlined"                
                 sx={{ width: '40vw', m: 1 }}
                 disabled
                 id="email-usuario"
@@ -37,6 +39,7 @@ export default function FormContaUsuario(props) {
 
             />
             <TextField
+                variant="outlined"
                 sx={{ width: '40vw', m: 1 }}
                 disabled
                 id="senha-usuario"
@@ -45,6 +48,7 @@ export default function FormContaUsuario(props) {
                 type="string"
             />
             <TextField
+                variant="outlined"
                 sx={{ width: '40vw', m: 1 }}
                 disabled
                 id="telefone-usuario"
@@ -52,48 +56,53 @@ export default function FormContaUsuario(props) {
                 value={conta.telefone}
                 type="string"
             />
-            <InputLabel id="label-endereço" sx={{ paddingTop: '6%', paddingBottom:'2%' }} align="left">
+            <InputLabel id="label-endereço" sx={{ paddingTop: '6%', paddingBottom: '2%' }} align="left">
                 Endereço
             </InputLabel>
             <TextField
+                variant="outlined"
                 sx={{ width: '40vw', m: 1 }}
                 disabled
                 id="cep-usuario"
                 label="CEP"
                 value={endereco.cep}
-                type="string"                
+                type="string"
             />
             <TextField
+                variant="outlined"
                 sx={{ width: '40vw', m: 1 }}
                 disabled
                 id="bairro-usuario"
                 label="Bairro"
                 value={endereco.bairro}
-                type="string"                
+                type="string"
             />
             <TextField
+                variant="outlined"
                 sx={{ width: '40vw', m: 1 }}
                 disabled
                 id="quadra-usuario"
                 label="Quadra"
                 value={endereco.quadra}
-                type="string"                
+                type="string"
             />
             <TextField
+                variant="outlined"
                 sx={{ width: '40vw', m: 1 }}
                 disabled
                 id="complemento-usuario"
                 label="Complemento"
                 value={endereco.complemento}
-                type="string"                
+                type="string"
             />
             <TextField
+                variant="outlined"
                 sx={{ width: '40vw', m: 1 }}
                 disabled
                 id="ponto-referencia-usuario"
                 label="Ponto de referência"
                 value={endereco.pontoReferencia}
-                type="string"              
+                type="string"
             />
         </Box>
     )
