@@ -19,8 +19,7 @@ export default function ResumoEncomendaPage() {
             spacing={0}
             direction="column"
             alignItems="center"
-            justifyContent="center"
-            style={{ minHeight: '100vh' }}
+            justifyContent="center"            
         >
             <h1>Resumo da Compra</h1>
             {compra.enderecoCompra &&
@@ -28,7 +27,7 @@ export default function ResumoEncomendaPage() {
                     sx={{
                         background: 'white',
                         width: '100%',
-                        maxWidth: '30vw',
+                        maxWidth: '30vw'                        
                     }}
                     elevation={3}
                 >
@@ -71,7 +70,7 @@ export default function ResumoEncomendaPage() {
                         </Box>
                     </Box>
                     <Typography gutterBottom variant="h5" component="div">
-                        Total R${compra.valorCompra}
+                        Total R${compra.valorCompra}.00
                     </Typography>
                     <Divider variant="middle" />
                     <Typography gutterBottom variant="h5" component="div">
