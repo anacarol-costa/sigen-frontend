@@ -19,88 +19,132 @@ export default function FormContaUsuario(props) {
 
     return (
         <Box sx={{ display: 'inline-grid' }}>
+            <InputLabel id="label-nome" size="small" align="left">
+                Nome
+            </InputLabel>
             <TextField
-                variant="outlined"
+                variant="standard"
+                InputProps={{
+                    readOnly: true,
+                }}
                 sx={{ width: '40vw', m: 1 }}
-                disabled
                 id="nome-usuario"
-                label="Nome"
                 value={conta.nome}
                 type="string"
             />
+
+            <InputLabel id="label-email" size="small" sx={{ paddingTop: '2%' }} align="left">
+                E-mail
+            </InputLabel>
             <TextField
-                variant="outlined"                
+                variant="standard"
+                InputProps={{
+                    readOnly: true,
+                }}
                 sx={{ width: '40vw', m: 1 }}
-                disabled
                 id="email-usuario"
-                label="Email"
                 value={conta.email}
                 type="string"
 
             />
-            <TextField
-                variant="outlined"
-                sx={{ width: '40vw', m: 1 }}
-                disabled
-                id="senha-usuario"
-                label="Senha"
-                value={conta.senha}
-                type="string"
-            />
-            <TextField
-                variant="outlined"
-                sx={{ width: '40vw', m: 1 }}
-                disabled
-                id="telefone-usuario"
-                label="Telefone"
-                value={conta.telefone}
-                type="string"
-            />
-            <InputLabel id="label-endereço" sx={{ paddingTop: '6%', paddingBottom: '2%' }} align="left">
-                Endereço
+
+            <InputLabel id="label-senha" size="small" sx={{ paddingTop: '2%' }} align="left">
+                Senha
             </InputLabel>
             <TextField
-                variant="outlined"
+                variant="standard"
+                InputProps={{
+                    readOnly: true,
+                }}
                 sx={{ width: '40vw', m: 1 }}
-                disabled
+                id="senha-usuario"
+                value={conta.senha}
+                type="password"
+            />
+
+            <InputLabel id="label-telefone" size="small" sx={{ paddingTop: '2%' }} align="left">
+                Telefone
+            </InputLabel>
+            <TextField
+                variant="standard"
+                InputProps={{
+                    readOnly: true,
+                }}
+                sx={{ width: '40vw', m: 1 }}
+                id="telefone-usuario"
+                value={conta.telefone}
+                type="tel"
+            />
+            <InputLabel id="label-endereço" sx={{ paddingTop: '6%' }} align="left">
+                Endereço
+            </InputLabel>
+
+            <InputLabel id="label-cep" size="small" align="left">
+                CEP
+            </InputLabel>
+            <TextField
+                variant="standard"
+                InputProps={{
+                    readOnly: true,
+                }}
+                sx={{ width: '40vw', m: 1 }}
                 id="cep-usuario"
-                label="CEP"
                 value={endereco.cep}
                 type="string"
             />
+
+            <InputLabel id="label-bairro" size="small" sx={{ paddingTop: '2%' }} align="left">
+                Bairro
+            </InputLabel>
             <TextField
-                variant="outlined"
+                variant="standard"
+                InputProps={{
+                    readOnly: true,
+                }}
                 sx={{ width: '40vw', m: 1 }}
-                disabled
                 id="bairro-usuario"
-                label="Bairro"
                 value={endereco.bairro}
                 type="string"
             />
+
+            <InputLabel id="label-quadra" size="small" sx={{ paddingTop: '2%' }} align="left">
+                Quadra
+            </InputLabel>
             <TextField
-                variant="outlined"
+                variant="standard"
+                InputProps={{
+                    readOnly: true,
+                }}
                 sx={{ width: '40vw', m: 1 }}
-                disabled
                 id="quadra-usuario"
-                label="Quadra"
                 value={endereco.quadra}
                 type="string"
             />
+
+            <InputLabel id="label-quadra" size="small" sx={{ paddingTop: '2%' }} align="left">
+                Quadra
+            </InputLabel>
             <TextField
-                variant="outlined"
+                variant="standard"
+                InputProps={{
+                    readOnly: true,
+                }}
                 sx={{ width: '40vw', m: 1 }}
-                disabled
                 id="complemento-usuario"
-                label="Complemento"
                 value={endereco.complemento}
                 type="string"
             />
+
+            <InputLabel id="label-ponto-referencia-usuario" size="small" sx={{ paddingTop: '2%' }} align="left">
+                Ponto de referência
+            </InputLabel>
             <TextField
-                variant="outlined"
+                variant="standard"
+                InputProps={{
+                    readOnly: true,
+                }}
                 sx={{ width: '40vw', m: 1 }}
-                disabled
                 id="ponto-referencia-usuario"
-                label="Ponto de referência"
                 value={endereco.pontoReferencia}
                 type="string"
             />
