@@ -1,8 +1,8 @@
-import {Box} from "@mui/system";
-import {useEffect, useState} from "react";
+import { Box } from "@mui/system";
+import { useEffect, useState } from "react";
 import axiosComAutorizacao from "../../util/axios/axiosComAutorizacao";
-import {Button, Chip, Divider, Grid, Stack, Typography} from "@mui/material";
-import {useNavigate} from "react-router-dom";
+import { Button, Chip, Divider, Grid, Stack, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export default function EncomendaPage() {
     const [rows, setRows] = useState([]);
@@ -13,15 +13,15 @@ export default function EncomendaPage() {
     }, []);
 
     const consultarItensProduto = async () => {
-        const {data} = await axiosComAutorizacao.get('/itens-produto');
+        const ITEM_INATIVO = 0;
+        const { data } = await axiosComAutorizacao.get('/itens-produto');
         setRows(data);
     }
 
     const detalharOpcao = (produtos) => {
         const categoria = produtos[0].categoria;
-        navigate(`/private/criar-encomenda/categoria/${categoria.id}`)
+        navigate(`/private/criar-encomenda/categoria/${categoria.id}`);
         console.log(categoria);
-
     }
 
 
@@ -33,7 +33,7 @@ export default function EncomendaPage() {
                 display: 'flex',
                 paddingLeft: '20%',
             }}>
-                {Object.entries(rows).map(([categoria, produtos]) =>(
+                {Object.entries(rows).map(([categoria, produtos]) => (
                     <Box
                         sx={{
                             background: 'white',
@@ -59,7 +59,7 @@ export default function EncomendaPage() {
                                 Opções
                             </Typography>
                             <Stack direction="row" spacing={1}>
-                                {produtos.map(produto => (
+                                {produtos.filter(produto => produto.ativo !== 0).map(produto => (
                                     <Box key={produto.id}>
                                         <Chip label={produto.nome} />
                                     </Box>
