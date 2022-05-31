@@ -13,10 +13,8 @@ export default function ListaAgendaEncomenda() {
     const [rows, setRows] = useState([]);
     const columns = [
         { field: 'id', headerName: 'N° pedido', width: 80 },
-        { field: 'usuario', headerName: 'Cliente', width: 80, valueFormatter: ({ value }) => value.nome },
-        { field: 'produtos', headerName: 'Produtos', width: 180, valueFormatter: ({ value }) => value.map(produto => produto.nome) },
-        { field: 'ItensProduto', headerName: 'Opção', width: 200},
-        // { field: 'ItensProduto', headerName: 'Opção', width: 200, valueFormatter: ({ value }) => value.map(itemProduto => itemProduto.itemOpcao.item.opcao.nome)},
+        { field: 'usuario', headerName: 'Cliente', width: 80, valueFormatter: ({ value }) => value.nome },        
+        { field: 'produtos', headerName: 'Produtos', width: 280, valueFormatter: ({ value }) => value.map(produto => produto.nome) },
         { field: 'dia', headerName: 'Dia', width: 70 },
         { field: 'mes', headerName: 'Mês', width: 70 },
         { field: 'hora', headerName: 'horário', width: 70 },
