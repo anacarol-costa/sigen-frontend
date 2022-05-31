@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { mostrarMensagemErro, mostrarMensagemSucesso } from "../../store/snackbar-reducer";
 import axiosSemAutorizacao from "../../util/axios/axiosSemAutorizacao";
+import NumberFormat from 'react-number-format';
 
 export default function FormContatoPage() {
     const navigate = useNavigate();
@@ -21,7 +22,7 @@ export default function FormContatoPage() {
 
     const selecionarHorario = (event) => {
         const horarioSelecionado = event.target.value;
-        setHora(horarioSelecionado);        
+        setHora(horarioSelecionado);
     }
 
     const validacaoSchema = Yup.object().shape({
@@ -100,21 +101,24 @@ export default function FormContatoPage() {
             <Typography variant="inherit" color="#d32f2f">
                 {errors.email?.message}
             </Typography>
-            <TextField
-                sx={{ width: '25vw' }}
+            <NumberFormat
+                format="(##) #####-####"
+                mask="_"
+                customInput={TextField}
                 id="whatsapp"
                 label="WhatsApp"
                 type="tel"
                 autoComplete="current-tel"
                 variant="standard"
                 {...register('whatsapp')}
-            />
-
+                error={errors.telefone ? true : false}
+            />   
+               
             <FormControl sx={{ width: '30%' }}>
                 <InputLabel id="demo-simple-select-label">Melhor horário para entrar em contato</InputLabel>
                 <Select
                     labelId="demo-simple-select-label"
-                    id="demo-simple-select"                    
+                    id="demo-simple-select"
                     label="Hora"
                     variant="standard"
                     onChange={setHora}
