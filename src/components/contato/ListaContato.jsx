@@ -16,8 +16,8 @@ export default function ListaContato() {
         { field: 'email', headerName: 'E-mail', width: 200 },
         { field: 'whatsapp', headerName: 'WhatsApp', width: 130 },
         { field: 'horario', headerName: 'Horário', width: 130 },
-        { field: 'assunto', headerName: 'Assunto', width: 150,  },
-        { field: 'multiline', headerName: 'Mensagem', width: 460},
+        { field: 'assunto', headerName: 'Assunto', width: 180 },
+        { field: 'multiline', headerName: 'Mensagem', width: 560},
 
         {
             field: 'actions',
@@ -29,7 +29,7 @@ export default function ListaContato() {
                     icon={<DeleteIcon />}
                     label="Delete"
                     onClick={() => delatarContato(params.id)}
-                />,
+                />
             ]
         }
     ]
