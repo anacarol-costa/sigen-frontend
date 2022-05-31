@@ -14,7 +14,7 @@ export default function ListaProdutoPage() {
 
     const columns = [
         { field: 'nome', headerName: 'Nome', width: 180 },        
-        { field: 'itensProduto', headerName: 'Opção', width: 200, valueFormatter: ({ value }) => value.map(produto => produto.itemOpcao.opcao.nome) },
+        { field: 'itensProduto', headerName: 'Opção', width: 300, valueFormatter: ({ value }) => value.map(produto => produto.itemOpcao.opcao.nome) },
         { field: 'categoria', headerName: 'Categoria', width: 130, valueFormatter: ({ value }) => value.nome },
         { field: 'unidadeMedida', headerName: 'Unidade de medida', width: 150, valueFormatter: ({ value }) => value.abreviacao },
         { field: 'valorBase', headerName: 'Valor (R$)', width: 130 },        
