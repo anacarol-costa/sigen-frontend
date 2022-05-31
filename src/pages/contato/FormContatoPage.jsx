@@ -54,6 +54,7 @@ export default function FormContatoPage() {
         try {
             await axiosSemAutorizacao.post('/contatos', contato);
             dispatch(mostrarMensagemSucesso('Contato enviado com sucesso. Em breve, entraremos em contato.'));
+            navigate('/private/home');
         } catch (error) {
             console.error(error);
             dispatch(mostrarMensagemErro('Error ao tentar enviar contato.'))
