@@ -10,10 +10,11 @@ import axiosSemAturozicao from "../../util/axios/axiosSemAutorizacao";
 export default function ListaMinhasEncomendas() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const [rows, setRows] = useState([]);    
+    const [rows, setRows] = useState([]);
     const columns = [
         { field: 'id', headerName: 'Número do pedido', width: 130 },
-        { field: 'produtos', headerName: 'Produto', width: 200, valueFormatter: ({ value }) => value.map(produto => produto.nome) },        
+        { field: 'produtos', headerName: 'Produto', width: 170, valueFormatter: ({ value }) => value.map(produto => produto.nome) },
+        { field: 'itensProduto', headerName: 'Opção', width: 200},
         { field: 'dia', headerName: 'Dia', width: 70 },
         { field: 'mes', headerName: 'Mês', width: 70 },
         { field: 'hora', headerName: 'Horário', width: 70 },

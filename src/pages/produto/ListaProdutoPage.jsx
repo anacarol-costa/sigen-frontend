@@ -48,8 +48,9 @@ export default function ListaProdutoPage() {
     }, [])
 
     const consultarProduto = async () => {
+        const PRODUTO_INATIVO = 0;
         const { data } = await axiosComAutorizacao.get('/produtos');
-        setRows(data);
+        setRows(data.filter(produto => produto.ativo !== PRODUTO_INATIVO));
     }
 
     const novoProduto = () => {
