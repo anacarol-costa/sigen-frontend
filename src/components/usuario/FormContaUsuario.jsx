@@ -19,9 +19,11 @@ export default function FormContaUsuario(props) {
 
     return (
         <Box sx={{ display: 'inline-grid' }}>
-            <InputLabel id="label-nome" size="small" align="left">
-                Nome
-            </InputLabel>
+            <Box>
+                <InputLabel id="label-nome" size="small" align="left">
+                    Nome
+                </InputLabel>
+            </Box>
             <TextField
                 variant="standard"
                 InputProps={{
@@ -33,9 +35,11 @@ export default function FormContaUsuario(props) {
                 type="string"
             />
 
-            <InputLabel id="label-email" size="small" sx={{ paddingTop: '2%' }} align="left">
-                E-mail
-            </InputLabel>
+            <Box>
+                <InputLabel id="label-email" size="small" sx={{ paddingTop: '2%' }} align="left">
+                    E-mail
+                </InputLabel>
+            </Box>
             <TextField
                 variant="standard"
                 InputProps={{
@@ -48,9 +52,11 @@ export default function FormContaUsuario(props) {
 
             />
 
-            <InputLabel id="label-senha" size="small" sx={{ paddingTop: '2%' }} align="left">
-                Senha
-            </InputLabel>
+            <Box>
+                <InputLabel id="label-senha" size="small" sx={{ paddingTop: '2%' }} align="left">
+                    Senha
+                </InputLabel>
+            </Box>
             <TextField
                 variant="standard"
                 InputProps={{
@@ -62,9 +68,11 @@ export default function FormContaUsuario(props) {
                 type="password"
             />
 
-            <InputLabel id="label-telefone" size="small" sx={{ paddingTop: '2%' }} align="left">
-                Telefone
-            </InputLabel>
+            <Box>
+                <InputLabel id="label-telefone" size="small" sx={{ paddingTop: '2%' }} align="left">
+                    Telefone
+                </InputLabel>
+            </Box>
             <TextField
                 variant="standard"
                 InputProps={{
@@ -75,13 +83,17 @@ export default function FormContaUsuario(props) {
                 value={conta.telefone}
                 type="tel"
             />
-            <InputLabel id="label-endereço" sx={{ paddingTop: '6%' }} align="left">
-                Endereço
-            </InputLabel>
 
-            <InputLabel id="label-cep" size="small" align="left">
-                CEP
-            </InputLabel>
+            <Box>
+                <InputLabel id="label-endereço" sx={{ paddingTop: '6%' }} align="left">
+                    Endereço
+                </InputLabel>
+            </Box>
+            <Box>
+                <InputLabel id="label-cep" size="small" align="left">
+                    CEP
+                </InputLabel>
+            </Box>
             <TextField
                 variant="standard"
                 InputProps={{
@@ -93,9 +105,11 @@ export default function FormContaUsuario(props) {
                 type="string"
             />
 
-            <InputLabel id="label-bairro" size="small" sx={{ paddingTop: '2%' }} align="left">
-                Bairro
-            </InputLabel>
+            <Box>
+                <InputLabel id="label-bairro" size="small" sx={{ paddingTop: '2%' }} align="left">
+                    Bairro
+                </InputLabel>
+            </Box>
             <TextField
                 variant="standard"
                 InputProps={{
@@ -107,9 +121,11 @@ export default function FormContaUsuario(props) {
                 type="string"
             />
 
-            <InputLabel id="label-quadra" size="small" sx={{ paddingTop: '2%' }} align="left">
-                Quadra
-            </InputLabel>
+            <Box>
+                <InputLabel id="label-quadra" size="small" sx={{ paddingTop: '2%' }} align="left">
+                    Quadra
+                </InputLabel>
+            </Box>
             <TextField
                 variant="standard"
                 InputProps={{
@@ -121,9 +137,11 @@ export default function FormContaUsuario(props) {
                 type="string"
             />
 
-            <InputLabel id="label-quadra" size="small" sx={{ paddingTop: '2%' }} align="left">
-                Quadra
-            </InputLabel>
+            <Box>
+                <InputLabel id="label-quadra" size="small" sx={{ paddingTop: '2%' }} align="left">
+                    Quadra
+                </InputLabel>
+            </Box>
             <TextField
                 variant="standard"
                 InputProps={{
@@ -135,9 +153,11 @@ export default function FormContaUsuario(props) {
                 type="string"
             />
 
-            <InputLabel id="label-ponto-referencia-usuario" size="small" sx={{ paddingTop: '2%' }} align="left">
-                Ponto de referência
-            </InputLabel>
+            <Box>
+                <InputLabel id="label-ponto-referencia-usuario" size="small" sx={{ paddingTop: '2%' }} align="left">
+                    Ponto de referência
+                </InputLabel>
+            </Box>
             <TextField
                 variant="standard"
                 InputProps={{
